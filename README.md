@@ -1,16 +1,61 @@
-# React + Vite
+# SAADIA_OS: Multiverse Portfolio 🕸️💻
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cinematic, interactive portfolio experience inspired by **"Spider-Man: Across the Spider-Verse"**. This project blends high-tech Data Science aesthetics with raw, creative ink-splatter art, built with React, Three.js, and Framer Motion.
 
-Currently, two official plugins are available:
+## 🚀 Live Environment
+The portfolio is designed as an interactive Operating System (`SAADIA_OS`) where users can decrypt projects and explore technical nodes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+- **Frontend**: React 19 + Vite
+- **Styling**: TailwindCSS 3.4
+- **Motion**: Framer Motion (for staccato, 12fps-style animations)
+- **3D Engine**: React Three Fiber + Three.js
+- **Icons**: Lucide React
 
-## React Compiler
+## ✨ Key Features
+- **Neural Experience**: A high-tech "leadership node" map with sticky-hover scanning and click-to-pin functionality.
+- **Dynamic Graphics**: Hand-drawn, glitching corner webs and hanging threads that react to your presence.
+- **Cinematic HUD**: A custom Targeter Cursor with real-time coordinate tracking and interaction labels.
+- **Responsive Bento Grid**: A project showcase optimized for both "Design" and "Data" personas.
+- **Direct Intel**: Integrated resume download system for rapid recruiter access.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎨 Design Philosophy
+- **Chromatic Aberration**: Subtle color fringing (Cyan/Magenta) to mimic the movie's printing-error look.
+- **Halftone Textures**: Comic-book style dot patterns used for backgrounds and shadows.
+- **Staccato Motion**: Animations tuned to feel like they are moving at a different frame rate than the rest of the world.
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
+```text
+src/
+├── components/
+│   ├── NeuralExperience.jsx  # Interactive Node Map
+│   ├── SpiderWeb.jsx         # Custom SVG Web Generator
+│   ├── CustomCursor.jsx      # HUD-style targeting cursor
+│   ├── Hero3D.jsx            # Floating 3D Wireframes
+│   └── TerminalFooter.jsx    # "Command Line" footer
+├── App.jsx                   # OS Shell & Layout
+└── index.css                 # Global GLITCH & GLASS styles
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Development & Deployment
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### 🚀 Deploy on Vercel
+This project is optimized for **Vercel**. 
+1. Push your changes to GitHub.
+2. Connect your repo to Vercel.
+3. The `vercel.json` ensures all routes point to the shell (SPA support).
+
+
+---
+**Developed by Saadia Asghar**
+*Data Science Student | Creative Designer | MarTech Enthusiast*
