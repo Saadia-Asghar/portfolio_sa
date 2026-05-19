@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { COMMUNITY_NODES } from '../data/portfolio';
 
 const Node = ({ label, impact, color, x, y, onHover, onClick, isActive }) => {
     return (
@@ -37,14 +38,7 @@ const NeuralExperience = () => {
     const [lockedNode, setLockedNode] = useState(null);
     const timeoutRef = React.useRef(null);
 
-    const nodes = [
-        { label: "ACM GIKI", impact: "Member since Feb 2025. Design & Tech team of Softcom'25. Active participant in technical workshops and campus coding initiatives.", color: "#00f3ff", x: 10, y: 15 },
-        { label: "GDGoC GIKI", impact: "Core Team Member since Nov 2025. Facilitating technical workshops and growing the student developer ecosystem at GIKI.", color: "#7a00ff", x: 75, y: 15 },
-        { label: "Devsinc Ambassador", impact: "Campus Ambassador. Bridging students with industry leaders. Organized technical sessions with high engagement.", color: "#ff0055", x: 80, y: 65 },
-        { label: "MS CLUB GIKI", impact: "Marketing & Design Team Member + Web Development Team Member. Leading creative branding and front-end development for club events.", color: "#f9ff00", x: 40, y: 40 },
-        { label: "UROG", impact: "Student Officer Education. Coordinating academic peer-support and the 2025 Member Bootcamp program.", color: "#00f3ff", x: 60, y: 75 },
-        { label: "Remotebase", impact: "Campus Ambassador (Feb-Jul 2025). Spearheaded outreach programs for remote engineering opportunities.", color: "#ff0055", x: 15, y: 75 },
-    ];
+    const nodes = COMMUNITY_NODES;
 
     const displayNode = activeNode || lockedNode;
 
@@ -60,7 +54,7 @@ const NeuralExperience = () => {
     };
 
     return (
-        <section className="py-20 px-6 max-w-6xl mx-auto relative min-h-[600px] md:min-h-[700px]">
+        <section id="community" className="py-20 px-4 md:px-8 max-w-6xl mx-auto relative min-h-[600px] md:min-h-[700px]">
             <div className="mb-12 space-y-2">
                 <motion.h2
                     className="text-3xl md:text-5xl lg:text-6xl font-accent text-spider-cyan mb-2 uppercase tracking-tighter"
