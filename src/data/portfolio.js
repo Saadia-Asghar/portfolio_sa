@@ -237,7 +237,7 @@ export const ACHIEVEMENTS = [
     title: 'Devsinc',
     badge: 'Campus Ambassador',
     detail: '10+ workshops for 300+ students — 200+ qualified campaign signups.',
-    period: 'Feb. 2025 — Present',
+    period: 'Feb. 2025 — Apr. 2026',
   },
   {
     id: 'remotebase',
@@ -386,7 +386,7 @@ export const EXPERIENCE = [
   {
     org: 'Devsinc',
     role: 'Campus Ambassador',
-    period: 'Feb. 2025 — Present',
+    period: 'Feb. 2025 — Apr. 2026',
     location: 'GIKI',
     summary: '10+ workshops · 300+ students · 200+ qualified signups.',
   },
