@@ -5,11 +5,11 @@ import { CONTACT } from '../data/portfolio';
 
 const LINKS = [
   { href: '#about', label: 'About' },
-  { href: '#marketing', label: 'Marketing' },
+  { href: '#achievements', label: 'Achievements' },
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
   { href: '#resume', label: 'Resume' },
-  { href: '#community', label: 'Network' },
+  { href: '#connect', label: 'Contact' },
 ];
 
 const SiteNav = () => {
@@ -38,9 +38,9 @@ const SiteNav = () => {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="comic-sticker bg-spider-yellow text-black font-display text-lg md:text-xl tracking-widest px-3 py-1 hover:scale-105 transition-transform"
+            className="font-tech font-bold text-sm tracking-wide text-white hover:text-spider-cyan transition-colors"
           >
-            SAADIA<span className="text-spider-magenta">.</span>ASGHAR
+            SAADIA ASGHAR
           </button>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -57,7 +57,7 @@ const SiteNav = () => {
             <a
               href={CONTACT.resumePath}
               download="Saadia_Asghar_Resume.png"
-              className="comic-sticker bg-spider-cyan text-black flex items-center gap-2 px-4 py-2 text-[10px] font-mono font-bold uppercase tracking-widest hover:scale-105 transition-transform"
+              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg border border-spider-cyan/40 text-spider-cyan text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-spider-cyan/10 transition-colors"
             >
               <Download size={14} /> Resume
             </a>

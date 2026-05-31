@@ -340,6 +340,83 @@ body {
   animation: orb-pulse 12s ease-in-out infinite;
 }
 
+/* ── Clean layout system ── */
+.achievement-card {
+  @apply p-5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04] transition-colors;
+}
+
+.track-pill {
+  @apply text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded;
+}
+
+.track-build {
+  @apply bg-spider-cyan/10 text-spider-cyan border border-spider-cyan/20;
+}
+
+.track-grow {
+  @apply bg-spider-magenta/10 text-spider-magenta border border-spider-magenta/20;
+}
+
+.experience-row {
+  @apply p-5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-white/15 transition-colors;
+}
+
+.project-link {
+  @apply inline-flex items-center gap-1.5 text-[10px] font-mono text-gray-400 uppercase tracking-wider hover:text-spider-cyan transition-colors;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-lg bg-spider-cyan text-black font-tech font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-lg border border-white/20 text-white font-tech font-bold text-sm uppercase tracking-wider hover:bg-white/5 transition-colors;
+}
+
+.skill-tag {
+  @apply text-[9px] font-mono px-2 py-0.5 rounded border;
+}
+
+.skill-tag-cyan {
+  @apply bg-spider-cyan/10 border-spider-cyan/25 text-spider-cyan;
+}
+
+.skill-tag-magenta {
+  @apply bg-spider-magenta/10 border-spider-magenta/25 text-spider-magenta;
+}
+
+.skill-tag-yellow {
+  @apply bg-spider-yellow/10 border-spider-yellow/25 text-spider-yellow;
+}
+
+.skill-tag-purple {
+  @apply bg-spider-purple/10 border-spider-purple/25 text-spider-purple;
+}
+
+.dual-track-bar {
+  @apply grid grid-cols-2 gap-3 rounded-xl overflow-hidden border border-white/10;
+}
+
+.dual-track-half {
+  @apply p-4 flex flex-col gap-1;
+}
+
+.dual-track-build {
+  @apply bg-spider-cyan/5 border-r border-white/10;
+}
+
+.dual-track-grow {
+  @apply bg-spider-magenta/5;
+}
+
+.dual-track-label {
+  @apply text-xs font-tech font-bold text-white uppercase tracking-wider;
+}
+
+.dual-track-desc {
+  @apply text-[11px] text-gray-500 font-tech leading-snug;
+}
+
 @keyframes ink-splash {
   0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
   50% { transform: scale(1.08) rotate(5deg); opacity: 0.9; }
