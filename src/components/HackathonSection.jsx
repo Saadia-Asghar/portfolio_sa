@@ -9,7 +9,7 @@ const tierStyles = {
   silver: 'border-gray-400/40 bg-white/5 text-gray-200',
   bronze: 'border-orange-400/40 bg-orange-400/5 text-orange-300',
   top10: 'border-spider-cyan/40 bg-spider-cyan/5 text-spider-cyan',
-  finalist: 'border-spider-magenta/40 bg-spider-magenta/5 text-spider-magenta',
+  participant: 'border-white/25 bg-white/[0.04] text-gray-300',
 };
 
 const tierCardClass = {
@@ -18,14 +18,14 @@ const tierCardClass = {
   bronze: 'hackathon-tier-bronze',
   top10: 'hackathon-tier-top10',
   finalist: 'hackathon-tier-finalist',
+  participant: 'hackathon-tier-participant',
 };
 
 const statPillClass = {
-  '1st / Top 5': 'stat-pill-gold',
+  Participated: 'border-white/15',
   '2nd': 'stat-pill-silver',
   'Top 10': 'stat-pill-cyan',
   '3rd': 'stat-pill-bronze',
-  Finalist: 'stat-pill-magenta',
 };
 
 const HackathonCard = ({ win, index }) => (
@@ -77,11 +77,11 @@ const HackathonCard = ({ win, index }) => (
 );
 
 const HackathonSection = () => (
-  <section id="hackathons" className="section-band py-20 md:py-28 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
+  <section id="hackathons" className="section-band py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
     <SectionHeader
-      index="02 · HACKATHONS"
-      title="Competition Wins"
-      subtitle={`${HACKATHON_WINS.length} global competitions — equal detail, equal weight`}
+      index="01 · HACKATHONS"
+      title="Hackathons & Competitions"
+      subtitle={`${HACKATHON_WINS.length} events — equal detail, equal weight`}
       align="left"
     />
 
@@ -93,11 +93,11 @@ const HackathonSection = () => (
 
     <div className="flex flex-wrap justify-center gap-3">
       {[
-        { label: '1st / Top 5', sub: 'Vyrothon' },
+        { label: 'Participated', sub: 'Vyrothon' },
         { label: '2nd', sub: 'Hack@GIKI' },
         { label: 'Top 10', sub: 'MIT Hack Nation' },
         { label: '3rd', sub: 'BASED Pakistan' },
-        { label: 'Finalist', sub: 'Imagine Cup' },
+        { label: 'Participated', sub: 'Imagine Cup' },
       ].map((stat) => (
         <div key={stat.sub} className={`stat-pill text-center ${statPillClass[stat.label] || ''}`}>
           <p className="font-tech font-bold text-white text-sm">{stat.label}</p>

@@ -4,9 +4,9 @@ import SectionHeader from './SectionHeader';
 import { EXPERIENCE } from '../data/portfolio';
 
 const ExperienceSection = () => (
-  <section id="experience" className="py-20 md:py-28 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
+  <section id="experience" className="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
     <SectionHeader
-      index="05 · EXPERIENCE"
+      index="03 · EXPERIENCE"
       title="Roles & Leadership"
       subtitle="Marketing, design, and campus ambassadorships — chronological"
       accent="yellow"

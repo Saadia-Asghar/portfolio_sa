@@ -72,12 +72,12 @@ const Hero3D = () => (
               <MapPin size={11} /> {CONTACT.location}
             </span>
             <span className="px-3 py-1.5 rounded-full border border-spider-yellow/30 text-spider-yellow bg-spider-yellow/5 flex items-center gap-1">
-              <Trophy size={11} /> {HACKATHON_WINS.length} hackathon wins
+              <Trophy size={11} /> {HACKATHON_WINS.length} competitions
             </span>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
-            <a href="#hackathons" className="btn-primary">Hackathon wins</a>
+            <a href="#hackathons" className="btn-primary">Hackathons</a>
             <a href="#achievements" className="btn-secondary">Achievements</a>
             <a href={CONTACT.resumePath} download="Saadia_Asghar_Resume.png" className="btn-secondary">
               <Download size={16} className="inline mr-2 -mt-0.5" /> Resume

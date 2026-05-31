@@ -19,7 +19,7 @@ export const PROFILE = {
 
 export const MARQUEE_ITEMS = [
   'HACK@GIKI 2ND · SKILL ISSUE',
-  'VYROTHON TOP 5 GLOBAL',
+  'VYROTHON · PRODUCT DESIGN',
   'MIT HACK NATION TOP 10',
   'BASED PAKISTAN 3RD',
   'MICROSOFT IMAGINE CUP',
@@ -35,14 +35,14 @@ export const HACKATHON_WINS = [
   {
     id: 'vyrothon',
     project: 'Vyrothon',
-    placement: '1st Round · Top 5 Finalist',
-    event: 'Product Design & Innovation · Global',
+    placement: 'Participant',
+    event: 'Product Design & Innovation',
     role: 'Lead Product Designer',
     period: 'Apr. 2026',
-    highlight: '1st in product design round out of 500+ applicants worldwide.',
-    detail: 'Immersive 3D environment with gamified storytelling — high-fidelity prototype built at NSTP.',
+    highlight: 'Participated in the product design round — immersive 3D environment with gamified storytelling.',
+    detail: 'High-fidelity prototype built at NSTP with narrative-driven UX and interactive 3D interfaces.',
     tech: ['Figma', 'Prototyping', 'Immersive UI', 'Storytelling UX'],
-    tier: 'gold',
+    tier: 'participant',
   },
   {
     id: 'skill-issue',
@@ -86,14 +86,14 @@ export const HACKATHON_WINS = [
   {
     id: 'ecobite',
     project: 'EcoBite',
-    placement: 'Imagine Cup',
+    placement: 'Participant',
     event: 'Microsoft Imagine Cup',
     role: 'Full-Stack · Product Design',
     period: 'Aug. 2025 — Present',
     highlight: 'Food donation platform — 5 user roles, 500+ meals, 30% donation frequency increase.',
     detail: 'Azure AD B2C, SQL, and Maps API for logistics across NGOs, donors, and recyclers.',
     tech: ['Azure', 'React', 'SQL', 'Maps API'],
-    tier: 'finalist',
+    tier: 'participant',
     github: 'https://github.com/Saadia-Asghar/Ecobite_',
   },
 ];
@@ -114,8 +114,8 @@ export const ACHIEVEMENTS = [
     id: 'vyrothon',
     track: 'build',
     title: 'Vyrothon',
-    badge: '1st Round · Top 5 Finalist Global',
-    detail: 'Lead Product Designer — immersive 3D storytelling prototype among 500+ applicants.',
+    badge: 'Participant · Product Design & Innovation',
+    detail: 'Lead Product Designer — immersive 3D storytelling prototype for the Vyrothon competition.',
     period: 'Apr. 2026',
   },
   {
@@ -130,7 +130,7 @@ export const ACHIEVEMENTS = [
     id: 'ecobite',
     track: 'build',
     title: 'EcoBite',
-    badge: 'Microsoft Imagine Cup',
+    badge: 'Participant · Microsoft Imagine Cup',
     detail: 'Food donation platform — 5 roles, Azure, 500+ meals. 30% donation frequency increase via analytics.',
     period: '2025 — Present',
     link: 'https://github.com/Saadia-Asghar/Ecobite_',
@@ -293,7 +293,7 @@ export const ALL_PROJECTS = [
   {
     title: 'Vyrothon',
     role: 'Lead Product Designer',
-    achievement: 'Top 5 Global',
+    achievement: 'Participant',
     desc: 'Immersive 3D environment with gamified storytelling interfaces.',
     tech: ['Figma', 'Prototyping', 'Immersive UI'],
   },
@@ -307,7 +307,7 @@ export const ALL_PROJECTS = [
   {
     title: 'EcoBite',
     role: 'Full-Stack · Product Design',
-    achievement: 'Imagine Cup',
+    achievement: 'Participant · Imagine Cup',
     desc: 'Food waste platform — 5 roles, Azure, SQL, Maps API.',
     tech: ['Azure', 'React', 'SQL'],
     github: 'https://github.com/Saadia-Asghar/Ecobite_',
