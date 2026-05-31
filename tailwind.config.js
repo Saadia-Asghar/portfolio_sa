@@ -12,8 +12,9 @@ export default {
         "spider-purple": "#7a00ff",
       },
       fontFamily: {
-        tech: ["Space Grotesk", "sans-serif"], // For Data Science/Tech
-        accent: ["Permanent Marker", "cursive"], // For Creative/Design
+        tech: ["Space Grotesk", "sans-serif"],
+        accent: ["Permanent Marker", "cursive"],
+        display: ["Bangers", "cursive"],
       },
       animation: {
         // Snappy, jerky movement like the movie's 12fps style

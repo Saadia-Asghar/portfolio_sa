@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SectionHeader from './SectionHeader';
 import { COMMUNITY_NODES } from '../data/portfolio';
 
 const Node = ({ label, impact, color, x, y, onHover, onClick, isActive }) => {
@@ -54,24 +55,17 @@ const NeuralExperience = () => {
     };
 
     return (
-        <section id="community" className="py-20 px-4 md:px-8 max-w-6xl mx-auto relative min-h-[600px] md:min-h-[700px]">
-            <div className="mb-12 space-y-2">
-                <motion.h2
-                    className="text-3xl md:text-5xl lg:text-6xl font-accent text-spider-cyan mb-2 uppercase tracking-tighter"
-                    animate={{ textShadow: ["2px 0 #ff0055, -2px 0 #00f3ff", "-2px 0 #ff0055, 2px 0 #00f3ff"] }}
-                    transition={{ duration: 0.2, repeat: Infinity, repeatType: "mirror" }}
-                >
-                    COMMUNITY_SYNC
-                </motion.h2>
-                <div className="flex flex-wrap items-center gap-2 text-gray-600 font-tech uppercase tracking-[0.3em] text-[9px] md:text-xs">
-                    <span>Tracing Leadership Nodes</span>
-                    <span className="animate-pulse text-spider-cyan/50 font-bold block ml-2">
-                        // {lockedNode ? 'Pinned View' : 'Hover and hold to scan'}
-                    </span>
-                </div>
-            </div>
+        <section id="community" className="py-20 md:py-28 px-4 md:px-8 max-w-6xl mx-auto relative min-h-[600px] md:min-h-[700px] scroll-mt-24">
+            <SectionHeader
+                index="05 · COMMUNITY"
+                title="Campus Network"
+                subtitle="Societies · ambassadorships · outreach"
+                accent="purple"
+                align="left"
+            />
 
-            <div className="relative w-full h-[450px] md:h-[550px] border border-white/5 rounded-[3rem] bg-black/20 backdrop-blur-md shadow-inner">
+            <div className="relative w-full h-[450px] md:h-[550px] comic-panel comic-panel-purple shadow-[8px_8px_0_rgba(122,0,255,0.2)]">
+                <div className="comic-panel-inner h-full !p-0 relative overflow-hidden rounded-none">
                 {/* SVG Connections omitted for brevity in search, but kept in code */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10">
                     <defs>
@@ -158,6 +152,7 @@ const NeuralExperience = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
+                </div>
             </div>
         </section>
     );

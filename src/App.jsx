@@ -8,6 +8,9 @@ import ContentStrategy from './components/ContentStrategy';
 import ResumeSection from './components/ResumeSection';
 import NeuralExperience from './components/NeuralExperience';
 import TerminalFooter from './components/TerminalFooter';
+import ComicBackground from './components/ComicBackground';
+import ComicPanel from './components/ComicPanel';
+import SectionHeader from './components/SectionHeader';
 import SpiderWeb from './components/SpiderWeb';
 import LoadingScreen from './components/LoadingScreen';
 import {
@@ -82,19 +85,7 @@ const MobileSocialBar = () => (
   </div>
 );
 
-const BackgroundGraphics = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden>
-    <div
-      className="absolute inset-0 opacity-[0.02]"
-      style={{
-        backgroundImage:
-          'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-        backgroundSize: '100px 100px',
-        transform: 'perspective(1000px) rotateX(60deg) translateY(-30%) scale(2)',
-      }}
-    />
-  </div>
-);
+const BackgroundGraphics = () => null;
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -114,63 +105,66 @@ function App() {
       <SiteNav />
       <SocialHUD />
       <MobileSocialBar />
+      <ComicBackground />
       <BackgroundGraphics />
 
-      <SpiderWeb position="top-left" color="#00f3ff" size={450} />
-      <SpiderWeb position="bottom-right" color="#ff0055" size={450} />
-      <SpiderWeb position="top-right" color="#f9ff00" size={300} />
-      <SpiderWeb position="bottom-left" color="#7a00ff" size={250} />
-      <SpiderWeb position="top-center" color="#ff0055" size={300} type="hanging" />
+      <SpiderWeb position="top-left" color="#00f3ff" size={400} />
+      <SpiderWeb position="bottom-right" color="#ff0055" size={380} />
 
       <CustomCursor />
 
       <main className="relative z-10 w-full">
         <Hero3D />
 
-        <section id="about" className="py-20 md:py-28 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <section id="about" className="py-20 md:py-28 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24 relative">
+          <div className="absolute -right-10 top-20 w-48 h-48 halftone-corner opacity-10 pointer-events-none hidden lg:block" />
+
+          <SectionHeader
+            index="01 · ABOUT"
+            title="Who I Am"
+            subtitle="Data science student · product designer · hackathon builder"
+            accent="cyan"
+            align="left"
+          />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="lg:col-span-7 space-y-8"
             >
-              <motion.div className="space-y-3">
-                <h2 className="text-3xl md:text-5xl font-accent text-spider-yellow -rotate-1 origin-left">About</h2>
-                <p className="text-lg md:text-2xl font-tech text-white font-bold leading-tight">
-                  Data Science @ GIKI · <span className="text-spider-cyan">Product Designer</span> ·{' '}
-                  <span className="text-spider-magenta">Builder</span>
-                </p>
-              </motion.div>
-
-              <div className="h-px w-full bg-gradient-to-r from-spider-cyan/40 to-transparent" />
-
-              <div className="space-y-5 text-base md:text-lg font-tech text-gray-400 leading-relaxed">
+              <div className="comic-speech text-base md:text-lg font-tech text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  I work where <span className="text-white font-semibold">data</span>,{' '}
-                  <span className="text-white font-semibold">design</span>, and{' '}
-                  <span className="text-white font-semibold">code</span> meet — from{' '}
-                  <span className="text-spider-cyan font-semibold">2nd at Hack@GIKI</span> (Skill Issue) to
+                  I work where <span className="text-spider-cyan font-bold">data</span>,{' '}
+                  <span className="text-spider-magenta font-bold">design</span>, and{' '}
+                  <span className="text-white font-bold">code</span> meet — from{' '}
+                  <span className="text-spider-yellow font-bold">2nd at Hack@GIKI</span> (Skill Issue) to
                   Vyrothon, MIT Hack Nation Top 10, and Microsoft Imagine Cup work on EcoBite.
                 </p>
                 <p>
-                  Currently a <span className="text-spider-yellow font-bold">Graphic Design Associate</span> at
-                  PreMed.PK and active across GIKI societies.{' '}
-                  <span className="text-spider-cyan underline underline-offset-4">Open to internships</span> in
-                  data science, UI/UX, product, and full-stack development.
+                  Graphic Design Associate at PreMed.PK · active across GIKI societies.{' '}
+                  <span className="text-spider-cyan underline underline-offset-4 decoration-wavy">Open to internships</span>{' '}
+                  in data science, UI/UX, product, and full-stack.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {valueProps.map((uvp) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {valueProps.map((uvp, i) => (
                   <motion.div
                     key={uvp.title}
-                    whileHover={{ x: 6 }}
-                    className="p-5 glass-card border-none bg-white/5 space-y-2"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.08 }}
+                    viewport={{ once: true }}
                   >
-                    <div className="p-2 w-fit rounded-lg bg-white/5">{uvp.icon}</div>
-                    <h4 className="text-white font-bold text-xs tracking-widest uppercase">{uvp.title}</h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">{uvp.desc}</p>
+                    <ComicPanel accent={['cyan', 'magenta', 'yellow', 'purple'][i]} tilt={i % 2 ? 1.5 : -1.5}>
+                      <div className="p-1 space-y-2">
+                        <div className="p-2 w-fit rounded-lg bg-white/5 border border-white/10">{uvp.icon}</div>
+                        <h4 className="font-display text-white text-lg tracking-wide uppercase">{uvp.title}</h4>
+                        <p className="text-xs text-gray-500 leading-relaxed font-tech">{uvp.desc}</p>
+                      </div>
+                    </ComicPanel>
                   </motion.div>
                 ))}
               </div>
@@ -182,16 +176,14 @@ function App() {
               viewport={{ once: true }}
               className="lg:col-span-5"
             >
-              <div className="glass-card p-8 relative bg-black/40 border-white/5">
-                <div className="absolute -top-3 right-4 bg-spider-cyan text-black font-tech font-black px-5 py-2 text-[10px] uppercase tracking-widest rotate-2">
+              <ComicPanel accent="cyan" tilt={1} stamp="★">
+                <span className="comic-sticker bg-spider-cyan text-black absolute -top-3 right-6 text-[9px] font-mono font-black px-3 py-1 uppercase tracking-widest rotate-3 z-20">
                   Available
-                </div>
+                </span>
 
-                <h4 className="text-spider-cyan font-mono text-[10px] font-bold tracking-[0.35em] mb-8 uppercase border-b border-white/10 pb-4">
-                  Skills
-                </h4>
+                <h4 className="font-display text-spider-cyan text-2xl tracking-wider uppercase mb-6">Skills</h4>
 
-                <div className="space-y-7">
+                <div className="space-y-6">
                   {SKILL_GROUPS.map((group) => (
                     <div key={group.label} className="space-y-3">
                       <p className="text-[9px] font-mono text-gray-500 tracking-[0.3em] uppercase">{group.label}</p>
@@ -199,7 +191,7 @@ function App() {
                         {group.skills.map((s) => (
                           <span
                             key={s}
-                            className={`px-2.5 py-1 text-[10px] font-mono rounded-md border ${accentMap[group.accent]}`}
+                            className={`px-2.5 py-1 text-[10px] font-mono rounded border ${accentMap[group.accent]}`}
                           >
                             {s}
                           </span>
@@ -209,11 +201,11 @@ function App() {
                   ))}
                 </div>
 
-                <div className="mt-10 pt-8 border-t border-white/10 space-y-4">
+                <div className="mt-8 pt-6 border-t border-dashed border-white/10 space-y-3">
                   {[
                     'B.Sc. Data Science — GIKI (2028)',
                     'Skill Issue — 2nd @ Hack@GIKI AI Challenge',
-                    'Vyrothon Top 5 global · MIT Hack Nation Top 10',
+                    'Vyrothon Top 5 · MIT Hack Nation Top 10',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <CheckCircle2 size={16} className="text-spider-yellow shrink-0 mt-0.5" />
@@ -221,7 +213,7 @@ function App() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </ComicPanel>
             </motion.div>
           </div>
         </section>
@@ -231,9 +223,14 @@ function App() {
         <ResumeSection />
         <NeuralExperience />
 
-        <section className="py-20 text-center max-w-3xl mx-auto px-4 scroll-mt-24">
-          <h2 className="text-3xl md:text-5xl font-accent text-white italic mb-4">Let&apos;s connect</h2>
-          <p className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.3em] mb-8">
+        <section className="py-24 text-center max-w-3xl mx-auto px-4 scroll-mt-24">
+          <SectionHeader
+            index="06 · CONNECT"
+            title="Let's Talk"
+            subtitle="Internships · collaborations · freelance design"
+            accent="magenta"
+          />
+          <p className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.3em] mb-10 -mt-8">
             {CONTACT.email} · {CONTACT.phone}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -242,7 +239,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="interactive"
-              className="px-8 py-4 rounded-xl glass-card border-spider-magenta/30 text-white font-tech font-bold text-sm uppercase tracking-widest hover:bg-spider-magenta/10 transition-colors"
+              className="comic-sticker bg-spider-magenta/20 text-white px-10 py-4 font-tech font-black text-sm uppercase tracking-widest hover:bg-spider-magenta/40 transition-colors"
             >
               LinkedIn
             </a>
@@ -250,7 +247,7 @@ function App() {
               href={CONTACT.resumePath}
               download="Saadia_Asghar_Resume.png"
               data-cursor="interactive"
-              className="px-8 py-4 rounded-xl glass-card border-spider-cyan/30 text-white font-tech font-bold text-sm uppercase tracking-widest hover:bg-spider-cyan/10 transition-colors"
+              className="comic-sticker bg-spider-cyan text-black px-10 py-4 font-tech font-black text-sm uppercase tracking-widest hover:shadow-[4px_4px_0_rgba(0,243,255,0.4)] transition-shadow"
             >
               Download Resume
             </a>

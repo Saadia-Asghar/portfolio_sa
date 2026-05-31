@@ -37,9 +37,9 @@ const SiteNav = () => {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-tech font-black text-sm md:text-base tracking-widest text-white hover:text-spider-cyan transition-colors"
+            className="comic-sticker bg-spider-yellow text-black font-display text-lg md:text-xl tracking-widest px-3 py-1 hover:scale-105 transition-transform"
           >
-            SAADIA<span className="text-spider-cyan">.</span>ASGHAR
+            SAADIA<span className="text-spider-magenta">.</span>ASGHAR
           </button>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -56,7 +56,7 @@ const SiteNav = () => {
             <a
               href={CONTACT.resumePath}
               download="Saadia_Asghar_Resume.png"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-spider-cyan/10 border border-spider-cyan/40 text-spider-cyan text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-spider-cyan/20 transition-colors"
+              className="comic-sticker bg-spider-cyan text-black flex items-center gap-2 px-4 py-2 text-[10px] font-mono font-bold uppercase tracking-widest hover:scale-105 transition-transform"
             >
               <Download size={14} /> Resume
             </a>
