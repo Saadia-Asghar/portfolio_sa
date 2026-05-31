@@ -9,7 +9,7 @@ const ResumeSection = () => {
 
   return (
     <section id="resume" className="py-20 md:py-28 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
-      <SectionHeader index="05 · RESUME" title="Credentials" subtitle="Education · certifications · full CV" accent="cyan" align="left" />
+      <SectionHeader index="06 · RESUME" title="Credentials" subtitle="Education · certifications · full CV" align="left" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-4 space-y-6 order-2 lg:order-1">

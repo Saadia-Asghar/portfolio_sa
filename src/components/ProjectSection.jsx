@@ -45,7 +45,7 @@ const ProjectCard = ({ project }) => (
 const ProjectSection = () => (
   <section id="projects" className="py-20 md:py-28 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
     <SectionHeader
-      index="03 · PROJECTS"
+      index="04 · PROJECTS"
       title="What I've Built"
       subtitle="Same format, same depth — hackathon ships and side projects"
       accent="magenta"

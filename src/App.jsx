@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
 import SiteNav from './components/SiteNav';
 import Hero3D from './components/Hero3D';
+import HackathonSection from './components/HackathonSection';
 import AchievementsSection from './components/AchievementsSection';
 import ProjectSection from './components/ProjectSection';
 import ExperienceSection from './components/ContentStrategy';
@@ -63,6 +64,7 @@ function App() {
     <div className="min-h-screen relative spider-bg selection:bg-spider-magenta selection:text-white overflow-x-hidden pb-20 xl:pb-0">
       <AnimatePresence>{isLoading && <LoadingScreen onFinish={() => setIsLoading(false)} />}</AnimatePresence>
 
+      <div className="scanline opacity-[0.03]" />
       <SiteNav />
       <SocialHUD />
       <MobileSocialBar />
@@ -113,6 +115,7 @@ function App() {
           </div>
         </section>
 
+        <HackathonSection />
         <AchievementsSection />
         <ProjectSection />
         <ExperienceSection />
@@ -120,7 +123,7 @@ function App() {
         <ResumeSection />
 
         <section id="connect" className="py-20 md:py-24 max-w-3xl mx-auto px-4 scroll-mt-24 text-center">
-          <SectionHeader index="06 · CONNECT" title="Let's Work Together" subtitle={PROFILE.subtitle} accent="magenta" />
+          <SectionHeader index="07 · CONNECT" title="Let's Work Together" subtitle={PROFILE.subtitle} />
           <p className="text-gray-500 font-mono text-xs -mt-4 mb-8">{CONTACT.email} · {CONTACT.phone}</p>
 
           <ul className="text-left max-w-md mx-auto space-y-2 mb-10">

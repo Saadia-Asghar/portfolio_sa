@@ -5,6 +5,7 @@ import { CONTACT } from '../data/portfolio';
 
 const LINKS = [
   { href: '#about', label: 'About' },
+  { href: '#hackathons', label: 'Hackathons' },
   { href: '#achievements', label: 'Achievements' },
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
@@ -38,18 +39,18 @@ const SiteNav = () => {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-tech font-bold text-sm tracking-wide text-white hover:text-spider-cyan transition-colors"
+            className="font-tech font-bold text-sm tracking-wide logo-text hover:opacity-80 transition-opacity"
           >
             SAADIA ASGHAR
           </button>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {LINKS.map((link) => (
               <button
                 key={link.href}
                 type="button"
                 onClick={() => navigate(link.href)}
-                className="text-[11px] font-mono uppercase tracking-[0.2em] text-gray-400 hover:text-spider-cyan transition-colors"
+                className="nav-link"
               >
                 {link.label}
               </button>
@@ -57,7 +58,7 @@ const SiteNav = () => {
             <a
               href={CONTACT.resumePath}
               download="Saadia_Asghar_Resume.png"
-              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg border border-spider-cyan/40 text-spider-cyan text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-spider-cyan/10 transition-colors"
+              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg btn-primary text-[10px] !py-2 !px-4"
             >
               <Download size={14} /> Resume
             </a>

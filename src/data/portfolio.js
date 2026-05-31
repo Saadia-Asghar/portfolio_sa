@@ -30,6 +30,74 @@ export const MARQUEE_ITEMS = [
   'OPEN FOR ROLES',
 ];
 
+/** Dedicated hackathon & competition wins — equal prominence */
+export const HACKATHON_WINS = [
+  {
+    id: 'vyrothon',
+    project: 'Vyrothon',
+    placement: '1st Round · Top 5 Finalist',
+    event: 'Product Design & Innovation · Global',
+    role: 'Lead Product Designer',
+    period: 'Apr. 2026',
+    highlight: '1st in product design round out of 500+ applicants worldwide.',
+    detail: 'Immersive 3D environment with gamified storytelling — high-fidelity prototype built at NSTP.',
+    tech: ['Figma', 'Prototyping', 'Immersive UI', 'Storytelling UX'],
+    tier: 'gold',
+  },
+  {
+    id: 'skill-issue',
+    project: 'Skill Issue',
+    placement: '2nd Place',
+    event: 'Hack@GIKI AI Challenge',
+    role: 'Full-Stack · Product',
+    period: '2026',
+    highlight: 'Arcade-style AI learning platform — personas, gauntlets, realtime 1v1 battles.',
+    detail: 'Next.js 15, Supabase realtime, Clerk auth, multi-LLM routing, global Elo leaderboard.',
+    tech: ['Next.js', 'Supabase', 'Clerk', 'TypeScript', 'AI SDK'],
+    tier: 'silver',
+    github: 'https://github.com/Saadia-Asghar/Skill_issue',
+    link: 'https://skill-issue-s1oh.vercel.app/',
+  },
+  {
+    id: 'callpilot',
+    project: 'CallPilot',
+    placement: 'Top 10',
+    event: 'MIT Hack Nation',
+    role: 'Product · Full-Stack Development',
+    period: 'Jan. 2026',
+    highlight: 'AI-driven task automation platform ranked Top 10 globally.',
+    detail: 'End-to-end architecture with React frontend and Python automation backend.',
+    tech: ['React', 'Python', 'AI Automation', 'Product Design'],
+    tier: 'top10',
+  },
+  {
+    id: 'chainticket',
+    project: 'ChainTicket+',
+    placement: '3rd Place',
+    event: 'BASED Pakistan · Web3 Hackathon',
+    role: 'Backend · Dashboard Development',
+    period: 'Dec. 2025',
+    highlight: 'Blockchain QR verification for secure ticketing — 1,000+ attendees tracked.',
+    detail: 'Realtime dashboards and on-chain proofs for event access control.',
+    tech: ['Blockchain', 'TypeScript', 'QR Verification', 'Dashboards'],
+    tier: 'bronze',
+    github: 'https://github.com/Saadia-Asghar/Chain_ticket',
+  },
+  {
+    id: 'ecobite',
+    project: 'EcoBite',
+    placement: 'Imagine Cup',
+    event: 'Microsoft Imagine Cup',
+    role: 'Full-Stack · Product Design',
+    period: 'Aug. 2025 — Present',
+    highlight: 'Food donation platform — 5 user roles, 500+ meals, 30% donation frequency increase.',
+    detail: 'Azure AD B2C, SQL, and Maps API for logistics across NGOs, donors, and recyclers.',
+    tech: ['Azure', 'React', 'SQL', 'Maps API'],
+    tier: 'finalist',
+    github: 'https://github.com/Saadia-Asghar/Ecobite_',
+  },
+];
+
 /** Equal-weight achievements — build (tech) and grow (marketing/leadership) */
 export const ACHIEVEMENTS = [
   {
