@@ -22,6 +22,7 @@ const tierCardClass = {
 };
 
 const statPillClass = {
+  '1st / Top 5': 'stat-pill-gold',
   Participated: 'border-white/15',
   '2nd': 'stat-pill-silver',
   'Top 10': 'stat-pill-cyan',
@@ -79,7 +80,7 @@ const HackathonCard = ({ win, index }) => (
 const HackathonSection = () => (
   <section id="hackathons" className="section-band py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
     <SectionHeader
-      index="01 · HACKATHONS"
+      index="02 · HACKATHONS"
       title="Hackathons & Competitions"
       subtitle={`${HACKATHON_WINS.length} events — equal detail, equal weight`}
       align="left"
@@ -93,7 +94,7 @@ const HackathonSection = () => (
 
     <div className="flex flex-wrap justify-center gap-3">
       {[
-        { label: 'Participated', sub: 'Vyrothon' },
+        { label: '1st / Top 5', sub: 'Vyrothon' },
         { label: '2nd', sub: 'Hack@GIKI' },
         { label: 'Top 10', sub: 'MIT Hack Nation' },
         { label: '3rd', sub: 'BASED Pakistan' },

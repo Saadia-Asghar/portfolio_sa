@@ -19,7 +19,7 @@ export const PROFILE = {
 
 export const MARQUEE_ITEMS = [
   'HACK@GIKI 2ND · SKILL ISSUE',
-  'VYROTHON · PRODUCT DESIGN',
+  'VYROTHON R1 1ST · R2 TOP 5',
   'MIT HACK NATION TOP 10',
   'BASED PAKISTAN 3RD',
   'MICROSOFT IMAGINE CUP',
@@ -35,14 +35,14 @@ export const HACKATHON_WINS = [
   {
     id: 'vyrothon',
     project: 'Vyrothon',
-    placement: 'Participant',
+    placement: 'Round 1 · 1st · Round 2 · Top 5',
     event: 'Product Design & Innovation',
     role: 'Lead Product Designer',
     period: 'Apr. 2026',
-    highlight: 'Participated in the product design round — immersive 3D environment with gamified storytelling.',
-    detail: 'High-fidelity prototype built at NSTP with narrative-driven UX and interactive 3D interfaces.',
+    highlight: '1st place in product design (Round 1); among 5 finalists in Round 2.',
+    detail: 'Immersive 3D environment with gamified storytelling — high-fidelity prototype built at NSTP.',
     tech: ['Figma', 'Prototyping', 'Immersive UI', 'Storytelling UX'],
-    tier: 'participant',
+    tier: 'gold',
   },
   {
     id: 'skill-issue',
@@ -114,8 +114,8 @@ export const ACHIEVEMENTS = [
     id: 'vyrothon',
     track: 'build',
     title: 'Vyrothon',
-    badge: 'Participant · Product Design & Innovation',
-    detail: 'Lead Product Designer — immersive 3D storytelling prototype for the Vyrothon competition.',
+    badge: 'Round 1 · 1st Product Design · Round 2 · Top 5 Finalist',
+    detail: 'Lead Product Designer — 1st in product design Round 1, among 5 finalists in Round 2.',
     period: 'Apr. 2026',
   },
   {
@@ -293,7 +293,7 @@ export const ALL_PROJECTS = [
   {
     title: 'Vyrothon',
     role: 'Lead Product Designer',
-    achievement: 'Participant',
+    achievement: '1st · Top 5 Finalist',
     desc: 'Immersive 3D environment with gamified storytelling interfaces.',
     tech: ['Figma', 'Prototyping', 'Immersive UI'],
   },

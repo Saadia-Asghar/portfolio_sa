@@ -4,8 +4,8 @@ import { Menu, X, Download } from 'lucide-react';
 import { CONTACT } from '../data/portfolio';
 
 const LINKS = [
-  { href: '#hackathons', label: 'Hackathons' },
   { href: '#about', label: 'About' },
+  { href: '#hackathons', label: 'Hackathons' },
   { href: '#experience', label: 'Experience' },
   { href: '#achievements', label: 'Achievements' },
   { href: '#projects', label: 'Projects' },

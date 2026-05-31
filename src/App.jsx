@@ -74,12 +74,10 @@ function App() {
       <main className="relative z-10 w-full">
         <Hero3D />
 
-        <HackathonSection />
-
         {/* About — dual track intro */}
         <section id="about" className="py-16 md:py-20 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
           <SectionHeader
-            index="02 · ABOUT"
+            index="01 · ABOUT"
             title={PROFILE.title}
             subtitle={PROFILE.subtitle}
             accent="cyan"
@@ -117,6 +115,7 @@ function App() {
           </div>
         </section>
 
+        <HackathonSection />
         <ExperienceSection />
         <AchievementsSection />
         <ProjectSection />
