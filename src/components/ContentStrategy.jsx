@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Palette, Users, GraduationCap } from 'lucide-react';
+import { Briefcase, Palette, Users, GraduationCap, Megaphone, Video, Rocket, Building2 } from 'lucide-react';
 import ComicPanel from './ComicPanel';
 import SectionHeader from './SectionHeader';
 import { EXPERIENCE } from '../data/portfolio';
 
-const ICONS = [Palette, Users, Briefcase, GraduationCap];
+const ICONS = [Megaphone, Users, Palette, Video, Rocket, Building2, Briefcase, GraduationCap];
 const ACCENTS = ['magenta', 'cyan', 'yellow', 'purple'];
 
 const ExperienceCard = ({ org, role, period, location, impact, metrics, color, icon: Icon, index }) => (
@@ -48,9 +48,9 @@ const ContentStrategy = () => (
 
     <div className="max-w-7xl mx-auto">
       <SectionHeader
-        index="02 · EXPERIENCE"
-        title="Where I've Led"
-        subtitle="Design roles, campus ambassadorships & society work"
+        index="04 · EXPERIENCE"
+        title="Leadership Timeline"
+        subtitle="Marketing roles · ambassadorships · design & campus ops"
         accent="yellow"
         align="left"
       />

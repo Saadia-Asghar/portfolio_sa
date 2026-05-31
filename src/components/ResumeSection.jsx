@@ -12,7 +12,7 @@ const ResumeSection = () => {
     <section id="resume" className="py-24 md:py-32 relative px-4 md:px-8 scroll-mt-24 bg-black/30">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
-          index="04 · RESUME"
+          index="05 · RESUME"
           title="CV Archive"
           subtitle="Education · certifications · full resume download"
           accent="cyan"

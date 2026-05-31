@@ -4,7 +4,7 @@ import { MeshDistortMaterial, Points, PointMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import { Download, MapPin, Sparkles } from 'lucide-react';
-import { CONTACT } from '../data/portfolio';
+import { CONTACT, PROFILE } from '../data/portfolio';
 import MarqueeTicker from './MarqueeTicker';
 
 const ParticleField = () => {
@@ -87,7 +87,7 @@ const Hero3D = () => (
         className="floating-sticker bg-spider-magenta text-white hidden lg:block"
         style={{ top: '28%', right: '10%', '--sticker-rotate': '8deg', animationDelay: '1s' }}
       >
-        UI/UX DESIGNER
+        STORYTELLER
       </span>
       <span
         className="floating-sticker bg-spider-cyan text-black hidden md:block"
@@ -129,9 +129,9 @@ const Hero3D = () => (
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="font-display text-spider-yellow text-lg md:text-2xl tracking-widest mb-2"
+              className="font-display text-spider-yellow text-base md:text-xl tracking-widest mb-2 uppercase"
             >
-              PORTFOLIO // 2026
+              {PROFILE.title}
             </motion.p>
             <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold font-tech text-white tracking-tighter leading-[0.88]">
               <span className="block relative">
@@ -152,21 +152,31 @@ const Hero3D = () => (
             transition={{ delay: 0.4 }}
             className="comic-speech text-base sm:text-lg md:text-xl font-tech text-gray-300 max-w-xl leading-relaxed mx-auto"
           >
-            I turn <span className="text-spider-cyan font-bold">data</span>,{' '}
-            <span className="text-spider-magenta font-bold">design</span> &{' '}
-            <span className="text-spider-yellow font-bold">code</span> into products people actually want to use —
-            from arcade learning apps to global hackathon wins.
+            {PROFILE.heroLine}
           </motion.p>
 
+          <p className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.2em]">
+            {PROFILE.subtitle} · ● Available
+          </p>
+
           <div className="flex flex-wrap justify-center gap-2 text-[9px] font-mono uppercase tracking-[0.2em] text-gray-500">
-            {['Skill Issue', 'Vyrothon', 'EcoBite', 'CallPilot'].map((tag) => (
+            {['LinkedIn · 3.6K', '@s._bytes', 'Skill Issue', 'Vyrothon'].map((tag) => (
               <span key={tag} className="px-3 py-1 border border-white/10 rounded-full bg-white/5">
                 {tag}
               </span>
             ))}
           </div>
 
-          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <div className="mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-full sm:w-auto">
+            <motion.a
+              href="#marketing"
+              data-cursor="interactive"
+              whileHover={{ scale: 1.04, rotate: 1 }}
+              whileTap={{ scale: 0.98 }}
+              className="comic-sticker bg-spider-magenta text-white px-8 md:px-10 py-4 md:py-5 font-tech font-black uppercase tracking-widest text-xs md:text-sm flex items-center justify-center gap-2 shadow-[4px_4px_0_rgba(255,0,85,0.35)]"
+            >
+              <Sparkles size={18} /> Marketing
+            </motion.a>
             <motion.a
               href={CONTACT.resumePath}
               download="Saadia_Asghar_Resume.png"

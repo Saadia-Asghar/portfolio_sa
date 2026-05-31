@@ -57,7 +57,7 @@ const NeuralExperience = () => {
     return (
         <section id="community" className="py-20 md:py-28 px-4 md:px-8 max-w-6xl mx-auto relative min-h-[600px] md:min-h-[700px] scroll-mt-24">
             <SectionHeader
-                index="05 · COMMUNITY"
+                index="06 · NETWORK"
                 title="Campus Network"
                 subtitle="Societies · ambassadorships · outreach"
                 accent="purple"

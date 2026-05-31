@@ -5,10 +5,11 @@ import { CONTACT } from '../data/portfolio';
 
 const LINKS = [
   { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
+  { href: '#marketing', label: 'Marketing' },
   { href: '#projects', label: 'Projects' },
+  { href: '#experience', label: 'Experience' },
   { href: '#resume', label: 'Resume' },
-  { href: '#community', label: 'Community' },
+  { href: '#community', label: 'Network' },
 ];
 
 const SiteNav = () => {
