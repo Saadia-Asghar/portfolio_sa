@@ -447,6 +447,14 @@ body {
   @apply bg-spider-magenta/10 text-spider-magenta border border-spider-magenta/20;
 }
 
+.track-design {
+  @apply bg-spider-yellow/10 text-spider-yellow border border-spider-yellow/20;
+}
+
+.design-featured-card {
+  @apply achievement-card border-spider-yellow/20 bg-spider-yellow/[0.02] hover:border-spider-yellow/40;
+}
+
 .experience-row {
   @apply p-5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-white/15 transition-colors;
 }
@@ -497,7 +505,7 @@ body {
 }
 
 .dual-track-bar {
-  @apply grid grid-cols-2 gap-3 rounded-xl overflow-hidden border border-white/10;
+  @apply grid grid-cols-1 sm:grid-cols-3 gap-3 rounded-xl overflow-hidden border border-white/10;
 }
 
 .dual-track-half {
@@ -505,11 +513,15 @@ body {
 }
 
 .dual-track-build {
-  @apply bg-spider-cyan/5 border-r border-white/10;
+  @apply bg-spider-cyan/5 sm:border-r border-white/10;
 }
 
 .dual-track-grow {
-  @apply bg-spider-magenta/5;
+  @apply bg-spider-magenta/5 sm:border-r border-white/10;
+}
+
+.dual-track-design {
+  @apply bg-spider-yellow/5;
 }
 
 .dual-track-label {

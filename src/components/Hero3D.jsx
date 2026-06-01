@@ -3,8 +3,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
-import { Download, MapPin, Trophy } from 'lucide-react';
-import { CONTACT, PROFILE, HACKATHON_WINS } from '../data/portfolio';
+import { Download, MapPin, Trophy, Palette } from 'lucide-react';
+import { CONTACT, PROFILE, HACKATHON_WINS, DESIGN_PORTFOLIO } from '../data/portfolio';
 import MarqueeTicker from './MarqueeTicker';
 
 const ParticleField = () => {
@@ -68,6 +68,9 @@ const Hero3D = () => (
           <div className="flex flex-wrap justify-center gap-2 text-[10px] font-mono">
             <span className="px-3 py-1.5 rounded-full border border-spider-cyan/30 text-spider-cyan bg-spider-cyan/5">Build</span>
             <span className="px-3 py-1.5 rounded-full border border-spider-magenta/30 text-spider-magenta bg-spider-magenta/5">Grow</span>
+            <span className="px-3 py-1.5 rounded-full border border-spider-yellow/30 text-spider-yellow bg-spider-yellow/5 flex items-center gap-1">
+              <Palette size={11} /> Design
+            </span>
             <span className="px-3 py-1.5 rounded-full border border-white/15 text-gray-400 flex items-center gap-1">
               <MapPin size={11} /> {CONTACT.location}
             </span>
@@ -77,7 +80,10 @@ const Hero3D = () => (
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
-            <a href="#hackathons" className="btn-primary">Hackathons</a>
+            <a href={DESIGN_PORTFOLIO.url} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              Design portfolio
+            </a>
+            <a href="#hackathons" className="btn-secondary">Hackathons</a>
             <a href="#achievements" className="btn-secondary">Achievements</a>
             <a href={CONTACT.resumePath} download="Saadia_Asghar_Resume.png" className="btn-secondary">
               <Download size={16} className="inline mr-2 -mt-0.5" /> Resume

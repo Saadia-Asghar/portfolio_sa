@@ -6,7 +6,7 @@ import { EXPERIENCE } from '../data/portfolio';
 const ExperienceSection = () => (
   <section id="experience" className="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
     <SectionHeader
-      index="03 · EXPERIENCE"
+      index="04 · EXPERIENCE"
       title="Roles & Leadership"
       subtitle="Marketing, design, and campus ambassadorships — chronological"
       accent="yellow"

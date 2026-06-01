@@ -80,7 +80,7 @@ const HackathonCard = ({ win, index }) => (
 const HackathonSection = () => (
   <section id="hackathons" className="section-band py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
     <SectionHeader
-      index="02 · HACKATHONS"
+      index="03 · HACKATHONS"
       title="Hackathons & Competitions"
       subtitle={`${HACKATHON_WINS.length} events — equal detail, equal weight`}
       align="left"

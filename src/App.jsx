@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
 import SiteNav from './components/SiteNav';
 import Hero3D from './components/Hero3D';
+import DesignPortfolioSection from './components/DesignPortfolioSection';
 import HackathonSection from './components/HackathonSection';
 import AchievementsSection from './components/AchievementsSection';
 import ProjectSection from './components/ProjectSection';
@@ -13,7 +14,7 @@ import ComicBackground from './components/ComicBackground';
 import SectionHeader from './components/SectionHeader';
 import LoadingScreen from './components/LoadingScreen';
 import { Linkedin, Instagram, Mail } from 'lucide-react';
-import { CONTACT, SKILL_GROUPS, PROFILE, OPEN_TO } from './data/portfolio';
+import { CONTACT, SKILL_GROUPS, PROFILE, OPEN_TO, DESIGN_PORTFOLIO } from './data/portfolio';
 
 const accentMap = {
   'spider-cyan': 'skill-tag-cyan',
@@ -85,17 +86,32 @@ function App() {
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-            <p className="text-gray-300 font-tech text-base md:text-lg leading-relaxed">{PROFILE.intro}</p>
+            <div className="space-y-4">
+              <p className="text-gray-300 font-tech text-base md:text-lg leading-relaxed">{PROFILE.intro}</p>
+              <p className="text-sm text-gray-500 font-tech leading-relaxed">{PROFILE.designBlurb}</p>
+              <a
+                href={DESIGN_PORTFOLIO.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[11px] font-mono text-spider-yellow uppercase tracking-wider hover:underline"
+              >
+                View design portfolio →
+              </a>
+            </div>
 
             <div className="space-y-5">
               <div className="dual-track-bar">
                 <div className="dual-track-half dual-track-build">
                   <span className="dual-track-label">Build</span>
-                  <span className="dual-track-desc">Hackathons · full-stack · product design</span>
+                  <span className="dual-track-desc">Hackathons · full-stack · product</span>
                 </div>
                 <div className="dual-track-half dual-track-grow">
                   <span className="dual-track-label">Grow</span>
-                  <span className="dual-track-desc">Marketing · content · campus leadership</span>
+                  <span className="dual-track-desc">Marketing · content · leadership</span>
+                </div>
+                <div className="dual-track-half dual-track-design">
+                  <span className="dual-track-label">Design</span>
+                  <span className="dual-track-desc">Figma · identity · storytelling UI</span>
                 </div>
               </div>
 
@@ -115,6 +131,7 @@ function App() {
           </div>
         </section>
 
+        <DesignPortfolioSection />
         <HackathonSection />
         <ExperienceSection />
         <AchievementsSection />
@@ -123,7 +140,7 @@ function App() {
         <ResumeSection />
 
         <section id="connect" className="py-20 md:py-24 max-w-3xl mx-auto px-4 scroll-mt-24 text-center">
-          <SectionHeader index="07 · CONNECT" title="Let's Work Together" subtitle={PROFILE.subtitle} />
+          <SectionHeader index="08 · CONNECT" title="Let's Work Together" subtitle={PROFILE.subtitle} />
           <p className="text-gray-500 font-mono text-xs -mt-4 mb-8">{CONTACT.email} · {CONTACT.phone}</p>
 
           <ul className="text-left max-w-md mx-auto space-y-2 mb-10">
@@ -136,9 +153,10 @@ function App() {
 
           <div className="flex flex-wrap justify-center gap-3">
             {[
+              { label: 'Design Portfolio', href: DESIGN_PORTFOLIO.url, className: 'btn-primary' },
               { label: 'LinkedIn', href: CONTACT.linkedin, className: 'btn-secondary' },
               { label: '@s._bytes', href: CONTACT.instagram, className: 'btn-secondary' },
-              { label: 'Resume', href: CONTACT.resumePath, download: true, className: 'btn-primary' },
+              { label: 'Resume', href: CONTACT.resumePath, download: true, className: 'btn-secondary' },
             ].map((btn) => (
               <a
                 key={btn.label}

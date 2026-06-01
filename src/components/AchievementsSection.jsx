@@ -54,7 +54,7 @@ const AchievementsSection = () => {
   return (
     <section id="achievements" className="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
       <SectionHeader
-        index="04 · ACHIEVEMENTS"
+        index="05 · ACHIEVEMENTS"
         title="Build & Grow"
         subtitle={`${buildCount} build wins · ${growCount} marketing & leadership highlights — equal weight`}
         accent="cyan"

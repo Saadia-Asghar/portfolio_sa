@@ -5,6 +5,7 @@ import { CONTACT } from '../data/portfolio';
 
 const LINKS = [
   { href: '#about', label: 'About' },
+  { href: '#design', label: 'Design' },
   { href: '#hackathons', label: 'Hackathons' },
   { href: '#experience', label: 'Experience' },
   { href: '#achievements', label: 'Achievements' },

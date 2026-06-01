@@ -7,14 +7,76 @@ export const CONTACT = {
   github: 'https://github.com/Saadia-Asghar',
   instagram: 'https://www.instagram.com/s._bytes',
   resumePath: '/Saadia_Asghar_Resume.png',
+  designPortfolio: 'https://design-portfolio-rouge-five.vercel.app/',
 };
 
 export const PROFILE = {
-  title: 'Digital Storyteller & Data Builder',
+  title: 'Digital Storyteller · Product Designer · Data Builder',
   subtitle: 'B.Sc. Data Science @ GIKI · Islamabad, PK',
   intro:
-    'I work across two tracks with equal focus: building products that win hackathons, and growing brands that reach people. Data science, UI/UX, and marketing strategy — same weight, same intent.',
-  heroLine: 'Build track · Grow track — products, platforms, and stories that land.',
+    'I work across three tracks with equal focus: building products that win hackathons, growing brands that reach people, and designing interfaces that feel intentional. Data science, product design, UI/UX, and marketing — same weight, same intent.',
+  heroLine: 'Build · Grow · Design — products, platforms, stories, and interfaces that land.',
+  designBlurb:
+    'My design book lives at a dedicated portfolio — case studies, Figma prototypes, ACM & MLSA collateral, and PreMed.PK visual systems.',
+};
+
+export const DESIGN_PORTFOLIO = {
+  url: 'https://design-portfolio-rouge-five.vercel.app/',
+  tagline: 'A designer\'s book of work — 2026 edition',
+  featured: {
+    title: 'Vyrothon — Product Design Submission',
+    badge: '1st · Product Design Round · Top 5 Finalist',
+    event: 'Product Design & Innovation · Apr. 2026',
+    summary:
+      'High-fidelity interactive prototype at NSTP — user presence and gamified storytelling. Ranked 1st in Round 1, Top 5 nationally in Round 2.',
+    tools: ['Figma', 'Immersive UI', 'Storytelling UX', 'Prototyping'],
+  },
+  stats: [
+    { value: '500+', label: 'Vyrothon applicants nationally' },
+    { value: '30+', label: 'Visual assets at PreMed.PK' },
+    { value: '40%', label: 'Engagement lift on PreMed assets' },
+    { value: '10+', label: 'Workshops led or supported' },
+  ],
+  chapters: [
+    {
+      id: 'product',
+      chapter: 'Chapter I',
+      title: 'Product Design',
+      desc: 'Figma · interactive prototypes · hi-fi UI — Vyrothon, CallPilot, ChaInTicket+, PrivyHealth, MoodMaze.',
+      tags: ['Figma', 'Dashboards', 'Healthtech'],
+    },
+    {
+      id: 'acm',
+      chapter: 'Chapter II',
+      title: 'ACM · GIKI',
+      desc: 'Posters, event identities, and marketing collateral for the ACM chapter.',
+      tags: ['Posters', 'Campaign', 'WIC'],
+    },
+    {
+      id: 'mlsa',
+      chapter: 'Chapter III',
+      title: 'MLSA · Microsoft Club',
+      desc: 'Visual identity, certificates, carousels, and event collateral for MLSA at GIKI.',
+      tags: ['Identity', 'Certificates', 'Social'],
+    },
+    {
+      id: 'premed',
+      chapter: 'Chapter IV',
+      title: 'PreMed.PK',
+      desc: 'Graphic Design Associate — visual identity, education slides, and delivery systems.',
+      tags: ['Canva', 'Figma', 'Education'],
+    },
+  ],
+  capabilities: [
+    'Product design',
+    'Immersive UI',
+    'Storytelling-based UI',
+    'Wireframing & prototyping',
+    'Visual identity',
+    'Dashboard design',
+    'Graphic design',
+    'Community design',
+  ],
 };
 
 export const MARQUEE_ITEMS = [
@@ -27,6 +89,7 @@ export const MARQUEE_ITEMS = [
   'DIRECTOR OF MARKETING · UROG',
   'HEAD OF MARKETING · MS CLUB',
   'PREMED.PK · 40% ENGAGEMENT',
+  'DESIGN PORTFOLIO · FIGMA',
   'OPEN FOR ROLES',
 ];
 
@@ -172,6 +235,15 @@ export const ACHIEVEMENTS = [
     detail: 'Gamified programming fundamentals through interactive OOP logic.',
     link: 'https://github.com/Saadia-Asghar/Code-Blaster',
     linkLabel: 'GitHub',
+  },
+  {
+    id: 'design-portfolio',
+    track: 'grow',
+    title: 'Design Portfolio',
+    badge: 'Product Designer · Vol. I',
+    detail: 'Case studies, Vyrothon prototype, ACM & MLSA collateral, PreMed.PK systems — full design book online.',
+    link: 'https://design-portfolio-rouge-five.vercel.app/',
+    linkLabel: 'View design book',
   },
   {
     id: 'linkedin-growth',
@@ -447,7 +519,8 @@ export const CERTIFICATIONS = [
 export const OPEN_TO = [
   'Data Science & AI project collaborations',
   'Marketing & content strategy roles',
-  'UI/UX and product design internships',
+  'Product design & graphic design opportunities',
+  'UI/UX and visual identity internships',
   'Full-stack development opportunities',
   'On-site, hybrid, or remote (Pakistan)',
 ];
