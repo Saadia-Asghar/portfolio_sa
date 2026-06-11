@@ -6,6 +6,8 @@ const ComicPanel = ({ children, className = '', accent = 'cyan', tilt = 0, stamp
     magenta: 'comic-panel-magenta',
     yellow: 'comic-panel-yellow',
     purple: 'comic-panel-purple',
+    orange: 'comic-panel-orange',
+    lime: 'comic-panel-lime',
   };
 
   return (

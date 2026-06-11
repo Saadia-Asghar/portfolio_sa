@@ -4,12 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Spider-Verse Palette
         "spider-black": "#050505",
         "spider-magenta": "#ff0055",
         "spider-cyan": "#00f3ff",
         "spider-yellow": "#f9ff00",
         "spider-purple": "#7a00ff",
+        "spider-orange": "#ff6b00",
+        "spider-lime": "#b8ff00",
+        "spider-pink": "#ff2d95",
       },
       fontFamily: {
         tech: ["Space Grotesk", "sans-serif"],
@@ -22,6 +24,9 @@ export default {
         'glitch-slow': 'glitch 3s steps(3) infinite',
         'chromatic': 'chromatic 2s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
+        'star-spin': 'star-spin 8s linear infinite',
+        'color-pulse': 'color-pulse 4s ease-in-out infinite',
+        'marquee-glow': 'marquee-glow 2s ease-in-out infinite',
       },
       keyframes: {
         glitch: {
@@ -38,7 +43,20 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
-        }
+        },
+        'star-spin': {
+          '0%': { transform: 'rotate(0deg) scale(1)' },
+          '50%': { transform: 'rotate(180deg) scale(1.15)' },
+          '100%': { transform: 'rotate(360deg) scale(1)' },
+        },
+        'color-pulse': {
+          '0%, 100%': { opacity: '0.6', filter: 'hue-rotate(0deg)' },
+          '50%': { opacity: '1', filter: 'hue-rotate(30deg)' },
+        },
+        'marquee-glow': {
+          '0%, 100%': { textShadow: '0 0 8px currentColor' },
+          '50%': { textShadow: '0 0 16px currentColor, 0 0 24px currentColor' },
+        },
       },
       backgroundImage: {
         'halftone': "url('https://www.transparenttextures.com/patterns/stardust.png')", // Dot pattern overlay

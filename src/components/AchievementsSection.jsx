@@ -16,7 +16,7 @@ const AchievementCard = ({ item }) => (
     initial={{ opacity: 0, y: 12 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="achievement-card h-full flex flex-col"
+    className={`achievement-card h-full flex flex-col ${item.track === 'grow' ? 'achievement-card-grow' : ''}`}
   >
     <div className="flex items-center justify-between gap-2 mb-3">
       <span className={`track-pill track-${item.track}`}>
@@ -52,31 +52,38 @@ const AchievementsSection = () => {
   const growCount = ACHIEVEMENTS.filter((a) => a.track === 'grow').length;
 
   return (
-    <section id="achievements" className="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
+    <section id="achievements" className="relative section-band section-band-lime py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
       <SectionHeader
         index="05 · ACHIEVEMENTS"
         title="Build & Grow"
         subtitle={`${buildCount} build wins · ${growCount} marketing & leadership highlights — equal weight`}
-        accent="cyan"
+        accent="lime"
         align="left"
       />
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-10">
-        <div className="flex gap-2 p-1 rounded-lg bg-white/[0.03] border border-white/10 w-fit">
-          {TRACKS.map((t) => (
+        <div className="flex gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/10 w-fit">
+          {TRACKS.map((t) => {
+            const activeStyles = {
+              all: 'bg-gradient-to-r from-spider-cyan to-spider-magenta text-black border-transparent',
+              build: 'bg-spider-cyan text-black border-spider-cyan',
+              grow: 'bg-spider-magenta text-white border-spider-magenta',
+            };
+            return (
             <button
               key={t.id}
               type="button"
               onClick={() => setTrack(t.id)}
-              className={`px-4 py-2 rounded-md text-[11px] font-mono uppercase tracking-wider transition-colors ${
+              className={`filter-pill ${
                 track === t.id
-                  ? 'bg-white/10 text-white'
-                  : 'text-gray-500 hover:text-gray-300'
+                  ? `filter-pill-active ${activeStyles[t.id]}`
+                  : 'border-transparent text-gray-500 hover:text-white hover:bg-white/5'
               }`}
             >
               {t.label}
             </button>
-          ))}
+            );
+          })}
         </div>
         <p className="text-xs text-gray-600 font-tech">
           {TRACKS.find((t) => t.id === track)?.desc}

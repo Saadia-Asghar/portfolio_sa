@@ -4,17 +4,22 @@ import CustomCursor from './components/CustomCursor';
 import SiteNav from './components/SiteNav';
 import Hero3D from './components/Hero3D';
 import DesignPortfolioSection from './components/DesignPortfolioSection';
+import MarketingSection from './components/MarketingSection';
 import HackathonSection from './components/HackathonSection';
 import AchievementsSection from './components/AchievementsSection';
 import ProjectSection from './components/ProjectSection';
 import ExperienceSection from './components/ContentStrategy';
 import ResumeSection from './components/ResumeSection';
+import TechStackSection from './components/TechStackSection';
+import ContactForm from './components/ContactForm';
 import TerminalFooter from './components/TerminalFooter';
 import ComicBackground from './components/ComicBackground';
 import SectionHeader from './components/SectionHeader';
+import StoryDivider from './components/StoryDivider';
+import { SectionGraphics } from './components/ComicGraphics';
 import LoadingScreen from './components/LoadingScreen';
 import { Linkedin, Instagram, Mail } from 'lucide-react';
-import { CONTACT, SKILL_GROUPS, PROFILE, OPEN_TO, DESIGN_PORTFOLIO } from './data/portfolio';
+import { CONTACT, SKILL_GROUPS, PROFILE, OPEN_TO } from './data/portfolio';
 
 const accentMap = {
   'spider-cyan': 'skill-tag-cyan',
@@ -36,7 +41,7 @@ const SocialHUD = () => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={item.label}
-        className="p-2.5 rounded-lg border border-white/10 bg-black/50 text-gray-400 hover:text-white hover:border-white/25 transition-colors"
+        className="p-2.5 rounded-lg border border-white/10 bg-black/50 text-gray-400 hover:text-white hover:border-spider-cyan/40 hover:shadow-[0_0_16px_rgba(0,243,255,0.2)] transition-all"
       >
         {item.icon}
       </a>
@@ -65,7 +70,7 @@ function App() {
     <div className="min-h-screen relative spider-bg selection:bg-spider-magenta selection:text-white overflow-x-hidden pb-20 xl:pb-0">
       <AnimatePresence>{isLoading && <LoadingScreen onFinish={() => setIsLoading(false)} />}</AnimatePresence>
 
-      <div className="scanline opacity-[0.03]" />
+      <div className="scanline opacity-[0.06]" />
       <SiteNav />
       <SocialHUD />
       <MobileSocialBar />
@@ -75,28 +80,28 @@ function App() {
       <main className="relative z-10 w-full">
         <Hero3D />
 
-        {/* About — dual track intro */}
-        <section id="about" className="py-16 md:py-20 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
+        <section id="about" className="relative section-band section-band-cyan py-16 md:py-20 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
+          <SectionGraphics variant="about" />
           <SectionHeader
             index="01 · ABOUT"
-            title={PROFILE.title}
+            title="The Origin Story"
             subtitle={PROFILE.subtitle}
             accent="cyan"
             align="left"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-            <div className="space-y-4">
-              <p className="text-gray-300 font-tech text-base md:text-lg leading-relaxed">{PROFILE.intro}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 relative z-10">
+            <div className="comic-speech space-y-4">
+              <p className="text-gray-200 font-tech text-base md:text-lg leading-relaxed">{PROFILE.intro}</p>
               <p className="text-sm text-gray-500 font-tech leading-relaxed">{PROFILE.designBlurb}</p>
-              <a
-                href={DESIGN_PORTFOLIO.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[11px] font-mono text-spider-yellow uppercase tracking-wider hover:underline"
-              >
-                View design portfolio →
-              </a>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" className="btn-primary text-xs !py-2 !px-4">
+                  View my GitHub
+                </a>
+                <a href="#connect" className="btn-secondary text-xs !py-2 !px-4">
+                  Contact me
+                </a>
+              </div>
             </div>
 
             <div className="space-y-5">
@@ -131,45 +136,42 @@ function App() {
           </div>
         </section>
 
+        <StoryDivider act="ACT II" label="Design & Visual Identity" />
         <DesignPortfolioSection />
+
+        <StoryDivider act="ACT III" label="Marketing & Storytelling" />
+        <MarketingSection />
+
+        <StoryDivider act="ACT IV" label="Hackathon Arena" />
         <HackathonSection />
+
+        <StoryDivider act="ACT V" label="Leadership & Growth" />
         <ExperienceSection />
         <AchievementsSection />
+        <TechStackSection />
         <ProjectSection />
 
+        <StoryDivider act="FINALE" label="Resume & Connect" />
         <ResumeSection />
 
-        <section id="connect" className="py-20 md:py-24 max-w-3xl mx-auto px-4 scroll-mt-24 text-center">
-          <SectionHeader index="08 · CONNECT" title="Let's Work Together" subtitle={PROFILE.subtitle} />
-          <p className="text-gray-500 font-mono text-xs -mt-4 mb-8">{CONTACT.email} · {CONTACT.phone}</p>
+        <section id="connect" className="relative section-band section-band-purple py-20 md:py-24 max-w-4xl mx-auto px-4 scroll-mt-24">
+          <SectionHeader
+            index="08 · CONNECT"
+            title="Send Me an Email"
+            subtitle="Fill out the form below — or reach out on social. I love hackathons, collaborations, and roles that mix build + design + grow."
+            accent="purple"
+          />
 
-          <ul className="text-left max-w-md mx-auto space-y-2 mb-10">
+          <ContactForm />
+
+          <ul className="text-left max-w-md mx-auto space-y-2 mt-12 pt-8 border-t border-white/10">
+            <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3">Open to</p>
             {OPEN_TO.map((item) => (
               <li key={item} className="text-sm text-gray-400 font-tech flex gap-2">
                 <span className="text-spider-cyan">·</span> {item}
               </li>
             ))}
           </ul>
-
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              { label: 'Design Portfolio', href: DESIGN_PORTFOLIO.url, className: 'btn-primary' },
-              { label: 'LinkedIn', href: CONTACT.linkedin, className: 'btn-secondary' },
-              { label: '@s._bytes', href: CONTACT.instagram, className: 'btn-secondary' },
-              { label: 'Resume', href: CONTACT.resumePath, download: true, className: 'btn-secondary' },
-            ].map((btn) => (
-              <a
-                key={btn.label}
-                href={btn.href}
-                download={btn.download ? 'Saadia_Asghar_Resume.png' : undefined}
-                target={btn.download ? undefined : '_blank'}
-                rel="noopener noreferrer"
-                className={btn.className}
-              >
-                {btn.label}
-              </a>
-            ))}
-          </div>
         </section>
       </main>
 

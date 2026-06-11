@@ -10,7 +10,19 @@
   --spider-cyan: #00f3ff;
   --spider-yellow: #f9ff00;
   --spider-purple: #7a00ff;
+  --spider-orange: #ff6b00;
+  --spider-lime: #b8ff00;
+  --spider-pink: #ff2d95;
   --comic-outline: 3px;
+  --rainbow: linear-gradient(
+    90deg,
+    var(--spider-cyan),
+    var(--spider-magenta),
+    var(--spider-yellow),
+    var(--spider-lime),
+    var(--spider-purple),
+    var(--spider-orange)
+  );
 }
 
 html {
@@ -37,9 +49,12 @@ body {
 .spider-bg {
   background-color: var(--spider-black);
   background-image:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(0, 243, 255, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(255, 0, 85, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 30% at 50% 50%, rgba(122, 0, 255, 0.05) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(0, 243, 255, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(255, 0, 85, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 35% at 10% 80%, rgba(184, 255, 0, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 85% 20%, rgba(255, 107, 0, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 50%, rgba(122, 0, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 25% at 70% 60%, rgba(255, 45, 149, 0.06) 0%, transparent 50%);
 }
 
 .orb {
@@ -59,6 +74,61 @@ body {
 
 .orb-purple {
   background: radial-gradient(circle, rgba(122, 0, 255, 0.4) 0%, transparent 70%);
+}
+
+.orb-orange {
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.45) 0%, transparent 70%);
+}
+
+.orb-lime {
+  background: radial-gradient(circle, rgba(184, 255, 0, 0.35) 0%, transparent 70%);
+}
+
+.orb-pink {
+  background: radial-gradient(circle, rgba(255, 45, 149, 0.4) 0%, transparent 70%);
+}
+
+.star-dot {
+  position: absolute;
+  border-radius: 50%;
+  animation: star-twinkle 3s ease-in-out infinite;
+}
+
+.star-dot-cyan { background: var(--spider-cyan); box-shadow: 0 0 6px var(--spider-cyan); }
+.star-dot-magenta { background: var(--spider-magenta); box-shadow: 0 0 6px var(--spider-magenta); }
+.star-dot-yellow { background: var(--spider-yellow); box-shadow: 0 0 6px var(--spider-yellow); }
+.star-dot-purple { background: var(--spider-purple); box-shadow: 0 0 6px var(--spider-purple); }
+.star-dot-lime { background: var(--spider-lime); box-shadow: 0 0 6px var(--spider-lime); }
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.comic-dots-bg {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.rainbow-border {
+  position: relative;
+}
+
+.rainbow-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: var(--rainbow);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.rainbow-text {
+  background: var(--rainbow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .comic-grid {
@@ -127,6 +197,28 @@ body {
 .comic-panel-purple {
   background: var(--spider-purple);
   box-shadow: 6px 6px 0 rgba(122, 0, 255, 0.25);
+}
+
+.comic-panel-purple:hover {
+  box-shadow: 10px 10px 0 rgba(122, 0, 255, 0.35), 0 0 40px rgba(122, 0, 255, 0.15);
+}
+
+.comic-panel-orange {
+  background: var(--spider-orange);
+  box-shadow: 6px 6px 0 rgba(255, 107, 0, 0.25);
+}
+
+.comic-panel-orange:hover {
+  box-shadow: 10px 10px 0 rgba(255, 107, 0, 0.35), 0 0 40px rgba(255, 107, 0, 0.15);
+}
+
+.comic-panel-lime {
+  background: var(--spider-lime);
+  box-shadow: 6px 6px 0 rgba(184, 255, 0, 0.2);
+}
+
+.comic-panel-lime:hover {
+  box-shadow: 10px 10px 0 rgba(184, 255, 0, 0.3), 0 0 40px rgba(184, 255, 0, 0.12);
 }
 
 .comic-panel-inner {
@@ -342,12 +434,39 @@ body {
 
 /* ── Clean layout system ── */
 .achievement-card {
-  @apply relative p-5 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-300;
+  @apply relative p-5 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-300 overflow-hidden;
+}
+
+.achievement-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0;
 }
 
 .achievement-card:hover {
   @apply border-white/25 bg-white/[0.05] -translate-y-0.5;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 24px rgba(0, 243, 255, 0.08),
+    -4px 0 0 var(--spider-cyan);
+}
+
+.achievement-card:hover::after {
+  opacity: 1;
+}
+
+.achievement-card-grow:hover {
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 24px rgba(255, 0, 85, 0.1),
+    -4px 0 0 var(--spider-magenta);
 }
 
 .hackathon-card {
@@ -386,8 +505,32 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0, 243, 255, 0.04), transparent 70%);
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0, 243, 255, 0.06), transparent 70%);
   pointer-events: none;
+}
+
+.section-band-cyan::before {
+  background: radial-gradient(ellipse 80% 55% at 20% 30%, rgba(0, 243, 255, 0.1), transparent 65%);
+}
+
+.section-band-magenta::before {
+  background: radial-gradient(ellipse 75% 50% at 80% 20%, rgba(255, 0, 85, 0.1), transparent 65%);
+}
+
+.section-band-yellow::before {
+  background: radial-gradient(ellipse 70% 45% at 50% 80%, rgba(249, 255, 0, 0.08), transparent 60%);
+}
+
+.section-band-purple::before {
+  background: radial-gradient(ellipse 65% 50% at 30% 50%, rgba(122, 0, 255, 0.09), transparent 65%);
+}
+
+.section-band-orange::before {
+  background: radial-gradient(ellipse 70% 45% at 70% 60%, rgba(255, 107, 0, 0.08), transparent 60%);
+}
+
+.section-band-lime::before {
+  background: radial-gradient(ellipse 75% 50% at 40% 40%, rgba(184, 255, 0, 0.07), transparent 65%);
 }
 
 .stat-pill {
@@ -431,8 +574,17 @@ body {
 }
 
 .section-title-accent {
-  @apply h-0.5 w-12 rounded-full mt-1;
-  background: linear-gradient(90deg, var(--spider-cyan), var(--spider-magenta));
+  @apply h-1 w-16 rounded-full mt-2;
+  background: var(--rainbow);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.35);
+}
+
+.section-header-display {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.04em;
+  text-shadow:
+    3px 3px 0 var(--spider-magenta),
+    -2px -2px 0 var(--spider-cyan);
 }
 
 .track-pill {
@@ -484,6 +636,48 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-magenta {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-tech font-bold text-sm uppercase tracking-wider transition-all duration-300 text-white;
+  background: linear-gradient(135deg, var(--spider-magenta), var(--spider-pink));
+  box-shadow: 0 4px 20px rgba(255, 0, 85, 0.3);
+}
+
+.btn-magenta:hover {
+  box-shadow: 0 6px 28px rgba(255, 0, 85, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-rainbow {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-tech font-bold text-sm uppercase tracking-wider transition-all duration-300 text-black;
+  background: var(--rainbow);
+  background-size: 200% 100%;
+  animation: rainbow-shift 4s linear infinite;
+  box-shadow: 0 4px 24px rgba(0, 243, 255, 0.25);
+}
+
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.filter-pill {
+  @apply px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest border transition-all duration-300;
+}
+
+.filter-pill-active {
+  @apply text-black font-bold;
+  box-shadow: 0 0 20px currentColor;
+}
+
+.story-divider-burst {
+  background: var(--rainbow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.15em;
+}
+
 .skill-tag {
   @apply text-[9px] font-mono px-2 py-0.5 rounded border;
 }
@@ -522,6 +716,7 @@ body {
 
 .dual-track-design {
   @apply bg-spider-yellow/5;
+  background-image: linear-gradient(135deg, rgba(249, 255, 0, 0.06) 0%, rgba(255, 107, 0, 0.04) 100%);
 }
 
 .dual-track-label {
@@ -539,4 +734,89 @@ body {
 
 .animate-ink {
   animation: ink-splash 6s ease-in-out infinite;
+}
+
+/* ── Profile hero frame (Makady-inspired) ── */
+.profile-frame {
+  position: relative;
+  width: min(100%, 300px);
+  padding: 4px;
+  background: linear-gradient(135deg, var(--spider-cyan), var(--spider-magenta), var(--spider-yellow));
+  border-radius: 1.25rem;
+  box-shadow:
+    8px 8px 0 rgba(255, 0, 85, 0.25),
+    0 0 40px rgba(0, 243, 255, 0.15);
+  transform: rotate(2deg);
+  transition: transform 0.35s ease;
+}
+
+.profile-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.profile-frame-inner {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--spider-black);
+  aspect-ratio: 4 / 5;
+  border: 3px solid rgba(0, 0, 0, 0.8);
+}
+
+.profile-badge {
+  position: absolute;
+  font-family: 'Bangers', cursive;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border: 2px solid black;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.profile-badge-cyan {
+  bottom: -10px;
+  left: -8px;
+  background: var(--spider-cyan);
+  color: black;
+  transform: rotate(-8deg);
+}
+
+.profile-badge-magenta {
+  top: -10px;
+  right: -8px;
+  background: var(--spider-magenta);
+  color: white;
+  transform: rotate(6deg);
+}
+
+/* ── Tech stack logos ── */
+.tech-logo-card {
+  @apply flex flex-col items-center justify-center p-4 md:p-5 rounded-xl border border-white/10 bg-white/[0.03] transition-all duration-300;
+}
+
+.tech-logo-card:hover {
+  @apply border-spider-cyan/40 bg-white/[0.06];
+  box-shadow: 0 0 24px rgba(0, 243, 255, 0.12);
+}
+
+/* ── Contact form ── */
+.contact-label {
+  @apply block text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2;
+}
+
+.contact-input {
+  @apply w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white font-tech text-sm placeholder:text-gray-600 transition-colors;
+}
+
+.contact-input:focus {
+  @apply outline-none border-spider-cyan/50 bg-white/[0.06];
+  box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.1);
+}
+
+.social-chip {
+  @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/15 bg-white/[0.04] text-gray-400 text-xs font-mono uppercase tracking-wider transition-all;
+}
+
+.social-chip:hover {
+  @apply border-white/30 bg-white/[0.08] text-white;
 }

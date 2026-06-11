@@ -3,15 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
 import { CONTACT } from '../data/portfolio';
 
-const LINKS = [
+const PRIMARY_LINKS = [
+  { href: '#projects', label: 'My Work' },
   { href: '#about', label: 'About' },
-  { href: '#design', label: 'Design' },
-  { href: '#hackathons', label: 'Hackathons' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#achievements', label: 'Achievements' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#resume', label: 'Resume' },
   { href: '#connect', label: 'Contact' },
+];
+
+const MORE_LINKS = [
+  { href: '#design', label: 'Design' },
+  { href: '#marketing', label: 'Marketing' },
+  { href: '#hackathons', label: 'Hackathons' },
+  { href: '#tech', label: 'Tech Stack' },
+  { href: '#resume', label: 'Resume' },
 ];
 
 const SiteNav = () => {
@@ -33,33 +36,45 @@ const SiteNav = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-300 ${
-          scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-5'
+          scrolled ? 'bg-black/85 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-tech font-bold text-sm tracking-wide logo-text hover:opacity-80 transition-opacity"
+            className="font-display text-lg tracking-wide logo-text hover:opacity-80 transition-opacity"
           >
-            SAADIA ASGHAR
+            SAADIA
           </button>
 
-          <nav className="hidden lg:flex items-center gap-6">
-            {LINKS.map((link) => (
-              <button
-                key={link.href}
-                type="button"
-                onClick={() => navigate(link.href)}
-                className="nav-link"
-              >
+          <nav className="hidden lg:flex items-center gap-8">
+            {PRIMARY_LINKS.map((link) => (
+              <button key={link.href} type="button" onClick={() => navigate(link.href)} className="nav-link">
                 {link.label}
               </button>
             ))}
+            <div className="relative group">
+              <button type="button" className="nav-link">More</button>
+              <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                <div className="bg-black/95 border border-white/10 rounded-xl py-2 min-w-[160px] shadow-xl">
+                  {MORE_LINKS.map((link) => (
+                    <button
+                      key={link.href}
+                      type="button"
+                      onClick={() => navigate(link.href)}
+                      className="block w-full text-left px-4 py-2 text-[11px] font-mono uppercase tracking-wider text-gray-400 hover:text-spider-cyan hover:bg-white/5"
+                    >
+                      {link.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
             <a
               href={CONTACT.resumePath}
               download="Saadia_Asghar_Resume.png"
-              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg btn-primary text-[10px] !py-2 !px-4"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg btn-primary text-[10px] !py-2 !px-4"
             >
               <Download size={14} /> Resume
             </a>
@@ -82,15 +97,15 @@ const SiteNav = () => {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="fixed inset-x-0 top-[60px] z-[199] lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 px-6 py-6"
+            className="fixed inset-x-0 top-[60px] z-[199] lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 max-h-[80vh] overflow-y-auto"
           >
-            <nav className="flex flex-col gap-4">
-              {LINKS.map((link) => (
+            <nav className="flex flex-col gap-1">
+              {[...PRIMARY_LINKS, ...MORE_LINKS].map((link) => (
                 <button
                   key={link.href}
                   type="button"
                   onClick={() => navigate(link.href)}
-                  className="text-left text-sm font-mono uppercase tracking-widest text-gray-300 hover:text-spider-cyan py-2"
+                  className="text-left text-sm font-mono uppercase tracking-widest text-gray-300 hover:text-spider-cyan py-3 border-b border-white/5"
                 >
                   {link.label}
                 </button>
@@ -98,7 +113,7 @@ const SiteNav = () => {
               <a
                 href={CONTACT.resumePath}
                 download="Saadia_Asghar_Resume.png"
-                className="mt-2 inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-spider-cyan text-black font-tech font-black text-xs uppercase tracking-widest"
+                className="mt-4 inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-spider-cyan text-black font-tech font-black text-xs uppercase tracking-widest"
               >
                 <Download size={16} /> Download Resume
               </a>
