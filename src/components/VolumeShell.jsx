@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -27,6 +27,12 @@ const VolumeShell = ({
 }) => {
   const tabIndex = tabs.findIndex((t) => t.id === activeTab);
   const current = tabs[tabIndex] || tabs[0];
+  const pageRef = useRef(null);
+  const isCover = activeTab === 'cover';
+
+  useEffect(() => {
+    pageRef.current?.scrollTo({ top: 0, left: 0 });
+  }, [activeTab, pageKey]);
 
   const goPrev = () => {
     if (tabIndex > 0) onTabChange(tabs[tabIndex - 1].id);
@@ -62,12 +68,13 @@ const VolumeShell = ({
           <div className="book-page-edge" aria-hidden />
           <AnimatePresence mode="wait">
             <motion.div
+              ref={pageRef}
               key={pageKey || activeTab}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.28, ease: 'easeOut' }}
-              className="book-page volume-page"
+              className={`book-page volume-page${isCover ? ' book-page-cover' : ''}`}
               role="tabpanel"
               aria-labelledby={`tab-${activeTab}`}
             >
