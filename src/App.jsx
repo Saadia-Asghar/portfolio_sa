@@ -1,7 +1,7 @@
 import React from 'react';
 import SiteNav from './components/SiteNav';
 import Hero from './components/Hero';
-import DesignPortfolioSection from './components/DesignPortfolioSection';
+import DesignBookSection from './components/DesignBookSection';
 import MarketingSection from './components/MarketingSection';
 import HackathonSection from './components/HackathonSection';
 import AchievementsSection from './components/AchievementsSection';
@@ -107,7 +107,7 @@ function App() {
         </section>
 
         <ProjectSection />
-        <DesignPortfolioSection />
+        <DesignBookSection />
         <MarketingSection />
         <HackathonSection />
         <ExperienceSection />
