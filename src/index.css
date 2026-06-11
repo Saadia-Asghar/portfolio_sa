@@ -933,7 +933,8 @@ body {
   padding-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
+  width: 100%;
 }
 
 .volume-zone-design .volume-zone-header-inner {
@@ -1183,7 +1184,7 @@ body {
   flex-direction: column;
   gap: 0;
   width: 100%;
-  max-width: 42rem;
+  max-width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -1191,8 +1192,8 @@ body {
     flex-direction: row;
     align-items: stretch;
     min-height: 0;
-    width: min(100%, 46rem);
-    max-width: 46rem;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -1311,9 +1312,18 @@ body {
 
 @media (min-width: 768px) {
   .book-pages {
-    aspect-ratio: 5 / 4;
-    max-height: min(68vh, 520px);
+    aspect-ratio: 16 / 10;
+    max-height: min(72vh, 640px);
     height: auto;
+    min-height: 360px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .book-pages {
+    aspect-ratio: 16 / 9;
+    max-height: min(75vh, 680px);
+    min-height: 400px;
   }
 }
 
@@ -1362,7 +1372,13 @@ body {
 
 @media (min-width: 768px) {
   .book-page-inner {
-    padding: 1.5rem 1.75rem 1.25rem 2rem;
+    padding: 1.5rem 2rem 1.25rem 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .book-page-inner {
+    padding: 1.75rem 2.5rem 1.5rem 2.75rem;
   }
 }
 
