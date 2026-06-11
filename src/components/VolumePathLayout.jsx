@@ -10,7 +10,7 @@ const VolumePathLayout = ({ path, onBack, children, embedded = true }) => {
   return (
     <section className={`volume-zone volume-zone-${meta.accent} scroll-mt-24 ${embedded ? 'volume-zone-embedded' : ''}`}>
       <div className="volume-zone-header">
-        <div className="volume-zone-header-inner max-w-6xl mx-auto px-4 md:px-8 relative z-10">
+        <div className="volume-zone-header-inner volume-zone-inner relative z-10">
           {onBack && (
             <button type="button" onClick={onBack} className="volume-back-btn">
               <ArrowLeft size={15} /> Back to paths
@@ -30,7 +30,7 @@ const VolumePathLayout = ({ path, onBack, children, embedded = true }) => {
         </div>
       </div>
 
-      <div className="volume-zone-body max-w-6xl mx-auto px-4 md:px-8 relative z-10">{children}</div>
+      <div className="volume-zone-body volume-zone-inner relative z-10">{children}</div>
 
       <div className="book-cloud book-cloud-1" aria-hidden />
       <div className="book-cloud book-cloud-2" aria-hidden />

@@ -913,8 +913,27 @@ body {
   margin-top: 0.65rem;
 }
 
+.volume-zone-inner {
+  width: 100%;
+  max-width: 72rem;
+  margin-right: auto;
+  margin-left: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .volume-zone-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 .volume-zone-body {
   padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .volume-zone-design .volume-zone-header-inner {
@@ -1163,13 +1182,17 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0;
+  width: 100%;
+  max-width: 42rem;
 }
 
 @media (min-width: 768px) {
   .design-book-shell {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
     min-height: 0;
+    width: min(100%, 46rem);
+    max-width: 46rem;
   }
 }
 
@@ -1233,16 +1256,16 @@ body {
 }
 
 .design-book-body {
-  flex: 1;
+  flex: 1 1 0;
   display: flex;
   position: relative;
-  margin: 0 8px 8px;
+  margin: 0 0 8px;
   min-width: 0;
 }
 
 @media (min-width: 768px) {
   .design-book-body {
-    margin: 0 16px 16px 0;
+    margin: 0 0 12px;
   }
 }
 
@@ -1280,11 +1303,18 @@ body {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
   position: relative;
   min-height: 0;
-  height: fit-content;
-  align-self: flex-start;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .book-pages {
+    aspect-ratio: 5 / 4;
+    max-height: min(68vh, 520px);
+    height: auto;
+  }
 }
 
 .book-page-edge {
@@ -1305,7 +1335,7 @@ body {
 }
 
 .book-page {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   overflow-y: auto;
   overflow-x: hidden;
   overflow-anchor: none;
@@ -1314,9 +1344,14 @@ body {
   width: 100%;
 }
 
+@media (min-width: 768px) {
+  .book-page {
+    max-height: none;
+  }
+}
+
 .book-page-cover {
-  max-height: none;
-  overflow: visible;
+  overflow-y: auto;
 }
 
 .book-page-inner {
@@ -1327,7 +1362,7 @@ body {
 
 @media (min-width: 768px) {
   .book-page-inner {
-    padding: 2rem 2.5rem 1.5rem 2.5rem;
+    padding: 1.5rem 1.75rem 1.25rem 2rem;
   }
 }
 
