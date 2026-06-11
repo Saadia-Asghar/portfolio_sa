@@ -20,7 +20,7 @@ const TerminalFooter = () => (
   <footer className="border-t border-white/10 py-12 px-4 md:px-8 bg-black/40">
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-        <p className="font-display text-xl text-white tracking-wide">SAADIA ASGHAR</p>
+        <p className="font-semibold text-lg text-white">Saadia Asghar</p>
         <p className="text-sm text-gray-500 mt-2 font-tech">{CONTACT.email}</p>
         <p className="text-sm text-gray-600">{CONTACT.location}</p>
         <p className="text-[10px] font-mono text-gray-700 uppercase tracking-widest mt-6">

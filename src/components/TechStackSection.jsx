@@ -6,13 +6,12 @@ import { TECH_STACK } from '../data/portfolio';
 const iconUrl = (slug, color) => `https://cdn.simpleicons.org/${slug}/${color}`;
 
 const TechStackSection = () => (
-  <section id="tech" className="relative section-band section-band-cyan py-16 md:py-20 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
+  <section id="tech" className="section-block-wide">
     <SectionHeader
-      index="TOOLS"
-      title="Technologies I Use"
-      subtitle="Over the years I've worked across data, design, and full-stack — here are the tools in my stack."
-      accent="cyan"
-      align="left"
+      index="Stack"
+      title="Technologies"
+      subtitle="Tools I use across data science, design, and full-stack development."
+      accent="build"
     />
 
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-5">

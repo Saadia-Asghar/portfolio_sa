@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Github, ExternalLink } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import { SectionGraphics } from './ComicGraphics';
 import { HACKATHON_WINS } from '../data/portfolio';
 
 const tierStyles = {
@@ -79,14 +78,12 @@ const HackathonCard = ({ win, index }) => (
 );
 
 const HackathonSection = () => (
-  <section id="hackathons" className="relative section-band section-band-orange py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
-    <SectionGraphics variant="hackathons" />
+  <section id="hackathons" className="section-block-wide">
     <SectionHeader
-      index="04 · HACKATHONS"
-      title="Hackathons & Competitions"
-      subtitle={`${HACKATHON_WINS.length} events — equal detail, equal weight`}
-      accent="orange"
-      align="left"
+      index="Hackathons"
+      title="Competitions"
+      subtitle={`${HACKATHON_WINS.length} hackathons and product challenges`}
+      accent="build"
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-10">

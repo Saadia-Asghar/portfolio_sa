@@ -2,18 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Palette, ArrowUpRight } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import { SectionGraphics } from './ComicGraphics';
 import { DESIGN_PORTFOLIO } from '../data/portfolio';
 
 const DesignPortfolioSection = () => (
-  <section id="design" className="relative section-band section-band-yellow py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
-    <SectionGraphics variant="design" />
+  <section id="design" className="section-block-wide">
     <SectionHeader
-      index="02 · DESIGN"
-      title="Product Design Book"
+      index="Design"
+      title="Product Design"
       subtitle={DESIGN_PORTFOLIO.tagline}
-      accent="yellow"
-      align="left"
+      accent="design"
     />
 
     <motion.a

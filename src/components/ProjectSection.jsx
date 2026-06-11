@@ -12,7 +12,7 @@ const ProjectCard = ({ project }) => (
     className="achievement-card h-full flex flex-col group"
   >
     <div className="flex items-center justify-between gap-2 mb-3">
-      <span className={`track-pill track-${project.category === 'marketing' ? 'grow' : project.category === 'design' ? 'design' : 'build'}`}>
+      <span className={`track-pill track-${project.category === 'marketing' || project.category === 'grow' ? 'grow' : project.category === 'design' ? 'design' : 'build'}`}>
         {project.category === 'marketing' ? 'Marketing' : project.category === 'design' ? 'Design' : 'Build'}
       </span>
       <span className="text-[10px] font-mono text-spider-yellow">{project.achievement}</span>
@@ -45,13 +45,12 @@ const ProjectCard = ({ project }) => (
 );
 
 const ProjectSection = () => (
-  <section id="projects" className="relative section-band section-band-purple py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8 scroll-mt-24">
+  <section id="projects" className="section-block-wide">
     <SectionHeader
-      index="06 · MY WORK"
+      index="Work"
       title="Projects"
-      subtitle="Organized by category — full-stack builds, UI design, and marketing. More on GitHub."
-      accent="purple"
-      align="left"
+      subtitle="Organized by category — full-stack, design, and marketing."
+      accent="build"
     />
 
     <div className="space-y-16">
@@ -63,7 +62,7 @@ const ProjectSection = () => (
           <div key={cat.id}>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
               <div>
-                <h3 className="font-display text-2xl md:text-3xl text-white uppercase tracking-wide">{cat.title}</h3>
+                <h3 className="text-xl font-semibold text-white">{cat.title}</h3>
                 <p className="text-sm text-gray-500 font-tech mt-2 max-w-2xl">{cat.description}</p>
               </div>
               {cat.externalLink && (

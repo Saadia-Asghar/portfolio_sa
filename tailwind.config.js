@@ -1,66 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        "spider-black": "#050505",
-        "spider-magenta": "#ff0055",
-        "spider-cyan": "#00f3ff",
-        "spider-yellow": "#f9ff00",
-        "spider-purple": "#7a00ff",
-        "spider-orange": "#ff6b00",
-        "spider-lime": "#b8ff00",
-        "spider-pink": "#ff2d95",
+        canvas: '#09090b',
+        surface: '#111114',
+        'accent-build': '#38bdf8',
+        'accent-grow': '#f472b6',
+        'accent-design': '#fbbf24',
+        // legacy aliases used in data
+        'spider-black': '#09090b',
+        'spider-cyan': '#38bdf8',
+        'spider-magenta': '#f472b6',
+        'spider-yellow': '#fbbf24',
+        'spider-purple': '#a78bfa',
       },
       fontFamily: {
-        tech: ["Space Grotesk", "sans-serif"],
-        accent: ["Permanent Marker", "cursive"],
-        display: ["Bangers", "cursive"],
+        tech: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
       },
-      animation: {
-        // Snappy, jerky movement like the movie's 12fps style
-        'glitch-fast': 'glitch 0.2s steps(2) infinite',
-        'glitch-slow': 'glitch 3s steps(3) infinite',
-        'chromatic': 'chromatic 2s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'star-spin': 'star-spin 8s linear infinite',
-        'color-pulse': 'color-pulse 4s ease-in-out infinite',
-        'marquee-glow': 'marquee-glow 2s ease-in-out infinite',
-      },
-      keyframes: {
-        glitch: {
-          '0%, 100%': { transform: 'translate(0)' },
-          '20%': { transform: 'translate(-2px, 2px)', filter: 'hue-rotate(90deg)' },
-          '40%': { transform: 'translate(-2px, -2px)', clipPath: 'inset(10% 0 30% 0)' },
-          '60%': { transform: 'translate(2px, 2px)', filter: 'contrast(150%)' },
-          '80%': { transform: 'translate(2px, -2px)' },
-        },
-        chromatic: {
-          '0%, 100%': { textShadow: '2px 0 #ff0055, -2px 0 #00f3ff' },
-          '50%': { textShadow: '-2px 0 #ff0055, 2px 0 #00f3ff' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        'star-spin': {
-          '0%': { transform: 'rotate(0deg) scale(1)' },
-          '50%': { transform: 'rotate(180deg) scale(1.15)' },
-          '100%': { transform: 'rotate(360deg) scale(1)' },
-        },
-        'color-pulse': {
-          '0%, 100%': { opacity: '0.6', filter: 'hue-rotate(0deg)' },
-          '50%': { opacity: '1', filter: 'hue-rotate(30deg)' },
-        },
-        'marquee-glow': {
-          '0%, 100%': { textShadow: '0 0 8px currentColor' },
-          '50%': { textShadow: '0 0 16px currentColor, 0 0 24px currentColor' },
-        },
-      },
-      backgroundImage: {
-        'halftone': "url('https://www.transparenttextures.com/patterns/stardust.png')", // Dot pattern overlay
-      }
     },
   },
   plugins: [],
