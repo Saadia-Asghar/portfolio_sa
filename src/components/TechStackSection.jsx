@@ -5,15 +5,9 @@ import { TECH_STACK } from '../data/portfolio';
 
 const iconUrl = (slug, color) => `https://cdn.simpleicons.org/${slug}/${color}`;
 
-const TechStackSection = () => (
-  <section id="tech" className="section-block-wide">
-    <SectionHeader
-      index="Stack"
-      title="Technologies"
-      subtitle="Tools I use across data science, design, and full-stack development."
-      accent="build"
-    />
-
+const TechStackSection = ({ embedded = false }) => {
+  const content = (
+    <>
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-5">
       {TECH_STACK.map((tech, i) => (
         <motion.div
@@ -40,8 +34,23 @@ const TechStackSection = () => (
       ))}
     </div>
 
-    <p className="text-center text-xs font-mono text-gray-600 mt-8 uppercase tracking-widest">…and many more!</p>
-  </section>
-);
+    <p className="text-center text-xs font-mono text-stone-500 mt-8 uppercase tracking-widest">…and many more!</p>
+    </>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section id="tech" className="section-block-wide">
+      <SectionHeader
+        index="Stack"
+        title="Technologies"
+        subtitle="Tools I use across data science, design, and full-stack development."
+        accent="build"
+      />
+      {content}
+    </section>
+  );
+};
 
 export default TechStackSection;

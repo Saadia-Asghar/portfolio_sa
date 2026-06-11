@@ -12,6 +12,7 @@ function parseHash() {
 
 export function usePortfolioPath() {
   const [path, setPathState] = useState(() => parseHash().path);
+  const [scrollTarget, setScrollTarget] = useState(() => parseHash().scroll);
 
   const scrollToId = useCallback((id) => {
     if (!id) return;
@@ -32,9 +33,10 @@ export function usePortfolioPath() {
       }
 
       setPathState(nextPath);
+      setScrollTarget(scrollTarget);
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      if (scrollTarget) {
+      if (scrollTarget && nextPath === 'home') {
         setTimeout(() => scrollToId(scrollTarget), 320);
       }
     },
@@ -53,16 +55,18 @@ export function usePortfolioPath() {
     const onHashChange = () => {
       const { path: p, scroll } = parseHash();
       setPathState(p);
-      if (scroll) setTimeout(() => scrollToId(scroll), 100);
+      setScrollTarget(scroll);
+      if (scroll && p === 'home') setTimeout(() => scrollToId(scroll), 100);
     };
 
     const { path: initial, scroll } = parseHash();
     setPathState(initial);
-    if (scroll) setTimeout(() => scrollToId(scroll), 400);
+    setScrollTarget(scroll);
+    if (scroll && initial === 'home') setTimeout(() => scrollToId(scroll), 400);
 
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
   }, [scrollToId]);
 
-  return { path, setPath, goToSection };
+  return { path, setPath, goToSection, scrollTarget };
 }

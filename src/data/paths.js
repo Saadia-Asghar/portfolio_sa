@@ -23,6 +23,39 @@ export const PORTFOLIO_PATHS = {
       { id: 'tech', label: 'Tech stack' },
       { id: 'resume', label: 'Résumé' },
     ],
+    volume: {
+      spine: 'BUILD · VOL. I · MMXXVI',
+      tabs: [
+        {
+          id: 'projects',
+          roman: 'I',
+          label: 'Projects',
+          title: 'Projects',
+          subtitle: 'Data science, AI agents, Web3, and full-stack — each card links to the GitHub repo with README-backed detail.',
+        },
+        {
+          id: 'hackathons',
+          roman: 'II',
+          label: 'Hackathons',
+          title: 'Competitions',
+          subtitle: 'Hackathon wins and product challenges with placement, stack, and live links.',
+        },
+        {
+          id: 'tech',
+          roman: 'III',
+          label: 'Stack',
+          title: 'Technologies',
+          subtitle: 'Tools across data science, design systems, and full-stack development.',
+        },
+        {
+          id: 'resume',
+          roman: 'IV',
+          label: 'Résumé',
+          title: 'Credentials',
+          subtitle: 'Education, certifications, and downloadable CV.',
+        },
+      ],
+    },
   },
   design: {
     id: 'design',
@@ -35,6 +68,9 @@ export const PORTFOLIO_PATHS = {
     tagline: 'Case studies, Figma systems, and campus-to-client visual work.',
     proof: ['Vyrothon 1st · Top 5 nationally', 'PreMed.PK +40% engagement', 'ACM & MLSA collateral'],
     sections: [{ id: 'design', label: 'Design book' }],
+    volume: {
+      spine: 'DESIGN · VOL. I · MMXXVI',
+    },
   },
   grow: {
     id: 'grow',
@@ -52,6 +88,39 @@ export const PORTFOLIO_PATHS = {
       { id: 'achievements', label: 'Recognition' },
       { id: 'resume', label: 'Résumé' },
     ],
+    volume: {
+      spine: 'GROW · VOL. I · MMXXVI',
+      tabs: [
+        {
+          id: 'marketing',
+          roman: 'I',
+          label: 'Marketing',
+          title: 'Digital Storytelling',
+          subtitle: 'Content strategy, personal branding, and campus marketing leadership.',
+        },
+        {
+          id: 'experience',
+          roman: 'II',
+          label: 'Experience',
+          title: 'Roles & Leadership',
+          subtitle: 'Marketing, design ambassadorships, and community-facing roles.',
+        },
+        {
+          id: 'achievements',
+          roman: 'III',
+          label: 'Recognition',
+          title: 'Highlights',
+          subtitle: 'Build wins and marketing leadership — equal weight.',
+        },
+        {
+          id: 'resume',
+          roman: 'IV',
+          label: 'Résumé',
+          title: 'Credentials',
+          subtitle: 'Education, certifications, and downloadable CV.',
+        },
+      ],
+    },
   },
 };
 

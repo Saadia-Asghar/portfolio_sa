@@ -2,15 +2,10 @@ import React from 'react';
 import SiteNav from './components/SiteNav';
 import Hero from './components/Hero';
 import PathHub from './components/PathHub';
-import PathHeader from './components/PathHeader';
+import BuildVolume from './components/BuildVolume';
+import GrowVolume from './components/GrowVolume';
 import DesignBookSection from './components/DesignBookSection';
-import MarketingSection from './components/MarketingSection';
-import HackathonSection from './components/HackathonSection';
-import AchievementsSection from './components/AchievementsSection';
-import ProjectSection from './components/ProjectSection';
-import ExperienceSection from './components/ContentStrategy';
 import ResumeSection from './components/ResumeSection';
-import TechStackSection from './components/TechStackSection';
 import ContactForm from './components/ContactForm';
 import TerminalFooter from './components/TerminalFooter';
 import PageBackground from './components/PageBackground';
@@ -20,7 +15,7 @@ import { CONTACT, OPEN_TO } from './data/portfolio';
 import { usePortfolioPath } from './hooks/usePortfolioPath';
 
 function App() {
-  const { path, setPath, goToSection } = usePortfolioPath();
+  const { path, setPath, goToSection, scrollTarget } = usePortfolioPath();
 
   return (
     <div className="page-shell pb-20 xl:pb-0">
@@ -57,30 +52,15 @@ function App() {
         )}
 
         {path === 'build' && (
-          <>
-            <PathHeader path="build" onBack={() => setPath('home')} onSection={goToSection} />
-            <ProjectSection />
-            <HackathonSection />
-            <TechStackSection />
-            <ResumeSection />
-          </>
+          <BuildVolume onBack={() => setPath('home')} initialSection={scrollTarget} />
         )}
 
         {path === 'design' && (
-          <>
-            <PathHeader path="design" onBack={() => setPath('home')} onSection={goToSection} />
-            <DesignBookSection embedded />
-          </>
+          <DesignBookSection embedded onBack={() => setPath('home')} initialSection={scrollTarget} />
         )}
 
         {path === 'grow' && (
-          <>
-            <PathHeader path="grow" onBack={() => setPath('home')} onSection={goToSection} />
-            <MarketingSection />
-            <ExperienceSection />
-            <AchievementsSection />
-            <ResumeSection />
-          </>
+          <GrowVolume onBack={() => setPath('home')} initialSection={scrollTarget} />
         )}
 
         <section id="connect" className="section-block max-w-2xl">

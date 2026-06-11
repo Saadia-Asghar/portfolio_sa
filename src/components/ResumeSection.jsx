@@ -4,13 +4,11 @@ import { Download, Maximize2, X } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { CONTACT, EDUCATION, CERTIFICATIONS } from '../data/portfolio';
 
-const ResumeSection = () => {
+const ResumeSection = ({ embedded = false }) => {
   const [expanded, setExpanded] = useState(false);
 
-  return (
-    <section id="resume" className="section-block-wide">
-      <SectionHeader index="Resume" title="Credentials" subtitle="Education, certifications, and CV." accent="muted" />
-
+  const content = (
+    <>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-4 space-y-6 order-2 lg:order-1">
           <div className="achievement-card">
@@ -81,6 +79,15 @@ const ResumeSection = () => {
           </motion.div>
         )}
       </AnimatePresence>
+    </>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section id="resume" className="section-block-wide">
+      <SectionHeader index="Resume" title="Credentials" subtitle="Education, certifications, and CV." accent="muted" />
+      {content}
     </section>
   );
 };

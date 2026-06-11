@@ -77,15 +77,9 @@ const HackathonCard = ({ win, index }) => (
   </motion.article>
 );
 
-const HackathonSection = () => (
-  <section id="hackathons" className="section-block-wide">
-    <SectionHeader
-      index="Hackathons"
-      title="Competitions"
-      subtitle={`${HACKATHON_WINS.length} hackathons and product challenges`}
-      accent="build"
-    />
-
+const HackathonSection = ({ embedded = false }) => {
+  const content = (
+    <>
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-10">
       {HACKATHON_WINS.map((win, i) => (
         <HackathonCard key={win.id} win={win} index={i} />
@@ -106,7 +100,22 @@ const HackathonSection = () => (
         </div>
       ))}
     </div>
-  </section>
-);
+    </>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section id="hackathons" className="section-block-wide">
+      <SectionHeader
+        index="Hackathons"
+        title="Competitions"
+        subtitle={`${HACKATHON_WINS.length} hackathons and product challenges`}
+        accent="build"
+      />
+      {content}
+    </section>
+  );
+};
 
 export default HackathonSection;

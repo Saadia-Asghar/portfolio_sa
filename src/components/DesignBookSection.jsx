@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ChevronLeft, ChevronRight, Figma, Palette } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ExternalLink, Figma, Palette } from 'lucide-react';
 import { DESIGN_BOOK, DESIGN_BOOK_TABS } from '../data/designBook';
+import { PORTFOLIO_PATHS } from '../data/paths';
+import VolumePathLayout from './VolumePathLayout';
+import VolumeShell from './VolumeShell';
 
 const LinkChip = ({ href, label, variant = 'figma' }) => {
   if (!href) return null;
@@ -293,102 +295,55 @@ const PAGE_MAP = {
   awards: AwardsPage,
 };
 
-const DesignBookSection = ({ embedded = false }) => {
+const DesignBookSection = ({ embedded = false, onBack, initialSection }) => {
   const [activeTab, setActiveTab] = useState('cover');
-  const tabIndex = DESIGN_BOOK_TABS.findIndex((t) => t.id === activeTab);
   const Page = PAGE_MAP[activeTab];
 
-  const goPrev = () => {
-    if (tabIndex > 0) setActiveTab(DESIGN_BOOK_TABS[tabIndex - 1].id);
-  };
-  const goNext = () => {
-    if (tabIndex < DESIGN_BOOK_TABS.length - 1) setActiveTab(DESIGN_BOOK_TABS[tabIndex + 1].id);
-  };
+  useEffect(() => {
+    if (initialSection && DESIGN_BOOK_TABS.some((t) => t.id === initialSection)) {
+      setActiveTab(initialSection);
+    }
+  }, [initialSection]);
+
+  const onTabChange = useCallback((tabId) => {
+    setActiveTab(tabId);
+    window.location.hash = tabId === 'cover' ? 'design' : tabId;
+  }, []);
+
+  const spine = PORTFOLIO_PATHS.design.volume?.spine || `DESIGN · ${DESIGN_BOOK.edition}`;
+
+  const shell = (
+    <VolumeShell
+      accent="design"
+      tabs={DESIGN_BOOK_TABS}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+      spineText={`SAADIA · ${spine}`}
+    >
+      <Page />
+    </VolumeShell>
+  );
+
+  if (embedded && onBack) {
+    return (
+      <VolumePathLayout path="design" onBack={onBack} embedded>
+        <div id="design">{shell}</div>
+      </VolumePathLayout>
+    );
+  }
 
   return (
-    <section id="design" className={`design-book-zone scroll-mt-24 ${embedded ? 'design-book-embedded' : ''}`}>
-      <div className={`max-w-6xl mx-auto px-4 md:px-8 relative z-10 ${embedded ? 'py-8 md:py-10' : 'py-16 md:py-20'}`}>
-        {!embedded && (
-          <div className="text-center mb-10">
-            <p className="text-sm font-semibold text-sky-200/90 uppercase tracking-widest">Design Portfolio</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 font-[Nunito]">Open the Design Book</h2>
-            <p className="text-sky-100/70 mt-2 max-w-lg mx-auto text-sm">
-              Every chapter links to Figma prototypes &amp; Canva designs — tap a card to explore the real work.
-            </p>
-          </div>
-        )}
-
-        <div className="design-book-shell">
-          <div className="book-tabs" role="tablist" aria-label="Design portfolio chapters">
-            {DESIGN_BOOK_TABS.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                role="tab"
-                aria-selected={activeTab === tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`book-tab ${activeTab === tab.id ? 'book-tab-active' : ''}`}
-              >
-                <span className="book-tab-roman">{tab.roman}</span>
-                <span className="book-tab-label">{tab.label}</span>
-              </button>
-            ))}
-          </div>
-
-          <div className="design-book-body">
-            <div className="book-spine" aria-hidden>
-              <span className="book-spine-text">SAADIA · DESIGN · {DESIGN_BOOK.edition}</span>
-            </div>
-
-            <div className="book-pages">
-              <div className="book-page-edge" aria-hidden />
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, rotateY: -6, x: 16 }}
-                  animate={{ opacity: 1, rotateY: 0, x: 0 }}
-                  exit={{ opacity: 0, rotateY: 6, x: -16 }}
-                  transition={{ duration: 0.32, ease: 'easeOut' }}
-                  className="book-page"
-                  role="tabpanel"
-                >
-                  <Page />
-                </motion.div>
-              </AnimatePresence>
-
-              <div className="book-nav">
-                <button
-                  type="button"
-                  onClick={goPrev}
-                  disabled={tabIndex === 0}
-                  className="book-nav-btn"
-                  aria-label="Previous chapter"
-                >
-                  <ChevronLeft size={18} /> Prev
-                </button>
-                <span className="book-nav-indicator">
-                  {DESIGN_BOOK_TABS[tabIndex].roman} · {DESIGN_BOOK_TABS[tabIndex].label}
-                </span>
-                <button
-                  type="button"
-                  onClick={goNext}
-                  disabled={tabIndex === DESIGN_BOOK_TABS.length - 1}
-                  className="book-nav-btn"
-                  aria-label="Next chapter"
-                >
-                  Next <ChevronRight size={18} />
-                </button>
-              </div>
-            </div>
-
-            <div className="book-gadget-pocket" aria-hidden>
-              <div className="book-gadget-ring" />
-              <span className="book-gadget-dot" />
-            </div>
-          </div>
+    <section id="design" className="volume-zone volume-zone-design scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20 relative z-10">
+        <div className="text-center mb-10">
+          <p className="volume-eyebrow volume-eyebrow-on-zone">Design Portfolio</p>
+          <h2 className="volume-title font-display text-center">Open the Design Book</h2>
+          <p className="volume-tagline text-center mx-auto max-w-lg">
+            Every chapter links to Figma prototypes &amp; Canva designs — tap a card to explore the real work.
+          </p>
         </div>
+        {shell}
       </div>
-
       <div className="book-cloud book-cloud-1" aria-hidden />
       <div className="book-cloud book-cloud-2" aria-hidden />
     </section>

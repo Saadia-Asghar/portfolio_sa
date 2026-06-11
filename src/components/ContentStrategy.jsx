@@ -3,15 +3,8 @@ import { motion } from 'framer-motion';
 import SectionHeader from './SectionHeader';
 import { EXPERIENCE } from '../data/portfolio';
 
-const ExperienceSection = () => (
-  <section id="experience" className="section-block-wide">
-    <SectionHeader
-      index="Experience"
-      title="Roles & Leadership"
-      subtitle="Marketing, design, and campus ambassadorships."
-      accent="grow"
-    />
-
+const ExperienceSection = ({ embedded = false }) => {
+  const content = (
     <div className="space-y-3">
       {EXPERIENCE.map((exp, i) => (
         <motion.div
@@ -37,7 +30,21 @@ const ExperienceSection = () => (
         </motion.div>
       ))}
     </div>
-  </section>
-);
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section id="experience" className="section-block-wide">
+      <SectionHeader
+        index="Experience"
+        title="Roles & Leadership"
+        subtitle="Marketing, design, and campus ambassadorships."
+        accent="grow"
+      />
+      {content}
+    </section>
+  );
+};
 
 export default ExperienceSection;

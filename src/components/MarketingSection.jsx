@@ -53,15 +53,9 @@ const SceneCard = ({ scene }) => {
   );
 };
 
-const MarketingSection = () => (
-  <section id="marketing" className="section-block-wide">
-    <SectionHeader
-      index="Marketing"
-      title="Digital Storytelling"
-      subtitle="Content strategy, personal branding, and campus marketing leadership."
-      accent="grow"
-    />
-
+const MarketingSection = ({ embedded = false }) => {
+  const content = (
+    <>
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
       <Card accent="grow" className="lg:col-span-2">
         <blockquote className="text-lg text-zinc-300 italic mb-4">&ldquo;{PROFILE.quote}&rdquo;</blockquote>
@@ -128,12 +122,20 @@ const MarketingSection = () => (
     </Card>
 
     <div id="creative-lab" className="scroll-mt-28">
-      <SectionHeader
-        index="Creative"
-        title="Generative AI Studio"
-        subtitle={CREATIVE_LAB.subtitle}
-        accent="design"
-      />
+      {!embedded && (
+        <SectionHeader
+          index="Creative"
+          title="Generative AI Studio"
+          subtitle={CREATIVE_LAB.subtitle}
+          accent="design"
+        />
+      )}
+      {embedded && (
+        <div className="mb-6">
+          <h4 className="volume-inline-heading">Generative AI Studio</h4>
+          <p className="volume-inline-lead">{CREATIVE_LAB.subtitle}</p>
+        </div>
+      )}
       <Card accent="design">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <p className="text-sm text-zinc-500 leading-relaxed">{CREATIVE_LAB.desc}</p>
@@ -154,7 +156,22 @@ const MarketingSection = () => (
         </div>
       </Card>
     </div>
-  </section>
-);
+    </>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section id="marketing" className="section-block-wide">
+      <SectionHeader
+        index="Marketing"
+        title="Digital Storytelling"
+        subtitle="Content strategy, personal branding, and campus marketing leadership."
+        accent="grow"
+      />
+      {content}
+    </section>
+  );
+};
 
 export default MarketingSection;

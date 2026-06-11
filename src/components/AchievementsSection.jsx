@@ -27,14 +27,12 @@ const AchievementCard = ({ item }) => (
   </motion.article>
 );
 
-const AchievementsSection = () => {
+const AchievementsSection = ({ embedded = false }) => {
   const [track, setTrack] = useState('all');
   const filtered = track === 'all' ? ACHIEVEMENTS : ACHIEVEMENTS.filter((a) => a.track === track);
 
-  return (
-    <section id="achievements" className="section-block-wide">
-      <SectionHeader index="Achievements" title="Highlights" subtitle="Build wins and marketing leadership — equal weight." accent="muted" />
-
+  const content = (
+    <>
       <div className="flex gap-2 mb-8">
         {TRACKS.map((t) => (
           <button
@@ -53,6 +51,15 @@ const AchievementsSection = () => {
           <AchievementCard key={item.id} item={item} />
         ))}
       </motion.div>
+    </>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section id="achievements" className="section-block-wide">
+      <SectionHeader index="Achievements" title="Highlights" subtitle="Build wins and marketing leadership — equal weight." accent="muted" />
+      {content}
     </section>
   );
 };
