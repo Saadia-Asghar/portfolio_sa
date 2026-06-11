@@ -11,19 +11,23 @@ const TAB_IDS = PORTFOLIO_PATHS.grow.volume.tabs.map((t) => t.id);
 
 const GrowVolume = ({ onBack, initialSection }) => {
   const { volume } = PORTFOLIO_PATHS.grow;
-  const [activeTab, setActiveTab] = useState(() =>
-    TAB_IDS.includes(initialSection) ? initialSection : volume.tabs[0].id
-  );
+  const normalizeSection = (s) => (s === 'grow-resume' ? 'resume' : s);
+
+  const [activeTab, setActiveTab] = useState(() => {
+    const s = normalizeSection(initialSection);
+    return TAB_IDS.includes(s) ? s : volume.tabs[0].id;
+  });
 
   useEffect(() => {
-    if (initialSection && TAB_IDS.includes(initialSection)) {
-      setActiveTab(initialSection);
+    const s = normalizeSection(initialSection);
+    if (s && TAB_IDS.includes(s)) {
+      setActiveTab(s);
     }
   }, [initialSection]);
 
   const onTabChange = useCallback((tabId) => {
     setActiveTab(tabId);
-    window.location.hash = tabId;
+    window.location.hash = tabId === 'resume' ? 'grow-resume' : tabId;
   }, []);
 
   const tab = volume.tabs.find((t) => t.id === activeTab) || volume.tabs[0];

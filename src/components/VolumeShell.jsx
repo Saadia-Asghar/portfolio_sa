@@ -63,10 +63,10 @@ const VolumeShell = ({
           <AnimatePresence mode="wait">
             <motion.div
               key={pageKey || activeTab}
-              initial={{ opacity: 0, rotateY: -6, x: 16 }}
-              animate={{ opacity: 1, rotateY: 0, x: 0 }}
-              exit={{ opacity: 0, rotateY: 6, x: -16 }}
-              transition={{ duration: 0.32, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: 'easeOut' }}
               className="book-page volume-page"
               role="tabpanel"
               aria-labelledby={`tab-${activeTab}`}

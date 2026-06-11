@@ -63,7 +63,10 @@ function App() {
           <GrowVolume onBack={() => setPath('home')} initialSection={scrollTarget} />
         )}
 
-        <section id="connect" className="section-block max-w-2xl">
+        <section
+          id="connect"
+          className={`section-block max-w-2xl ${path !== 'home' ? 'volume-contact-compact' : ''}`}
+        >
           <SectionHeader
             index="Contact"
             title="Get in Touch"

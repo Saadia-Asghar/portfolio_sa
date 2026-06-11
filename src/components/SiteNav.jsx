@@ -20,6 +20,10 @@ const SiteNav = ({ activePath, onSelectPath, onGoContact }) => {
 
   const pickPath = (id) => {
     setOpen(false);
+    if (id === 'design') {
+      onSelectPath('design', 'cover');
+      return;
+    }
     onSelectPath(id);
   };
 

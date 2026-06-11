@@ -1,4 +1,7 @@
 import { Code2, Palette, Megaphone, Home } from 'lucide-react';
+import { DESIGN_BOOK_TABS } from './designBook';
+
+export const DESIGN_TAB_IDS = DESIGN_BOOK_TABS.map((t) => t.id);
 
 export const PORTFOLIO_PATHS = {
   home: {
@@ -126,16 +129,24 @@ export const PORTFOLIO_PATHS = {
 
 export const PATH_IDS = ['build', 'design', 'grow'];
 
-/** Map legacy section hashes to a path + optional scroll target */
-export const HASH_ROUTES = {
+/** Map section hashes to a path + optional in-page tab/section */
+const BASE_HASH_ROUTES = {
   connect: { path: 'home', scroll: 'connect' },
   about: { path: 'home', scroll: 'about' },
   projects: { path: 'build', scroll: 'projects' },
   hackathons: { path: 'build', scroll: 'hackathons' },
   tech: { path: 'build', scroll: 'tech' },
   resume: { path: 'build', scroll: 'resume' },
-  design: { path: 'design', scroll: 'design' },
+  design: { path: 'design', scroll: 'cover' },
   marketing: { path: 'grow', scroll: 'marketing' },
   experience: { path: 'grow', scroll: 'experience' },
   achievements: { path: 'grow', scroll: 'achievements' },
+  'grow-resume': { path: 'grow', scroll: 'resume' },
 };
+
+/** Design book chapter hashes must keep path on design (not fall through to home) */
+const DESIGN_HASH_ROUTES = Object.fromEntries(
+  DESIGN_TAB_IDS.filter((id) => id !== 'cover').map((id) => [id, { path: 'design', scroll: id }])
+);
+
+export const HASH_ROUTES = { ...BASE_HASH_ROUTES, ...DESIGN_HASH_ROUTES };

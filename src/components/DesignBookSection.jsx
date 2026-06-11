@@ -95,12 +95,14 @@ const BookMarquee = () => (
 const CoverPage = () => (
   <div className="book-page-inner book-cover-page">
     <BookMarquee />
-    <p className="book-edition">{DESIGN_BOOK.edition}</p>
-    <div className="book-cover-emblem">S.</div>
-    <h2 className="book-cover-title">Saadia Asghar</h2>
-    <p className="book-cover-sub">Product Designer · Storyteller</p>
-    <p className="book-cover-tagline">{DESIGN_BOOK.tagline}</p>
-    <p className="book-cover-line">{DESIGN_BOOK.heroLine}</p>
+    <div className="book-cover-hero">
+      <p className="book-edition">{DESIGN_BOOK.edition}</p>
+      <div className="book-cover-emblem">S.</div>
+      <h2 className="book-cover-title">Saadia Asghar</h2>
+      <p className="book-cover-sub">Product Designer · Storyteller</p>
+      <p className="book-cover-tagline">{DESIGN_BOOK.tagline}</p>
+      <p className="book-cover-line">{DESIGN_BOOK.heroLine}</p>
+    </div>
     <div className="book-cover-preview">
       <img src={DESIGN_BOOK.vyrothon.image} alt="Vyrothon prototype preview" className="book-cover-thumb" />
       <div className="book-cover-preview-text">
@@ -108,7 +110,7 @@ const CoverPage = () => (
         <p className="text-sm font-bold text-book-ink mt-1">Vyrothon case study inside →</p>
       </div>
     </div>
-    <div className="grid grid-cols-2 gap-3 mt-6">
+    <div className="book-cover-stats grid grid-cols-2 gap-3">
       {DESIGN_BOOK.stats.map((s) => (
         <div key={s.label} className="book-stat-chip">
           <span className="book-stat-num">{s.value}</span>
@@ -116,7 +118,7 @@ const CoverPage = () => (
         </div>
       ))}
     </div>
-    <p className="book-hint mt-6">Pick a bookmark tab to open a chapter →</p>
+    <p className="book-hint">Pick a bookmark tab to open a chapter →</p>
   </div>
 );
 
@@ -300,8 +302,10 @@ const DesignBookSection = ({ embedded = false, onBack, initialSection }) => {
   const Page = PAGE_MAP[activeTab];
 
   useEffect(() => {
-    if (initialSection && DESIGN_BOOK_TABS.some((t) => t.id === initialSection)) {
-      setActiveTab(initialSection);
+    const tabId =
+      initialSection === 'design' || !initialSection ? 'cover' : initialSection;
+    if (DESIGN_BOOK_TABS.some((t) => t.id === tabId)) {
+      setActiveTab(tabId);
     }
   }, [initialSection]);
 
