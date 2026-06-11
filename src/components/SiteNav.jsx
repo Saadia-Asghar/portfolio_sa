@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import { CONTACT } from '../data/portfolio';
+import { PATH_IDS, PORTFOLIO_PATHS } from '../data/paths';
 
-const LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Work' },
-  { href: '#design', label: 'Design' },
-  { href: '#marketing', label: 'Marketing' },
-  { href: '#connect', label: 'Contact' },
-];
-
-const SiteNav = () => {
+const SiteNav = ({ activePath, onSelectPath, onGoContact }) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,9 +13,14 @@ const SiteNav = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navigate = (href) => {
+  const goHome = () => {
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    onSelectPath('home');
+  };
+
+  const pickPath = (id) => {
+    setOpen(false);
+    onSelectPath(id);
   };
 
   return (
@@ -32,21 +30,37 @@ const SiteNav = () => {
           scrolled ? 'bg-canvas/90 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-5'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 md:px-8 flex items-center justify-between">
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="logo-text doodle-logo text-sm"
-          >
-            <span className="doodle-logo-mark">✎</span> Saadia Asghar
+        <div className="max-w-6xl mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
+          <button type="button" onClick={goHome} className="logo-text text-sm shrink-0">
+            <span className="logo-mark" aria-hidden>◆</span> Saadia Asghar
           </button>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {LINKS.map((link) => (
-              <button key={link.href} type="button" onClick={() => navigate(link.href)} className="nav-link">
-                {link.label}
+          <nav className="hidden md:flex items-center gap-1 p-1 rounded-full border border-white/10 bg-surface/60">
+            <button
+              type="button"
+              onClick={goHome}
+              className={`path-nav-pill ${activePath === 'home' ? 'path-nav-pill-active' : ''}`}
+            >
+              Home
+            </button>
+            {PATH_IDS.map((id) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => pickPath(id)}
+                className={`path-nav-pill path-nav-pill-${PORTFOLIO_PATHS[id].accent} ${
+                  activePath === id ? 'path-nav-pill-active' : ''
+                }`}
+              >
+                {PORTFOLIO_PATHS[id].label}
               </button>
             ))}
+          </nav>
+
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            <button type="button" onClick={onGoContact} className="nav-link">
+              Contact
+            </button>
             <a
               href={CONTACT.resumePath}
               download="Saadia_Asghar_Resume.png"
@@ -54,7 +68,7 @@ const SiteNav = () => {
             >
               <Download size={14} /> Resume
             </a>
-          </nav>
+          </div>
 
           <button
             type="button"
@@ -70,16 +84,24 @@ const SiteNav = () => {
       {open && (
         <div className="fixed inset-x-0 top-[60px] z-40 md:hidden bg-canvas/95 backdrop-blur-md border-b border-white/10 px-6 py-5">
           <nav className="flex flex-col gap-1">
-            {LINKS.map((link) => (
+            <button type="button" onClick={goHome} className="text-left py-3 text-sm text-zinc-300 border-b border-white/5">
+              Home
+            </button>
+            {PATH_IDS.map((id) => (
               <button
-                key={link.href}
+                key={id}
                 type="button"
-                onClick={() => navigate(link.href)}
-                className="text-left py-3 text-sm text-zinc-300 border-b border-white/5"
+                onClick={() => pickPath(id)}
+                className={`text-left py-3 text-sm border-b border-white/5 ${
+                  activePath === id ? 'text-white font-semibold' : 'text-zinc-300'
+                }`}
               >
-                {link.label}
+                {PORTFOLIO_PATHS[id].label} — {PORTFOLIO_PATHS[id].title}
               </button>
             ))}
+            <button type="button" onClick={() => { setOpen(false); onGoContact(); }} className="text-left py-3 text-sm text-zinc-300">
+              Contact
+            </button>
           </nav>
         </div>
       )}

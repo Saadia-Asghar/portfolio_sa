@@ -1,6 +1,8 @@
 import React from 'react';
 import SiteNav from './components/SiteNav';
 import Hero from './components/Hero';
+import PathHub from './components/PathHub';
+import PathHeader from './components/PathHeader';
 import DesignBookSection from './components/DesignBookSection';
 import MarketingSection from './components/MarketingSection';
 import HackathonSection from './components/HackathonSection';
@@ -14,20 +16,16 @@ import TerminalFooter from './components/TerminalFooter';
 import PageBackground from './components/PageBackground';
 import SectionHeader from './components/SectionHeader';
 import { Linkedin, Instagram, Mail, Github } from 'lucide-react';
-import { CONTACT, SKILL_GROUPS, PROFILE, OPEN_TO } from './data/portfolio';
-
-const skillTagMap = {
-  'spider-cyan': 'skill-tag-build',
-  'spider-magenta': 'skill-tag-grow',
-  'spider-yellow': 'skill-tag-design',
-  'spider-purple': 'skill-tag-dev',
-};
+import { CONTACT, OPEN_TO } from './data/portfolio';
+import { usePortfolioPath } from './hooks/usePortfolioPath';
 
 function App() {
+  const { path, setPath, goToSection } = usePortfolioPath();
+
   return (
     <div className="page-shell pb-20 xl:pb-0">
       <PageBackground />
-      <SiteNav />
+      <SiteNav activePath={path} onSelectPath={setPath} onGoContact={() => goToSection('connect')} />
 
       <aside className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-2">
         {[
@@ -50,70 +48,40 @@ function App() {
       </aside>
 
       <main className="relative z-10">
-        <Hero />
+        {path === 'home' && (
+          <>
+            <Hero onSelectPath={setPath} onGoContact={() => goToSection('connect')} />
+            <PathHub onSelectPath={setPath} onGoContact={() => goToSection('connect')} />
+            <ResumeSection />
+          </>
+        )}
 
-        <section id="about" className="section-block-wide">
-          <SectionHeader
-            index="About"
-            title="About Me"
-            subtitle={PROFILE.subtitle}
-            accent="build"
-          />
+        {path === 'build' && (
+          <>
+            <PathHeader path="build" onBack={() => setPath('home')} onSection={goToSection} />
+            <ProjectSection />
+            <HackathonSection />
+            <TechStackSection />
+            <ResumeSection />
+          </>
+        )}
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            <div className="space-y-4">
-              <p className="text-zinc-300 text-base md:text-lg leading-relaxed">{PROFILE.intro}</p>
-              <p className="text-sm text-zinc-500 leading-relaxed">{PROFILE.designBlurb}</p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
-                  View GitHub
-                </a>
-                <a href="#connect" className="btn-secondary text-sm">
-                  Contact me
-                </a>
-              </div>
-            </div>
+        {path === 'design' && (
+          <>
+            <PathHeader path="design" onBack={() => setPath('home')} onSection={goToSection} />
+            <DesignBookSection embedded />
+          </>
+        )}
 
-            <div className="space-y-6">
-              <div className="dual-track-bar">
-                <div className="dual-track-half">
-                  <span className="track-pill track-build w-fit mb-2">Build</span>
-                  <span className="dual-track-desc">Hackathons · full-stack · product</span>
-                </div>
-                <div className="dual-track-half">
-                  <span className="track-pill track-grow w-fit mb-2">Grow</span>
-                  <span className="dual-track-desc">Marketing · content · leadership</span>
-                </div>
-                <div className="dual-track-half">
-                  <span className="track-pill track-design w-fit mb-2">Design</span>
-                  <span className="dual-track-desc">Figma · identity · storytelling UI</span>
-                </div>
-              </div>
-
-              {SKILL_GROUPS.map((group) => (
-                <div key={group.label}>
-                  <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">{group.label}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {group.skills.map((s) => (
-                      <span key={s} className={`skill-tag ${skillTagMap[group.accent] || 'skill-tag-dev'}`}>
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <ProjectSection />
-        <DesignBookSection />
-        <MarketingSection />
-        <HackathonSection />
-        <ExperienceSection />
-        <AchievementsSection />
-        <TechStackSection />
-        <ResumeSection />
+        {path === 'grow' && (
+          <>
+            <PathHeader path="grow" onBack={() => setPath('home')} onSection={goToSection} />
+            <MarketingSection />
+            <ExperienceSection />
+            <AchievementsSection />
+            <ResumeSection />
+          </>
+        )}
 
         <section id="connect" className="section-block max-w-2xl">
           <SectionHeader

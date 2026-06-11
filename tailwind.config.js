@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: '#0a0c12',
-        surface: '#12151c',
+        canvas: '#0b0d11',
+        surface: '#13161d',
         'accent-build': '#38bdf8',
         'accent-grow': '#f472b6',
         'accent-design': '#fbbf24',
@@ -18,7 +18,8 @@ export default {
       },
       fontFamily: {
         tech: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        doodle: ['"Caveat"', '"Patrick Hand"', 'cursive'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        hand: ['"Caveat"', 'cursive'],
       },
     },
   },

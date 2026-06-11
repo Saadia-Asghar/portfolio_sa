@@ -4,8 +4,9 @@ import { CONTACT } from '../data/portfolio';
 
 const FOOTER_LINKS = [
   { label: 'Home', href: '#' },
-  { label: 'My Work', href: '#projects' },
-  { label: 'About', href: '#about' },
+  { label: 'Build · Engineering', href: '#build' },
+  { label: 'Design · Product', href: '#design' },
+  { label: 'Grow · Marketing', href: '#grow' },
   { label: 'Contact', href: '#connect' },
 ];
 

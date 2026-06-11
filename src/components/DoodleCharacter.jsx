@@ -169,7 +169,7 @@ const DoodleCharacter = ({ className = '' }) => (
         />
       </svg>
 
-      <span className="doodle-character-label">your friendly designer ✎</span>
+      <span className="doodle-character-label">Design-led · story-first</span>
     </div>
   </motion.div>
 );

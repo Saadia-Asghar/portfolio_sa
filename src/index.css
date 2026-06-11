@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Space+Grotesk:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Space+Grotesk:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --canvas: #0a0c12;
-  --surface: #12151c;
-  --border: rgba(255, 255, 255, 0.12);
-  --text: #fafafa;
+  --canvas: #0b0d11;
+  --surface: #13161d;
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f4f4f5;
   --muted: #a1a1aa;
   --accent-build: #38bdf8;
   --accent-grow: #f472b6;
   --accent-design: #fbbf24;
-  --doodle-ink: #fafafa;
-  --doodle-paper: #fef9c3;
-  --sketch-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-card: 1rem;
+  --radius-btn: 0.75rem;
+  --sketch-radius: 1.25rem;
 }
 
 html {
@@ -54,19 +54,44 @@ body {
   background: none;
 }
 
-.doodle-section-line {
-  height: 6px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8'%3E%3Cpath d='M0 4 Q30 0 60 4 T120 4' stroke='%2338bdf8' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
-    no-repeat center / contain;
+/* ── Professional typography ── */
+.pro-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-build);
+}
+
+.pro-label-hand {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #d4d4d8;
+}
+
+.pro-rule {
+  width: 3rem;
+  height: 2px;
+  margin-top: 0.35rem;
+  background: linear-gradient(90deg, var(--accent-build), transparent);
+  border-radius: 1px;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 /* ── Doodle theme ── */
 .doodle-paper-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 100%);
 }
 
 .doodle-decor-layer {
@@ -77,8 +102,8 @@ body {
 
 .doodle-scribble {
   position: absolute;
-  width: 100px;
-  opacity: 0.35;
+  width: 80px;
+  opacity: 0.12;
 }
 
 .doodle-scribble-1 {
@@ -105,9 +130,9 @@ body {
 .doodle-float-star {
   position: absolute;
   font-family: 'Caveat', cursive;
-  font-size: 1.5rem;
-  opacity: 0.2;
-  animation: doodle-float 5s ease-in-out infinite;
+  font-size: 1.25rem;
+  opacity: 0.08;
+  animation: doodle-float 8s ease-in-out infinite;
 }
 
 .doodle-star-a { top: 12%; right: 18%; color: #fbbf24; }
@@ -175,19 +200,22 @@ body {
 
 .doodle-character-frame {
   position: relative;
-  padding: 1.25rem;
-  background: linear-gradient(145deg, rgba(18, 21, 28, 0.9), rgba(12, 74, 110, 0.15));
-  border: 3px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--sketch-radius);
-  box-shadow: 6px 6px 0 rgba(56, 189, 248, 0.25), 0 24px 48px rgba(0, 0, 0, 0.35);
+  padding: 1.5rem 1.25rem 1rem;
+  background: linear-gradient(160deg, rgba(19, 22, 29, 0.95), rgba(12, 74, 110, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
 .doodle-character-frame::before {
   content: '';
   position: absolute;
-  inset: 8px;
-  border: 2px dashed rgba(251, 191, 36, 0.25);
-  border-radius: 240px 20px 220px 20px / 20px 220px 20px 240px;
+  top: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-design), var(--accent-build), transparent);
+  border-radius: 1px;
   pointer-events: none;
 }
 
@@ -200,36 +228,30 @@ body {
 .doodle-character-label {
   display: block;
   text-align: center;
-  margin-top: 0.75rem;
-  font-family: 'Caveat', cursive;
-  font-size: 1.1rem;
+  margin-top: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: #a1a1aa;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #71717a;
 }
 
 /* ── Surfaces ── */
 .surface-card {
-  @apply border bg-surface/80 backdrop-blur-sm transition-all duration-200;
+  @apply border bg-surface/90 backdrop-blur-sm transition-all duration-200;
   border-color: var(--border);
-  border-radius: 24px 8px 22px 10px / 10px 22px 8px 24px;
-  border-width: 2px;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-card);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
 }
 
 .surface-card:hover {
-  border-color: rgba(56, 189, 248, 0.35);
+  border-color: rgba(255, 255, 255, 0.16);
   @apply bg-surface;
-  transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0 rgba(56, 189, 248, 0.12);
 }
 
 /* ── Tracks (Build · Grow · Design) ── */
 .track-pill {
-  @apply text-xs font-medium px-3 py-1.5 border;
-  font-family: 'Caveat', cursive;
-  font-size: 0.95rem;
-  font-weight: 700;
-  border-radius: 255px 12px 225px 12px / 12px 225px 12px 255px;
+  @apply text-xs font-medium px-3 py-1.5 border rounded-full;
 }
 
 .track-build {
@@ -251,54 +273,59 @@ body {
 /* ── Buttons ── */
 .btn-primary {
   @apply inline-flex items-center justify-center px-5 py-2.5 font-semibold text-sm transition-all duration-200;
-  font-family: 'Caveat', cursive;
-  font-size: 1.05rem;
-  font-weight: 700;
   background: var(--accent-build);
-  color: #09090b;
-  border: 2px solid #0c4a6e;
-  border-radius: 255px 14px 225px 14px / 14px 225px 14px 255px;
-  box-shadow: 3px 3px 0 #0c4a6e;
+  color: #0b0d11;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-btn);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.08);
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 #0c4a6e;
+  filter: brightness(1.06);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center px-5 py-2.5 border border-white/20 text-white font-semibold text-sm backdrop-blur-sm transition-all duration-200;
-  font-family: 'Caveat', cursive;
-  font-size: 1.05rem;
-  font-weight: 700;
-  border-radius: 14px 255px 14px 225px / 225px 14px 255px 14px;
-  box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.06);
+  @apply inline-flex items-center justify-center px-5 py-2.5 border border-white/15 text-white font-semibold text-sm backdrop-blur-sm transition-all duration-200;
+  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .btn-secondary:hover {
-  @apply bg-white/5 border-white/30;
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.08);
+  @apply bg-white/5 border-white/25;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-zinc-400 transition-colors;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* ── Navigation ── */
 .logo-text {
-  @apply font-semibold text-white tracking-tight;
+  @apply font-semibold text-white tracking-tight font-display text-base;
+}
+
+.logo-mark {
+  color: var(--accent-design);
+  font-size: 0.55rem;
+  vertical-align: middle;
+  margin-right: 0.35rem;
 }
 
 .nav-link {
-  @apply text-sm text-zinc-400 hover:text-white transition-colors;
-  font-family: 'Caveat', cursive;
-  font-size: 1.05rem;
-  font-weight: 600;
+  @apply text-sm text-zinc-400 hover:text-white transition-colors font-medium;
 }
 
 .nav-link:hover {
-  text-decoration: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: var(--accent-design);
-  text-underline-offset: 4px;
+  color: var(--accent-build);
 }
 
 /* ── Cards & lists ── */
@@ -368,10 +395,7 @@ body {
 
 /* ── Skill tags ── */
 .skill-tag {
-  @apply text-xs px-2.5 py-1 border border-white/10 text-zinc-400 bg-white/[0.03];
-  border-radius: 10px 18px 10px 16px / 16px 10px 18px 10px;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 0.85rem;
+  @apply text-xs px-2.5 py-1 border border-white/10 text-zinc-400 bg-white/[0.03] rounded-lg;
 }
 
 .skill-tag-build {
@@ -473,6 +497,10 @@ body {
   background: linear-gradient(165deg, #0c4a6e 0%, #0284c7 35%, #38bdf8 70%, #7dd3fc 100%);
   position: relative;
   overflow: hidden;
+}
+
+.design-book-embedded {
+  border-top: none;
 }
 
 .design-book-zone::before {
@@ -1017,6 +1045,280 @@ body {
 
 .book-muted {
   color: #78716c;
+}
+
+/* ── Path hub & recruiter navigation ── */
+.path-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .path-hub-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.path-hub-card {
+  position: relative;
+  text-align: left;
+  padding: 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  overflow: hidden;
+}
+
+.path-hub-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent-build);
+  opacity: 0.6;
+}
+
+.path-hub-design::before { background: var(--accent-design); }
+.path-hub-grow::before { background: var(--accent-grow); }
+
+.path-hub-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(19, 22, 29, 0.95);
+}
+
+.path-hub-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.path-hub-arrow {
+  color: #52525b;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.path-hub-card:hover .path-hub-arrow {
+  color: white;
+  transform: translate(2px, -2px);
+}
+
+.path-hub-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.path-hub-build .path-hub-icon { color: var(--accent-build); background: rgba(56, 189, 248, 0.08); }
+.path-hub-design .path-hub-icon { color: var(--accent-design); background: rgba(251, 191, 36, 0.08); }
+.path-hub-grow .path-hub-icon { color: var(--accent-grow); background: rgba(244, 114, 182, 0.08); }
+
+.path-hub-recruiter {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717a;
+  margin-bottom: 0.35rem;
+}
+
+.path-hub-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+
+.path-hub-tagline {
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
+}
+
+.path-hub-proof {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.72rem;
+  color: #71717a;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.path-hub-proof li::before {
+  content: '— ';
+  color: #52525b;
+}
+
+.path-header-bar {
+  padding-top: 5.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(to bottom, rgba(19, 22, 29, 0.85), transparent);
+}
+
+.path-header-build { border-bottom-color: rgba(56, 189, 248, 0.15); }
+.path-header-design { border-bottom-color: rgba(251, 191, 36, 0.15); }
+.path-header-grow { border-bottom-color: rgba(244, 114, 182, 0.15); }
+
+.path-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #a1a1aa;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.path-back-btn:hover {
+  color: white;
+}
+
+.path-header-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.path-header-icon-build { color: var(--accent-build); background: rgba(56, 189, 248, 0.08); }
+.path-header-icon-design { color: var(--accent-design); background: rgba(251, 191, 36, 0.08); }
+.path-header-icon-grow { color: var(--accent-grow); background: rgba(244, 114, 182, 0.08); }
+
+.path-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.path-subnav-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #d4d4d8;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.path-subnav-link:hover {
+  color: white;
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.path-nav-pill {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.path-nav-pill:hover {
+  color: white;
+}
+
+.path-nav-pill-active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: 600;
+}
+
+.path-nav-pill-build.path-nav-pill-active {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-build);
+}
+
+.path-nav-pill-design.path-nav-pill-active {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--accent-design);
+}
+
+.path-nav-pill-grow.path-nav-pill-active {
+  background: rgba(244, 114, 182, 0.15);
+  color: var(--accent-grow);
+}
+
+.hero-path-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hero-path-card-icon {
+  display: flex;
+  margin-bottom: 0.35rem;
+}
+
+.hero-path-card-build .hero-path-card-icon { color: var(--accent-build); }
+.hero-path-card-design .hero-path-card-icon { color: var(--accent-design); }
+.hero-path-card-grow .hero-path-card-icon { color: var(--accent-grow); }
+
+.hero-path-card-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+}
+
+.hero-path-card-hint {
+  font-size: 0.68rem;
+  color: #71717a;
+  line-height: 1.3;
+}
+
+.hero-path-card-arrow {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  color: #52525b;
+  transition: all 0.2s;
+}
+
+.hero-path-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+
+.hero-path-card:hover .hero-path-card-arrow {
+  color: white;
 }
 
 /* Marquee */
