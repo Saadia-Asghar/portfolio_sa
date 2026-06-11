@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { CONTACT, PROFILE } from '../data/portfolio';
+import DoodleCharacter from './DoodleCharacter';
 
 const Hero = () => (
   <section className="relative pt-28 pb-16 md:pt-32 md:pb-20">
@@ -13,13 +14,13 @@ const Hero = () => (
           transition={{ duration: 0.6 }}
           className="order-2 lg:order-1 text-center lg:text-left"
         >
-          <p className="text-sm text-accent-build font-medium mb-4">{PROFILE.heroGreeting}</p>
+          <p className="doodle-hand text-lg text-accent-design mb-3">{PROFILE.heroGreeting}</p>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] doodle-title">
             Saadia Asghar
           </h1>
 
-          <p className="mt-4 text-lg text-zinc-400 font-medium">{PROFILE.title}</p>
+          <p className="mt-4 text-lg text-zinc-400 font-medium doodle-subtitle">{PROFILE.title}</p>
 
           <p className="mt-5 text-base text-zinc-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
             {PROFILE.heroTagline}
@@ -52,15 +53,7 @@ const Hero = () => (
           transition={{ duration: 0.6, delay: 0.15 }}
           className="order-1 lg:order-2 flex justify-center lg:justify-end"
         >
-          <div className="profile-portrait">
-            <img
-              src={CONTACT.profileImage}
-              alt={CONTACT.name}
-              className="w-full h-full object-cover object-top"
-              width={320}
-              height={400}
-            />
-          </div>
+          <DoodleCharacter />
         </motion.div>
       </div>
     </div>

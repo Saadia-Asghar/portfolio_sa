@@ -1,16 +1,58 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, Figma, Palette } from 'lucide-react';
 import { DESIGN_BOOK, DESIGN_BOOK_TABS } from '../data/designBook';
 
-const WorkGrid = ({ items, showDesc = false }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-    {items.map((item) => (
-      <div key={item.title} className="book-work-card">
+const LinkChip = ({ href, label, variant = 'figma' }) => {
+  if (!href) return null;
+  const Icon = variant === 'canva' ? Palette : Figma;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`book-link-chip book-link-chip-${variant}`}
+    >
+      <Icon size={14} />
+      {label}
+      <ExternalLink size={12} className="opacity-60" />
+    </a>
+  );
+};
+
+const WorkCard = ({ item, showDesc = false, variant = 'product' }) => {
+  const linkVariant = item.link?.includes('canva') ? 'canva' : 'figma';
+
+  return (
+    <div className="book-work-card">
+      {item.image && (
+        <a href={item.link} target="_blank" rel="noopener noreferrer" className="book-work-image-wrap">
+          <img src={item.image} alt={item.title} className="book-work-image" loading="lazy" />
+          <div className="book-work-image-overlay">
+            <span>{item.linkLabel || 'View project'}</span>
+          </div>
+        </a>
+      )}
+      {!item.image && item.link && (
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`book-work-placeholder book-work-placeholder-${variant}`}
+        >
+          <Palette size={28} strokeWidth={1.5} />
+          <span>Open in Canva</span>
+        </a>
+      )}
+      <div className="book-work-body">
         {item.badge && <span className="book-work-badge">{item.badge}</span>}
         <h4 className="book-work-title">{item.title}</h4>
-        {item.role && <p className="book-work-meta">{item.role}</p>}
-        {showDesc && item.desc && <p className="book-work-desc">{item.desc}</p>}
+        {(item.role || item.subtitle) && (
+          <p className="book-work-meta">{item.role || item.subtitle}</p>
+        )}
+        {showDesc && (item.desc || item.impact) && (
+          <p className="book-work-desc">{item.desc || item.impact}</p>
+        )}
         <div className="flex flex-wrap gap-1.5 mt-2">
           {(item.tags || []).map((t) => (
             <span key={t} className="book-tag">
@@ -18,19 +60,53 @@ const WorkGrid = ({ items, showDesc = false }) => (
             </span>
           ))}
         </div>
+        {item.link && (
+          <div className="mt-3">
+            <LinkChip href={item.link} label={item.linkLabel || 'Open'} variant={linkVariant} />
+          </div>
+        )}
       </div>
+    </div>
+  );
+};
+
+const WorkGrid = ({ items, showDesc = false, variant = 'product' }) => (
+  <div className="book-work-grid">
+    {items.map((item) => (
+      <WorkCard key={item.id || item.title} item={item} showDesc={showDesc} variant={variant} />
     ))}
+  </div>
+);
+
+const BookMarquee = () => (
+  <div className="book-marquee" aria-hidden>
+    <div className="book-marquee-track">
+      {[...DESIGN_BOOK.marqueeWords, ...DESIGN_BOOK.marqueeWords].map((word, i) => (
+        <span key={`${word}-${i}`} className="book-marquee-word">
+          {word} <span className="book-marquee-star">✺</span>
+        </span>
+      ))}
+    </div>
   </div>
 );
 
 const CoverPage = () => (
   <div className="book-page-inner book-cover-page">
+    <BookMarquee />
     <p className="book-edition">{DESIGN_BOOK.edition}</p>
+    <div className="book-cover-emblem">S.</div>
     <h2 className="book-cover-title">Saadia Asghar</h2>
-    <p className="book-cover-sub">Product Designer · Portfolio</p>
+    <p className="book-cover-sub">Product Designer · Storyteller</p>
     <p className="book-cover-tagline">{DESIGN_BOOK.tagline}</p>
     <p className="book-cover-line">{DESIGN_BOOK.heroLine}</p>
-    <div className="grid grid-cols-2 gap-3 mt-8">
+    <div className="book-cover-preview">
+      <img src={DESIGN_BOOK.vyrothon.image} alt="Vyrothon prototype preview" className="book-cover-thumb" />
+      <div className="book-cover-preview-text">
+        <span className="book-work-badge">Featured · 1st Product Design</span>
+        <p className="text-sm font-bold text-book-ink mt-1">Vyrothon case study inside →</p>
+      </div>
+    </div>
+    <div className="grid grid-cols-2 gap-3 mt-6">
       {DESIGN_BOOK.stats.map((s) => (
         <div key={s.label} className="book-stat-chip">
           <span className="book-stat-num">{s.value}</span>
@@ -38,7 +114,7 @@ const CoverPage = () => (
         </div>
       ))}
     </div>
-    <p className="book-hint mt-8">Pick a bookmark tab to open a chapter →</p>
+    <p className="book-hint mt-6">Pick a bookmark tab to open a chapter →</p>
   </div>
 );
 
@@ -64,13 +140,16 @@ const VyrothonPage = () => {
   return (
     <div className="book-page-inner">
       <h3 className="book-chapter-title">II · Featured Case Study</h3>
-      <span className="book-work-badge">{v.badge}</span>
-      <h4 className="text-xl font-bold text-book-ink mt-2">{v.title}</h4>
-      <p className="book-work-meta">{v.event}</p>
+      <div className="book-featured-hero">
+        <img src={v.image} alt={v.title} className="book-featured-img" />
+        <div className="book-featured-caption">
+          <span className="book-work-badge">{v.badge}</span>
+          <h4 className="text-lg font-bold text-book-ink mt-2">{v.title}</h4>
+          <p className="book-work-meta">{v.event}</p>
+        </div>
+      </div>
       <p className="book-body mt-4">{v.summary}</p>
-      <a href={v.figmaUrl} target="_blank" rel="noopener noreferrer" className="book-link-btn mt-4">
-        View on design portfolio <ExternalLink size={14} />
-      </a>
+      <LinkChip href={v.figmaUrl} label="View the design on Figma" variant="figma" />
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-6">
         {v.metrics.map((m) => (
           <div key={m.label} className="book-stat-chip">
@@ -100,17 +179,19 @@ const ProductPage = () => (
   <div className="book-page-inner">
     <h3 className="book-chapter-title">III · Product Design</h3>
     <p className="book-body mb-6">
-      End-to-end product work — from independent concepts to hackathon submissions. Vyrothon is in Chapter II; more below.
+      Figma · interactive prototypes · hi-fi UI — end-to-end product work from hackathons to independent concepts.
     </p>
-    <WorkGrid items={DESIGN_BOOK.productWork} showDesc />
+    <WorkGrid items={DESIGN_BOOK.productWork} showDesc variant="product" />
   </div>
 );
 
 const AcmPage = () => (
   <div className="book-page-inner">
     <h3 className="book-chapter-title">IV · ACM · GIKI</h3>
-    <p className="book-body mb-6">Posters, event identities, and marketing collateral for ACM at GIKI.</p>
-    <WorkGrid items={DESIGN_BOOK.acmWork} />
+    <p className="book-body mb-6">
+      Core Design &amp; Marketing — posters, event identities, and campaign collateral for ACM at GIKI.
+    </p>
+    <WorkGrid items={DESIGN_BOOK.acmWork} variant="acm" />
   </div>
 );
 
@@ -120,7 +201,7 @@ const MlsaPage = () => (
     <p className="book-body mb-6">
       Visual identity, certificates, carousels, and event collateral for MLSA at GIKI.
     </p>
-    <WorkGrid items={DESIGN_BOOK.mlsaWork} />
+    <WorkGrid items={DESIGN_BOOK.mlsaWork} variant="mlsa" />
   </div>
 );
 
@@ -130,15 +211,15 @@ const PreMedPage = () => (
     <p className="book-body mb-6">
       Graphic Design Associate · Remote · May 2025 — visual identity and education collateral.
     </p>
-    <WorkGrid items={DESIGN_BOOK.premedWork} showDesc />
+    <WorkGrid items={DESIGN_BOOK.premedWork} showDesc variant="premed" />
   </div>
 );
 
 const ProcessPage = () => (
   <div className="book-page-inner">
     <h3 className="book-chapter-title">VII · How I Work</h3>
-    <p className="book-body mb-6">A short loop I run on every project, big or small.</p>
-    <div className="space-y-4">
+    <p className="book-body mb-6">Listen · Frame · Prototype · Edit — a short loop on every project.</p>
+    <div className="book-process-grid">
       {DESIGN_BOOK.process.map((p) => (
         <div key={p.step} className="book-process-step">
           <span className="book-process-n">Step {p.step} / 4</span>
@@ -159,6 +240,9 @@ const AwardsPage = () => (
           <div>
             <p className="font-semibold text-book-ink">{a.title}</p>
             <p className="text-sm text-book-muted">{a.context}</p>
+            {a.link && (
+              <LinkChip href={a.link} label="View design" variant={a.link.includes('canva') ? 'canva' : 'figma'} />
+            )}
           </div>
           <span className="book-award-date">{a.period}</span>
         </div>
@@ -176,6 +260,14 @@ const AwardsPage = () => (
     <div className="flex flex-wrap gap-2 mb-6">
       {DESIGN_BOOK.designTools.map((t) => (
         <span key={t} className="book-tag book-tag-accent">
+          {t}
+        </span>
+      ))}
+    </div>
+    <p className="book-section-label">Tech stack</p>
+    <div className="flex flex-wrap gap-2 mb-6">
+      {DESIGN_BOOK.techStack.map((t) => (
+        <span key={t} className="book-tag">
           {t}
         </span>
       ))}
@@ -215,17 +307,16 @@ const DesignBookSection = () => {
 
   return (
     <section id="design" className="design-book-zone scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20 relative z-10">
         <div className="text-center mb-10">
           <p className="text-sm font-semibold text-sky-200/90 uppercase tracking-widest">Design Portfolio</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">Open the Design Book</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 font-[Nunito]">Open the Design Book</h2>
           <p className="text-sky-100/70 mt-2 max-w-lg mx-auto text-sm">
-            A pocket-dimension portfolio — flip through chapters like a storybook. Inspired by adventure &amp; gadgets.
+            Every chapter links to Figma prototypes &amp; Canva designs — tap a card to explore the real work.
           </p>
         </div>
 
         <div className="design-book-shell">
-          {/* Bookmark tabs */}
           <div className="book-tabs" role="tablist" aria-label="Design portfolio chapters">
             {DESIGN_BOOK_TABS.map((tab) => (
               <button
@@ -235,7 +326,6 @@ const DesignBookSection = () => {
                 aria-selected={activeTab === tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`book-tab ${activeTab === tab.id ? 'book-tab-active' : ''}`}
-                style={{ '--tab-hue': tab.id === 'cover' ? '#fde047' : undefined }}
               >
                 <span className="book-tab-roman">{tab.roman}</span>
                 <span className="book-tab-label">{tab.label}</span>
@@ -243,7 +333,6 @@ const DesignBookSection = () => {
             ))}
           </div>
 
-          {/* Book body */}
           <div className="design-book-body">
             <div className="book-spine" aria-hidden>
               <span className="book-spine-text">SAADIA · DESIGN · {DESIGN_BOOK.edition}</span>
@@ -254,10 +343,10 @@ const DesignBookSection = () => {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, rotateY: -8, x: 20 }}
+                  initial={{ opacity: 0, rotateY: -6, x: 16 }}
                   animate={{ opacity: 1, rotateY: 0, x: 0 }}
-                  exit={{ opacity: 0, rotateY: 8, x: -20 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  exit={{ opacity: 0, rotateY: 6, x: -16 }}
+                  transition={{ duration: 0.32, ease: 'easeOut' }}
                   className="book-page"
                   role="tabpanel"
                 >
@@ -266,7 +355,13 @@ const DesignBookSection = () => {
               </AnimatePresence>
 
               <div className="book-nav">
-                <button type="button" onClick={goPrev} disabled={tabIndex === 0} className="book-nav-btn" aria-label="Previous chapter">
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  disabled={tabIndex === 0}
+                  className="book-nav-btn"
+                  aria-label="Previous chapter"
+                >
                   <ChevronLeft size={18} /> Prev
                 </button>
                 <span className="book-nav-indicator">
@@ -284,26 +379,16 @@ const DesignBookSection = () => {
               </div>
             </div>
 
-            {/* Gadget pocket decoration */}
             <div className="book-gadget-pocket" aria-hidden>
               <div className="book-gadget-ring" />
               <span className="book-gadget-dot" />
             </div>
           </div>
         </div>
-
-        <p className="text-center text-sky-200/50 text-xs mt-6">
-          Also live at{' '}
-          <a
-            href="https://design-portfolio-rouge-five.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-sky-100"
-          >
-            design-portfolio-rouge-five.vercel.app
-          </a>
-        </p>
       </div>
+
+      <div className="book-cloud book-cloud-1" aria-hidden />
+      <div className="book-cloud book-cloud-2" aria-hidden />
     </section>
   );
 };

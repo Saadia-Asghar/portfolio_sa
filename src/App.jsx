@@ -42,7 +42,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className="p-2.5 rounded-xl border border-white/10 bg-surface/80 text-zinc-500 hover:text-white hover:border-white/20 transition-colors"
+            className="p-2.5 doodle-icon-btn border border-white/10 bg-surface/80 text-zinc-500 hover:text-white hover:border-accent-build/40 transition-colors"
           >
             <Icon size={18} />
           </a>

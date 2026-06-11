@@ -23,8 +23,8 @@ const SectionHeader = ({ index, title, subtitle, align = 'left', accent = 'muted
           {index}
         </span>
       )}
-      <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{title}</h2>
-      <div className={`section-line ${align === 'center' ? 'mx-auto' : ''}`} />
+      <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight doodle-section-title">{title}</h2>
+      <div className={`section-line doodle-section-line ${align === 'center' ? 'mx-auto' : ''}`} />
       {subtitle && (
         <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl mt-1">{subtitle}</p>
       )}

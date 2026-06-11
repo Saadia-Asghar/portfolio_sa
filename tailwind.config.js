@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: '#09090b',
-        surface: '#111114',
+        canvas: '#0a0c12',
+        surface: '#12151c',
         'accent-build': '#38bdf8',
         'accent-grow': '#f472b6',
         'accent-design': '#fbbf24',
@@ -18,6 +18,7 @@ export default {
       },
       fontFamily: {
         tech: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        doodle: ['"Caveat"', '"Patrick Hand"', 'cursive'],
       },
     },
   },

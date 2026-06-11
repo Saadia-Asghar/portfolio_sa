@@ -36,9 +36,9 @@ const SiteNav = () => {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="logo-text text-sm"
+            className="logo-text doodle-logo text-sm"
           >
-            Saadia Asghar
+            <span className="doodle-logo-mark">✎</span> Saadia Asghar
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
