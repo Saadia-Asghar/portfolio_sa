@@ -10,6 +10,7 @@ import {
   MARKETING_HIGHLIGHTS,
   MARKETING_PORTFOLIO,
   ATOMCAMP_REELS,
+  GROW_SHOWCASE_SCENES,
   CREATIVE_LAB,
 } from '../data/portfolio';
 
@@ -102,7 +103,7 @@ const MarketingSection = ({ embedded = false }) => {
 
     <h3 className="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-5">Experience highlights</h3>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-      {MARKETING_SCENES.map((scene) => (
+      {MARKETING_SCENES.filter((s) => GROW_SHOWCASE_SCENES.includes(s.scene)).map((scene) => (
         <SceneCard key={scene.scene} scene={scene} />
       ))}
     </div>

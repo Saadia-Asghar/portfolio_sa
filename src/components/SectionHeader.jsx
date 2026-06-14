@@ -24,7 +24,7 @@ const SectionHeader = ({ index, title, subtitle, align = 'left', accent = 'muted
         </span>
       )}
       <h2 className="font-display text-2xl md:text-3xl font-semibold text-white tracking-tight">{title}</h2>
-      <div className={`pro-rule ${align === 'center' ? 'mx-auto' : ''}`} />
+      <div className={`pro-rule ${align === 'center' ? 'mx-auto' : ''} pro-rule-accent-${accent}`} />
       {subtitle && (
         <p className="text-sm md:text-base text-zinc-500 leading-relaxed max-w-2xl mt-1">{subtitle}</p>
       )}

@@ -5,13 +5,17 @@ import MarketingSection from './MarketingSection';
 import ExperienceSection from './ContentStrategy';
 import AchievementsSection from './AchievementsSection';
 import ResumeSection from './ResumeSection';
-import { PORTFOLIO_PATHS } from '../data/paths';
+import { PORTFOLIO_PATHS, hashForPath } from '../data/paths';
 
 const TAB_IDS = PORTFOLIO_PATHS.grow.volume.tabs.map((t) => t.id);
 
 const GrowVolume = ({ onBack, initialSection }) => {
   const { volume } = PORTFOLIO_PATHS.grow;
-  const normalizeSection = (s) => (s === 'grow-resume' ? 'resume' : s);
+  const normalizeSection = (s) => {
+    if (s === 'grow-resume') return 'resume';
+    if (s === 'grow-experience') return 'experience';
+    return s;
+  };
 
   const [activeTab, setActiveTab] = useState(() => {
     const s = normalizeSection(initialSection);
@@ -27,7 +31,8 @@ const GrowVolume = ({ onBack, initialSection }) => {
 
   const onTabChange = useCallback((tabId) => {
     setActiveTab(tabId);
-    window.location.hash = tabId === 'resume' ? 'grow-resume' : tabId;
+    const hash = hashForPath('grow', tabId);
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${hash}`);
   }, []);
 
   const tab = volume.tabs.find((t) => t.id === activeTab) || volume.tabs[0];
@@ -56,7 +61,7 @@ const GrowVolume = ({ onBack, initialSection }) => {
         onTabChange={onTabChange}
         spineText={volume.spine}
       >
-        <VolumeChapter roman={tab.roman} title={tab.title} subtitle={tab.subtitle}>
+        <VolumeChapter roman={tab.roman} title={tab.title} subtitle={tab.subtitle} tone="grow">
           {panel}
         </VolumeChapter>
       </VolumeShell>

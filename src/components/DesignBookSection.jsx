@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ExternalLink, Figma, Palette } from 'lucide-react';
 import { DESIGN_BOOK, DESIGN_BOOK_TABS } from '../data/designBook';
-import { PORTFOLIO_PATHS } from '../data/paths';
+import { PORTFOLIO_PATHS, hashForPath } from '../data/paths';
 import VolumePathLayout from './VolumePathLayout';
 import VolumeShell from './VolumeShell';
+import HighlightHeading from './HighlightHeading';
+
+const ChapterTitle = ({ children }) => (
+  <HighlightHeading as="h3" tone="design" className="book-chapter-title">
+    {children}
+  </HighlightHeading>
+);
 
 const LinkChip = ({ href, label, variant = 'figma' }) => {
   if (!href) return null;
@@ -26,7 +33,7 @@ const WorkCard = ({ item, showDesc = false, variant = 'product' }) => {
   const linkVariant = item.link?.includes('canva') ? 'canva' : 'figma';
 
   return (
-    <div className="book-work-card">
+    <article className="book-work-open">
       {item.image && (
         <a href={item.link} target="_blank" rel="noopener noreferrer" className="book-work-image-wrap">
           <img src={item.image} alt={item.title} className="book-work-image" loading="lazy" />
@@ -68,7 +75,7 @@ const WorkCard = ({ item, showDesc = false, variant = 'product' }) => {
           </div>
         )}
       </div>
-    </div>
+    </article>
   );
 };
 
@@ -80,51 +87,49 @@ const WorkGrid = ({ items, showDesc = false, variant = 'product' }) => (
   </div>
 );
 
-const BookMarquee = () => (
-  <div className="book-marquee" aria-hidden>
-    <div className="book-marquee-track">
-      {[...DESIGN_BOOK.marqueeWords, ...DESIGN_BOOK.marqueeWords].map((word, i) => (
-        <span key={`${word}-${i}`} className="book-marquee-word">
-          {word} <span className="book-marquee-star">✺</span>
-        </span>
+const CoverPage = ({ onOpenChapter }) => (
+  <div className="mag-design-cover book-page-inner">
+    <p className="mag-design-kicker">{DESIGN_BOOK.edition}</p>
+
+    <div className="mag-design-cover-hero">
+      <HighlightHeading as="h2" tone="design" className="mag-design-cover-title">
+        Saadia Asghar
+      </HighlightHeading>
+      <p className="mag-design-cover-sub">Product Designer · Storyteller</p>
+      <p className="mag-design-cover-tagline">{DESIGN_BOOK.tagline}</p>
+      <p className="mag-design-cover-line">{DESIGN_BOOK.heroLine}</p>
+    </div>
+
+    <div className="mag-design-skills" aria-label="Design focus areas">
+      {DESIGN_BOOK.marqueeWords.slice(0, 10).map((word) => (
+        <span key={word}>{word}</span>
       ))}
     </div>
-  </div>
-);
 
-const CoverPage = () => (
-  <div className="book-page-inner book-cover-page">
-    <BookMarquee />
-    <div className="book-cover-hero">
-      <p className="book-edition">{DESIGN_BOOK.edition}</p>
-      <div className="book-cover-emblem">S.</div>
-      <h2 className="book-cover-title">Saadia Asghar</h2>
-      <p className="book-cover-sub">Product Designer · Storyteller</p>
-      <p className="book-cover-tagline">{DESIGN_BOOK.tagline}</p>
-      <p className="book-cover-line">{DESIGN_BOOK.heroLine}</p>
-    </div>
-    <div className="book-cover-preview">
-      <img src={DESIGN_BOOK.vyrothon.image} alt="Vyrothon prototype preview" className="book-cover-thumb" />
-      <div className="book-cover-preview-text">
-        <span className="book-work-badge">Featured · 1st Product Design</span>
-        <p className="text-sm font-bold text-book-ink mt-1">Vyrothon case study inside →</p>
+    <button type="button" className="mag-design-featured" onClick={() => onOpenChapter?.('vyrothon')}>
+      <img src={DESIGN_BOOK.vyrothon.image} alt="Vyrothon prototype preview" loading="lazy" />
+      <div>
+        <span className="mag-design-featured-badge">Featured · 1st Product Design</span>
+        <p className="mag-design-featured-title">Vyrothon case study → open chapter II</p>
       </div>
-    </div>
-    <div className="book-cover-stats grid grid-cols-2 gap-3">
+    </button>
+
+    <div className="mag-design-stats">
       {DESIGN_BOOK.stats.map((s) => (
-        <div key={s.label} className="book-stat-chip">
-          <span className="book-stat-num">{s.value}</span>
-          <span className="book-stat-lbl">{s.label}</span>
+        <div key={s.label} className="mag-design-stat">
+          <span className="mag-design-stat-num">{s.value}</span>
+          <span className="mag-design-stat-lbl">{s.label}</span>
         </div>
       ))}
     </div>
-    <p className="book-hint">Pick a bookmark tab to open a chapter →</p>
+
+    <p className="mag-design-hint">Use the section tabs above to open a chapter.</p>
   </div>
 );
 
 const ManifestoPage = () => (
   <div className="book-page-inner">
-    <h3 className="book-chapter-title">I · Manifesto</h3>
+    <ChapterTitle>I · Manifesto</ChapterTitle>
     <blockquote className="book-quote">{DESIGN_BOOK.manifesto.quote}</blockquote>
     <p className="book-body">{DESIGN_BOOK.manifesto.bio}</p>
     <p className="book-section-label mt-6">Principles</p>
@@ -143,12 +148,12 @@ const VyrothonPage = () => {
   const v = DESIGN_BOOK.vyrothon;
   return (
     <div className="book-page-inner">
-      <h3 className="book-chapter-title">II · Featured Case Study</h3>
+      <ChapterTitle>II · Featured Case Study</ChapterTitle>
       <div className="book-featured-hero">
         <img src={v.image} alt={v.title} className="book-featured-img" />
         <div className="book-featured-caption">
           <span className="book-work-badge">{v.badge}</span>
-          <h4 className="text-lg font-bold text-book-ink mt-2">{v.title}</h4>
+          <h4 className="text-lg font-bold book-ink mt-2">{v.title}</h4>
           <p className="book-work-meta">{v.event}</p>
         </div>
       </div>
@@ -181,7 +186,7 @@ const VyrothonPage = () => {
 
 const ProductPage = () => (
   <div className="book-page-inner">
-    <h3 className="book-chapter-title">III · Product Design</h3>
+    <ChapterTitle>III · Product Design</ChapterTitle>
     <p className="book-body mb-6">
       Figma · interactive prototypes · hi-fi UI — end-to-end product work from hackathons to independent concepts.
     </p>
@@ -191,7 +196,7 @@ const ProductPage = () => (
 
 const AcmPage = () => (
   <div className="book-page-inner">
-    <h3 className="book-chapter-title">IV · ACM · GIKI</h3>
+    <ChapterTitle>IV · ACM · GIKI</ChapterTitle>
     <p className="book-body mb-6">
       Core Design &amp; Marketing — posters, event identities, and campaign collateral for ACM at GIKI.
     </p>
@@ -201,7 +206,7 @@ const AcmPage = () => (
 
 const MlsaPage = () => (
   <div className="book-page-inner">
-    <h3 className="book-chapter-title">V · MLSA · Microsoft Club</h3>
+    <ChapterTitle>V · MLSA · Microsoft Club</ChapterTitle>
     <p className="book-body mb-6">
       Visual identity, certificates, carousels, and event collateral for MLSA at GIKI.
     </p>
@@ -209,25 +214,53 @@ const MlsaPage = () => (
   </div>
 );
 
-const PreMedPage = () => (
-  <div className="book-page-inner">
-    <h3 className="book-chapter-title">VI · PreMed.PK</h3>
-    <p className="book-body mb-6">
-      Graphic Design Associate · Remote · May 2025 — visual identity and education collateral.
-    </p>
-    <WorkGrid items={DESIGN_BOOK.premedWork} showDesc variant="premed" />
-  </div>
-);
+const PreMedPage = () => {
+  const p = DESIGN_BOOK.premed;
+  return (
+    <div className="book-page-inner">
+      <ChapterTitle>VI · Featured Case Study</ChapterTitle>
+      <span className="book-work-badge">{p.badge}</span>
+      <h4 className="text-lg font-bold book-ink mt-2">{p.title}</h4>
+      <p className="book-work-meta">{p.period}</p>
+      <p className="book-body mt-4">{p.summary}</p>
+      <div className="grid grid-cols-3 gap-2 mt-4">
+        {p.metrics.map((m) => (
+          <div key={m.label} className="book-stat-chip">
+            <span className="book-stat-num">{m.value}</span>
+            <span className="book-stat-lbl">{m.label}</span>
+          </div>
+        ))}
+      </div>
+      <p className="book-section-label mt-6">The Problem</p>
+      <p className="book-body">{p.problem}</p>
+      <p className="book-section-label mt-4">My Role</p>
+      <p className="book-body">{p.myRole}</p>
+      <p className="book-section-label mt-4">The Approach</p>
+      <ol className="book-numbered">
+        {p.approach.map((step, i) => (
+          <li key={step}>
+            <span>{String(i + 1).padStart(2, '0')}</span>
+            {step}
+          </li>
+        ))}
+      </ol>
+      <p className="book-section-label mt-4">The Outcome</p>
+      <p className="book-body">{p.outcome}</p>
+      <p className="book-section-label mt-6">Selected deliverables</p>
+      <WorkGrid items={DESIGN_BOOK.premedWork} showDesc variant="premed" />
+    </div>
+  );
+};
 
 const ProcessPage = () => (
   <div className="book-page-inner">
-    <h3 className="book-chapter-title">VII · How I Work</h3>
+    <ChapterTitle>VII · How I Work</ChapterTitle>
     <p className="book-body mb-6">Listen · Frame · Prototype · Edit — a short loop on every project.</p>
     <div className="book-process-grid">
       {DESIGN_BOOK.process.map((p) => (
         <div key={p.step} className="book-process-step">
           <span className="book-process-n">Step {p.step} / 4</span>
-          <h4 className="font-bold text-book-ink">{p.title}</h4>
+          <h4 className="font-bold book-ink">{p.title}</h4>
           <p className="book-body text-sm mt-1">{p.desc}</p>
         </div>
       ))}
@@ -237,12 +270,12 @@ const ProcessPage = () => (
 
 const AwardsPage = () => (
   <div className="book-page-inner">
-    <h3 className="book-chapter-title">VIII · Recognition</h3>
+    <ChapterTitle>VIII · Recognition</ChapterTitle>
     <div className="space-y-3 mb-8">
       {DESIGN_BOOK.awards.map((a) => (
         <div key={a.title + a.period} className="book-award-row">
           <div>
-            <p className="font-semibold text-book-ink">{a.title}</p>
+            <p className="font-semibold book-ink">{a.title}</p>
             <p className="text-sm text-book-muted">{a.context}</p>
             {a.link && (
               <LinkChip href={a.link} label="View design" variant={a.link.includes('canva') ? 'canva' : 'figma'} />
@@ -286,7 +319,6 @@ const AwardsPage = () => (
 );
 
 const PAGE_MAP = {
-  cover: CoverPage,
   manifesto: ManifestoPage,
   vyrothon: VyrothonPage,
   product: ProductPage,
@@ -311,7 +343,8 @@ const DesignBookSection = ({ embedded = false, onBack, initialSection }) => {
 
   const onTabChange = useCallback((tabId) => {
     setActiveTab(tabId);
-    window.location.hash = tabId === 'cover' ? 'design' : tabId;
+    const hash = hashForPath('design', tabId);
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${hash}`);
   }, []);
 
   const spine = PORTFOLIO_PATHS.design.volume?.spine || `DESIGN · ${DESIGN_BOOK.edition}`;
@@ -324,7 +357,7 @@ const DesignBookSection = ({ embedded = false, onBack, initialSection }) => {
       onTabChange={onTabChange}
       spineText={`SAADIA · ${spine}`}
     >
-      <Page />
+      {activeTab === 'cover' ? <CoverPage onOpenChapter={onTabChange} /> : Page ? <Page /> : null}
     </VolumeShell>
   );
 

@@ -5,9 +5,9 @@ export const PROJECT_CATEGORY_META = {
     index: '01',
     title: 'Data Science & Machine Learning',
     description:
-      'Survey research, statistical inference, clustering, and probabilistic models — notebooks, pickles, and deployable pipelines recruiters can audit on GitHub.',
+      'Survey analysis, hypothesis tests, clustering, and probabilistic models — Jupyter notebooks and model artifacts on GitHub.',
     accent: 'datascience',
-    recruiterHook: 'Reproducible analysis · model artifacts in repo',
+    recruiterHook: 'Notebooks · pickles · README setup steps',
   },
   'ai-agents': {
     id: 'ai-agents',
@@ -16,7 +16,7 @@ export const PROJECT_CATEGORY_META = {
     description:
       'Autonomous agents with tool calling, voice interfaces, and multi-step reasoning — production-style MVPs built for hackathons and coursework.',
     accent: 'ai',
-    recruiterHook: 'Open README · run locally · inspect agent prompts & tools',
+    recruiterHook: 'README · clone and run locally',
   },
   web3: {
     id: 'web3',
@@ -45,8 +45,8 @@ export const PROJECT_CATEGORY_META = {
       'Figma systems, immersive prototypes, and live frontends — competition-winning product design with case studies in the design book.',
     accent: 'design',
     recruiterHook: 'Figma + live demos · full design book linked',
-    externalLink: 'https://design-portfolio-rouge-five.vercel.app/',
-    externalLabel: 'Open design book',
+    externalLink: '#design',
+    externalLabel: 'Design book',
   },
   marketing: {
     id: 'marketing',

@@ -1,92 +1,90 @@
 import React from 'react';
 import SiteNav from './components/SiteNav';
-import Hero from './components/Hero';
-import PathHub from './components/PathHub';
+import IndexHome from './components/IndexHome';
+import MagazineDepartments from './components/MagazineDepartments';
+import AboutSection from './components/AboutSection';
 import BuildVolume from './components/BuildVolume';
 import GrowVolume from './components/GrowVolume';
 import DesignBookSection from './components/DesignBookSection';
-import ResumeSection from './components/ResumeSection';
 import ContactForm from './components/ContactForm';
+import ContactStrip from './components/ContactStrip';
 import TerminalFooter from './components/TerminalFooter';
 import PageBackground from './components/PageBackground';
-import SectionHeader from './components/SectionHeader';
-import { Linkedin, Instagram, Mail, Github } from 'lucide-react';
-import { CONTACT, OPEN_TO } from './data/portfolio';
+import SeoHead from './components/SeoHead';
+import JsonLd from './components/JsonLd';
+import { OPEN_TO, CONTACT } from './data/portfolio';
 import { usePortfolioPath } from './hooks/usePortfolioPath';
+import HighlightHeading from './components/HighlightHeading';
 
 function App() {
   const { path, setPath, goToSection, scrollTarget } = usePortfolioPath();
+  const isHome = path === 'home';
+
+  const goHomeSection = (section) => goToSection(section);
 
   return (
-    <div className="page-shell pb-20 xl:pb-0">
+    <div className={`folio-shell mag-shell ${!isHome ? 'folio-shell-volume' : ''}`}>
+      <SeoHead path={path} />
+      <JsonLd />
       <PageBackground />
-      <SiteNav activePath={path} onSelectPath={setPath} onGoContact={() => goToSection('connect')} />
+      <SiteNav
+        activePath={path}
+        onSelectPath={setPath}
+        goToSection={goToSection}
+        onGoContact={() => goToSection('connect')}
+        scrollTarget={scrollTarget}
+      />
 
-      <aside className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-2">
-        {[
-          { icon: Github, link: CONTACT.github, label: 'GitHub' },
-          { icon: Linkedin, link: CONTACT.linkedin, label: 'LinkedIn' },
-          { icon: Instagram, link: CONTACT.instagram, label: 'Instagram' },
-          { icon: Mail, link: `mailto:${CONTACT.email}`, label: 'Email' },
-        ].map(({ icon: Icon, link, label }) => (
-          <a
-            key={label}
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="p-2.5 doodle-icon-btn border border-white/10 bg-surface/80 text-zinc-500 hover:text-white hover:border-accent-build/40 transition-colors"
-          >
-            <Icon size={18} />
-          </a>
-        ))}
-      </aside>
+      <div className="folio-main">
+        <main className="folio-content">
+          {isHome && (
+            <>
+              <IndexHome onNavigate={setPath} onGoHomeSection={goHomeSection} />
+              <MagazineDepartments onSelectPath={setPath} />
+              <AboutSection
+                onGoContact={() => goToSection('connect')}
+                onGoHomeSection={goHomeSection}
+                onSelectPath={setPath}
+              />
+              <section id="connect" className="folio-section folio-align mag-correspondence">
+                <p className="mag-section-kicker">Correspondence</p>
+                <HighlightHeading as="h2" tone="grow" className="folio-heading">
+                  Get in touch
+                </HighlightHeading>
+                <p className="folio-body mag-dropcap">
+                  I&apos;m open to internships, collaborations, and roles across product design,
+                  engineering, and growth.
+                </p>
+                <a href={`mailto:${CONTACT.email}`} className="folio-contact-email">
+                  {CONTACT.email}
+                </a>
+                <ContactForm />
+                <ul className="folio-roles">
+                  {OPEN_TO.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+            </>
+          )}
 
-      <main className="relative z-10">
-        {path === 'home' && (
-          <>
-            <Hero onSelectPath={setPath} onGoContact={() => goToSection('connect')} />
-            <PathHub onSelectPath={setPath} onGoContact={() => goToSection('connect')} />
-            <ResumeSection />
-          </>
-        )}
+          {path === 'build' && (
+            <BuildVolume onBack={() => setPath('home')} initialSection={scrollTarget} />
+          )}
 
-        {path === 'build' && (
-          <BuildVolume onBack={() => setPath('home')} initialSection={scrollTarget} />
-        )}
+          {path === 'design' && (
+            <DesignBookSection embedded onBack={() => setPath('home')} initialSection={scrollTarget} />
+          )}
 
-        {path === 'design' && (
-          <DesignBookSection embedded onBack={() => setPath('home')} initialSection={scrollTarget} />
-        )}
+          {path === 'grow' && (
+            <GrowVolume onBack={() => setPath('home')} initialSection={scrollTarget} />
+          )}
 
-        {path === 'grow' && (
-          <GrowVolume onBack={() => setPath('home')} initialSection={scrollTarget} />
-        )}
+          {!isHome && <ContactStrip onGoContact={() => setPath('home', 'connect')} />}
+        </main>
 
-        <section
-          id="connect"
-          className={`section-block max-w-2xl ${path !== 'home' ? 'volume-contact-compact' : ''}`}
-        >
-          <SectionHeader
-            index="Contact"
-            title="Get in Touch"
-            subtitle="Collaborations, internships, hackathons, or roles across data, design, and marketing."
-            accent="grow"
-            align="center"
-          />
-          <ContactForm />
-          <ul className="mt-10 pt-8 border-t border-white/10 space-y-2">
-            <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">Open to</p>
-            {OPEN_TO.map((item) => (
-              <li key={item} className="text-sm text-zinc-500 flex gap-2">
-                <span className="text-accent-build">·</span> {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-      </main>
-
-      <TerminalFooter />
+        <TerminalFooter />
+      </div>
     </div>
   );
 }

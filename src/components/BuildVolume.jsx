@@ -5,14 +5,14 @@ import ProjectSection from './ProjectSection';
 import HackathonSection from './HackathonSection';
 import TechStackSection from './TechStackSection';
 import ResumeSection from './ResumeSection';
-import { PORTFOLIO_PATHS } from '../data/paths';
+import { PORTFOLIO_PATHS, hashForPath } from '../data/paths';
 
 const TAB_IDS = PORTFOLIO_PATHS.build.volume.tabs.map((t) => t.id);
 
 const BuildVolume = ({ onBack, initialSection }) => {
   const { volume } = PORTFOLIO_PATHS.build;
   const [activeTab, setActiveTab] = useState(() =>
-    TAB_IDS.includes(initialSection) ? initialSection : volume.tabs[0].id
+    TAB_IDS.includes(initialSection) ? initialSection : volume.tabs[0].id,
   );
 
   useEffect(() => {
@@ -23,7 +23,8 @@ const BuildVolume = ({ onBack, initialSection }) => {
 
   const onTabChange = useCallback((tabId) => {
     setActiveTab(tabId);
-    window.location.hash = tabId;
+    const hash = hashForPath('build', tabId);
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${hash}`);
   }, []);
 
   const tab = volume.tabs.find((t) => t.id === activeTab) || volume.tabs[0];
@@ -52,7 +53,7 @@ const BuildVolume = ({ onBack, initialSection }) => {
         onTabChange={onTabChange}
         spineText={volume.spine}
       >
-        <VolumeChapter roman={tab.roman} title={tab.title} subtitle={tab.subtitle}>
+        <VolumeChapter roman={tab.roman} title={tab.title} subtitle={tab.subtitle} tone="build">
           {panel}
         </VolumeChapter>
       </VolumeShell>

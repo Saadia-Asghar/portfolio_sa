@@ -14,8 +14,8 @@ const FIGMA = {
 };
 
 export const DESIGN_BOOK = {
-  edition: 'Vol. I · MMXXVI',
-  tagline: "A designer's book of work — 2026 edition",
+  edition: 'Vol. I',
+  tagline: "A designer's book of work",
   heroLine:
     'Bringing creative to design — across product, brand, and student communities.',
 
@@ -226,6 +226,29 @@ export const DESIGN_BOOK = {
       tags: ['Print', 'Signage'],
     },
   ],
+
+  premed: {
+    title: 'PreMed.PK — Visual Identity & Education Collateral',
+    badge: 'Graphic Design Associate · Remote',
+    period: 'May 2025 — Present',
+    summary:
+      'Owned recurring visual systems for a national pre-med platform — 30+ assets, faster delivery, and measurable engagement lift.',
+    problem:
+      'PreMed.PK needed consistent education collateral at scale without slowing the content team — one-off Canva files were drifting off-brand.',
+    myRole: 'Graphic Design Associate — visual systems, templates, and education slide series',
+    approach: [
+      'Audited existing assets and defined a repeatable type, colour, and layout system in Canva + Figma.',
+      'Built template families for education slides and social so non-designers could ship on-brand work.',
+      'Iterated from engagement data — cut anything that did not improve clarity or click-through.',
+    ],
+    outcome:
+      '30+ assets delivered, ~40% lift in digital engagement, and ~25% faster turnaround on recurring requests — promoted from contributor to associate.',
+    metrics: [
+      { value: '30+', label: 'Assets shipped' },
+      { value: '40%', label: 'Engagement lift' },
+      { value: '25%', label: 'Faster delivery' },
+    ],
+  },
 
   premedWork: [
     {

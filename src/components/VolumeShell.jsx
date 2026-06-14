@@ -1,18 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import HighlightHeading from './HighlightHeading';
 
-export const VolumeChapter = ({ roman, title, subtitle, children }) => (
-  <div className="book-page-inner volume-page-inner">
-    <header className="volume-chapter-head">
-      <h3 className="volume-chapter-title">
-        {roman && <span className="volume-chapter-roman">{roman}</span>}
+export const VolumeChapter = ({ roman, title, subtitle, children, tone = 'accent' }) => (
+  <article className="mag-article signal-panel-inner volume-page-inner">
+    <header className="mag-article-head signal-panel-head volume-chapter-head">
+      {roman && <p className="mag-article-roman signal-panel-roman volume-chapter-roman">{roman}</p>}
+      <HighlightHeading as="h2" tone={tone} className="mag-article-title signal-panel-title volume-chapter-title">
         {title}
-      </h3>
-      {subtitle && <p className="volume-chapter-lead">{subtitle}</p>}
+      </HighlightHeading>
+      {subtitle && <p className="mag-article-dek signal-panel-lead volume-chapter-lead">{subtitle}</p>}
     </header>
-    <div className="volume-embed">{children}</div>
-  </div>
+    <div className="mag-article-body volume-embed signal-embed">{children}</div>
+  </article>
 );
 
 const VolumeShell = ({
@@ -22,13 +23,11 @@ const VolumeShell = ({
   onTabChange,
   spineText,
   children,
-  showGadget = true,
   pageKey,
 }) => {
   const tabIndex = tabs.findIndex((t) => t.id === activeTab);
   const current = tabs[tabIndex] || tabs[0];
   const pageRef = useRef(null);
-  const isCover = activeTab === 'cover';
 
   useEffect(() => {
     pageRef.current?.scrollTo({ top: 0, left: 0 });
@@ -42,8 +41,8 @@ const VolumeShell = ({
   };
 
   return (
-    <div className={`design-book-shell volume-shell volume-shell-${accent}`}>
-      <div className="book-tabs volume-tabs" role="tablist" aria-label="Portfolio chapters">
+    <div className={`signal-shell volume-shell volume-shell-${accent}`}>
+      <div className="signal-tabs volume-tabs" role="tablist" aria-label="Portfolio chapters">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -51,30 +50,29 @@ const VolumeShell = ({
             role="tab"
             aria-selected={activeTab === tab.id}
             onClick={() => onTabChange(tab.id)}
-            className={`book-tab volume-tab ${activeTab === tab.id ? 'book-tab-active volume-tab-active' : ''}`}
+            className={`signal-tab volume-tab ${activeTab === tab.id ? 'signal-tab-active volume-tab-active' : ''}`}
           >
-            <span className="book-tab-roman">{tab.roman}</span>
-            <span className="book-tab-label">{tab.label}</span>
+            <span className="signal-tab-roman book-tab-roman">{tab.roman}</span>
+            <span className="signal-tab-label book-tab-label">{tab.label}</span>
           </button>
         ))}
       </div>
 
-      <div className="design-book-body volume-body">
-        <div className={`book-spine volume-spine volume-spine-${accent}`} aria-hidden>
+      <div className="signal-body volume-body">
+        <div className={`signal-spine volume-spine volume-spine-${accent}`} aria-hidden>
           <span className="book-spine-text">{spineText}</span>
         </div>
 
-        <div className="book-pages volume-pages">
-          <div className="book-page-edge" aria-hidden />
+        <div className="signal-pages volume-pages">
           <AnimatePresence mode="wait">
             <motion.div
               ref={pageRef}
               key={pageKey || activeTab}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease: 'easeOut' }}
-              className={`book-page volume-page${isCover ? ' book-page-cover' : ''}`}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="signal-page volume-page"
               role="tabpanel"
               aria-labelledby={`tab-${activeTab}`}
             >
@@ -82,37 +80,30 @@ const VolumeShell = ({
             </motion.div>
           </AnimatePresence>
 
-          <div className="book-nav volume-nav">
+          <div className="signal-nav volume-nav">
             <button
               type="button"
               onClick={goPrev}
               disabled={tabIndex <= 0}
-              className="book-nav-btn"
+              className="signal-nav-btn book-nav-btn"
               aria-label="Previous chapter"
             >
               <ChevronLeft size={18} /> Prev
             </button>
-            <span className="book-nav-indicator">
+            <span className="signal-nav-indicator book-nav-indicator">
               {current?.roman} · {current?.label}
             </span>
             <button
               type="button"
               onClick={goNext}
               disabled={tabIndex >= tabs.length - 1}
-              className="book-nav-btn"
+              className="signal-nav-btn book-nav-btn"
               aria-label="Next chapter"
             >
               Next <ChevronRight size={18} />
             </button>
           </div>
         </div>
-
-        {showGadget && (
-          <div className="book-gadget-pocket" aria-hidden>
-            <div className="book-gadget-ring" />
-            <span className="book-gadget-dot" />
-          </div>
-        )}
       </div>
     </div>
   );

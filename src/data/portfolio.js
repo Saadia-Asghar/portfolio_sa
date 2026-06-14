@@ -12,23 +12,173 @@ export const CONTACT = {
 };
 
 export const PROFILE = {
-  title: 'Digital Storyteller · Product Designer · Data Builder',
+  title: 'Data Science · Product Design · Full-Stack',
   subtitle: 'B.Sc. Data Science @ GIKI · Islamabad, PK',
   heroGreeting: "Hey, I'm Saadia Asghar",
   heroTagline:
-    'I build full-stack products, design interfaces, and grow brands — data science at GIKI with equal focus on hackathons, marketing, and visual storytelling.',
+    'Data Science student at GIKI. I ship hackathon products, design UI in Figma, and run campus marketing.',
   intro:
-    'I work across three tracks with equal focus: building products that win hackathons, growing brands that reach people, and designing interfaces that feel intentional. Data science, product design, UI/UX, and marketing — same weight, same intent.',
-  heroLine: 'Build · Grow · Design — products, platforms, stories, and interfaces that land.',
+    'Three tracks: engineering (React, Python, ML), product design (Figma, case studies), and marketing (LinkedIn, Instagram, campus campaigns).',
+  heroLine: 'Build · Design · Grow',
   designBlurb:
-    'My design book lives at a dedicated portfolio — case studies, Figma prototypes, ACM & MLSA collateral, and PreMed.PK visual systems.',
-  quote: 'Building with purpose — Taking risks — Learning out loud',
+    'Design book on this site — Vyrothon, CallPilot, PreMed.PK, ACM & MLSA work with Figma links.',
+  quote: 'GIKI Data Science · Hackathon placements · Open to internships',
   storyIntro:
-    "I'm Saadia, a Data Science undergraduate at GIKI. I'm passionate about using data to solve meaningful problems and learning by building projects that create real impact.",
+    'B.Sc. Data Science at GIKI (2024–2028). I build ML notebooks and deployable apps, compete in hackathons, and lead marketing for student societies.',
   storyBody:
-    'Between hackathon stages and LinkedIn feeds, between Figma frames and Python roadmaps, I found my role: not just to decode the data, but to design how it reaches people. I turn technical frameworks into stories that land — on campus, across platforms, and in rooms where strategy meets creativity.',
-  badges: "Hackathon Winner · GIKI '28 · Top 10 MIT HackNation · Top 5 Finalist @ Vyrothon",
+    'Coursework and projects cover survey analysis, clustering, probabilistic models, and full-stack deployment. Outside class: 2nd at Hack@GIKI, Top 10 MIT Hack Nation, Top 5 Vyrothon, Director of Marketing at UROG.',
+  badges: 'Hack@GIKI 2nd · MIT Hack Nation Top 10 · Vyrothon Top 5 · GIKI \'28',
 };
+
+/** Upfront hiring intent — mirrors Behance “Creative Services” clarity */
+export const HIRE_FOR = {
+  headline: 'Open for internships',
+  roles: [
+    'Product design & UI/UX',
+    'Full-stack & AI engineering',
+    'Data science & analytics',
+    'Marketing & content',
+  ],
+  summary:
+    'Internships and part-time roles in engineering, design, data, or marketing. Each path below has repos and case studies.',
+};
+
+/** Job-search strip — internships, full-time, freelance */
+export const JOB_SEEKER = {
+  status: 'Available for hire',
+  headline: 'Internships · part-time · full-time · freelance',
+  types: ['Product Design', 'Data / AI Engineering', 'Marketing & Growth'],
+  locations: ['Remote', 'Hybrid', 'Pakistan'],
+  targetRoles: [
+    'Product Designer (UI/UX)',
+    'Junior Full-Stack / AI Engineer',
+    'Marketing Associate / Content Lead',
+    'Data Science Intern',
+  ],
+};
+
+/** Rotating hero roles — common pattern in top dev portfolios */
+export const HERO_ROLES = [
+  'Product Designer',
+  'Full-Stack Developer',
+  'Data Science Student',
+  'Marketing Lead',
+];
+
+/** Homepage stats — scannable proof for recruiters */
+export const PORTFOLIO_STATS = [
+  { value: '4', label: 'Hackathon placements' },
+  { value: '10+', label: 'Shipped projects' },
+  { value: '3,635+', label: 'LinkedIn followers' },
+  { value: '4', label: 'Leadership roles' },
+];
+
+/** Featured work on home — curated like Brittany Chiang / dev-portfolios best practice */
+export const FEATURED_HOME = [
+  {
+    id: 'skill-issue',
+    track: 'build',
+    title: 'Skill Issue',
+    year: '2026',
+    placement: '2nd · Hack@GIKI',
+    description:
+      'Arcade-style AI learning platform — persona synthesis, realtime 1v1 Blitz, Study Rooms, and a global Elo leaderboard.',
+    tech: ['Next.js', 'Supabase', 'Clerk', 'Groq', 'TypeScript'],
+    image: null,
+    github: 'https://github.com/Saadia-Asghar/Skill_issue',
+    live: 'https://skill-issue-s1oh.vercel.app/',
+  },
+  {
+    id: 'vyrothon',
+    track: 'design',
+    title: 'Vyrothon',
+    year: '2026',
+    placement: '1st · Top 5 Finalist',
+    description:
+      'Immersive product-design prototype — gamified storytelling UI that won Round 1 and reached national Top 5.',
+    tech: ['Figma', 'Prototyping', 'Immersive UI'],
+    image: '/design/vyrothon.png',
+    live: '#design',
+    github: null,
+  },
+  {
+    id: 'callpilot',
+    track: 'build',
+    title: 'CallPilot',
+    year: '2026',
+    placement: 'Top 10 · MIT Hack Nation',
+    description:
+      'Agentic voice AI for appointment scheduling — tool-calling, explainable dashboard, WebSocket voice demos.',
+    tech: ['FastAPI', 'React', 'OpenAI', 'ElevenLabs'],
+    image: '/design/callpilot.png',
+    github: 'https://github.com/Saadia-Asghar/callpilot-control',
+    live: null,
+  },
+  {
+    id: 'giki-connect',
+    track: 'build',
+    title: 'GIKI-Connect',
+    year: '2025',
+    placement: 'Live deploy',
+    description:
+      'Campus silo research for 3,000 students — K-Means tribes, statistical tests, and a Flask app with model artifacts.',
+    tech: ['Python', 'scikit-learn', 'Flask', 'K-Means'],
+    image: null,
+    github: 'https://github.com/Saadia-Asghar/Giki-Connect',
+    live: 'https://saadia-asghar.github.io/Giki-Connect/',
+  },
+];
+
+/** Engineering case studies on Build path (data science has its own section) */
+export const FLAGSHIP_BUILD_IDS = ['skill-issue', 'callpilot'];
+
+/** Data science projects — shown in a dedicated section before other categories */
+export const DATA_SCIENCE_PROJECT_IDS = [
+  'giki-connect',
+  'data-modeling',
+  'water-potability',
+  'movie-taste-agent',
+];
+
+/** Hackathon cards shown by default — weakest work stays off the main grid */
+export const HACKATHON_SHOWCASE_IDS = ['vyrothon', 'skill-issue', 'callpilot', 'chainticket'];
+
+/** Campus ambassador roles — featured on home */
+export const FEATURED_AMBASSADORS = [
+  {
+    id: 'devsinc',
+    org: 'Devsinc',
+    role: 'Campus Ambassador',
+    period: 'Feb 2025 — Apr 2026',
+    present: false,
+    summary: '10+ workshops for 300+ students · 200+ qualified signups.',
+    highlight: 'Workshops & campus outreach',
+    link: 'https://www.devsinc.com/',
+  },
+  {
+    id: 'atomcamp',
+    org: 'Atomcamp',
+    role: 'Campus Ambassador · Content',
+    period: 'Present',
+    present: true,
+    summary: 'Educational reels on data science, AI ethics, and technical roadmaps.',
+    highlight: 'Video content & campus reach',
+    link: 'https://atomcamp.com/',
+  },
+  {
+    id: 'replit',
+    org: 'Replit',
+    role: 'Campus Ambassador',
+    period: 'Present',
+    present: true,
+    summary: 'Developer community engagement and campus outreach at GIKI.',
+    highlight: 'Dev community & events',
+    link: 'https://replit.com/',
+  },
+];
+
+/** Grow path — flagship scenes only */
+export const GROW_SHOWCASE_SCENES = ['01', '02', '03'];
 
 export const MARKETING_PORTFOLIO = {
   url: 'https://marketing-portfolio-liart.vercel.app/',
@@ -47,13 +197,13 @@ export const MARKETING_HIGHLIGHTS = [
   {
     tag: 'CREATIVE HIGHLIGHT · GENERATIVE AI',
     title: 'Generative AI Lab',
-    desc: 'Experimenting with generative AI to build content, storyboards, and visual narratives — prompt to pixel, frame by frame.',
+    desc: 'Generative AI experiments for storyboards and visual drafts.',
     anchor: 'creative-lab',
   },
   {
     tag: 'CREATIVE & COMMUNITY',
     title: 'Content & Campus Communities',
-    desc: 'Building content, sharing my story, and showing up as part of campus communities — always willing to spread the word and amplify ideas that matter.',
+    desc: 'Campus society content and outreach on LinkedIn and Instagram.',
   },
   {
     tag: 'HACKATHON WINNER',
@@ -89,7 +239,7 @@ export const MARKETING_SCENES = [
     scene: '01',
     title: 'Personal Branding',
     icon: 'Megaphone',
-    body: 'The chapter where I stopped lurking and started building in public — sharing data science insights and hackathon wins on LinkedIn, while the next act unfolds on Instagram: tech content, reels, and stories that make complex ideas feel human.',
+    body: 'LinkedIn posts on data science and hackathon results. Instagram @s._bytes for short-form tech content.',
     period: '2024 — Present',
     location: 'LinkedIn · Instagram',
     link: 'https://www.linkedin.com/in/saadia-asghar',
@@ -99,7 +249,7 @@ export const MARKETING_SCENES = [
     scene: '02',
     title: 'Atomcamp — Campus Ambassador',
     icon: 'Video',
-    body: 'Campus Ambassador at atomcamp — ideating and producing educational video reels that break down data science concepts, AI ethics, and technical roadmaps for a wider student audience.',
+    body: 'Campus Ambassador — educational reels on data science, AI ethics, and career roadmaps.',
     period: '2025 — Present',
     location: 'GIKI',
   },
@@ -127,7 +277,7 @@ export const MARKETING_SCENES = [
     scene: '05',
     title: 'Ambassadorships & Growth',
     icon: 'Sparkles',
-    body: 'Campus Ambassador for Replit Pakistan, Devsinc, and Remotebase — workshops, tours, and campus-wide outreach driving hundreds of signups and applicants.',
+    body: 'Campus Ambassador for Replit, Devsinc, and Remotebase — workshops, tours, and campus-wide outreach driving hundreds of signups and applicants.',
     period: '2025 — 2026',
     location: 'GIKI',
     metrics: ['10+ Workshops', '300+ Students Reached', '200+ Qualified Signups'],
@@ -144,8 +294,8 @@ export const MARKETING_SCENES = [
 ];
 
 export const CREATIVE_LAB = {
-  subtitle: 'Prompt to pixel · frame by frame',
-  desc: 'Behind the campaigns and the captions lives a quieter experiment — using generative AI to sketch storyboards, shape visuals, and prototype content before it ever hits a feed.',
+  subtitle: 'Generative AI for content',
+  desc: 'Using generative AI for storyboards and visual drafts before publishing to social channels.',
   steps: [
     {
       title: 'Prompt & Concept',
@@ -164,7 +314,7 @@ export const CREATIVE_LAB = {
 
 export const DESIGN_PORTFOLIO = {
   url: 'https://design-portfolio-rouge-five.vercel.app/',
-  tagline: 'A designer\'s book of work — 2026 edition',
+  tagline: 'A designer\'s book of work',
   featured: {
     title: 'Vyrothon — Product Design Submission',
     badge: '1st · Product Design Round · Top 5 Finalist',
@@ -464,7 +614,7 @@ export const ACHIEVEMENTS = [
   {
     id: 'replit',
     track: 'grow',
-    title: 'Replit Pakistan',
+    title: 'Replit',
     badge: 'Campus Ambassador',
     detail: 'Developer community engagement and campus outreach.',
     period: '2025',
@@ -518,13 +668,31 @@ export const ALL_PROJECTS = [
     category: 'datascience',
     role: 'Theory of Data Science · GIKI',
     achievement: 'May 2025 – Present',
-    highlight: '3,000 students · custom Silo Index · K-Means tribes 0–7',
-    desc: 'Campus social-silo research: Chi-square (society × silo band), Pearson (hours vs silo), and K-Means clustering. The live web app loads scaler.pkl + kmeans.pkl and assigns tribes from the same feature vector as the notebook.',
+    highlight: '~3,000 students · custom Silo Index · K-Means tribes',
+    desc: 'Campus social-silo study at GIKI: Chi-square (society × silo band), Pearson (hours vs silo), K-Means clustering into interest tribes. Web app loads the same model artifacts as the notebook and suggests peers and events.',
     repoNote: 'README documents model verification, admin events API, and notebook retrain flow.',
     tech: ['Python', 'scikit-learn', 'K-Means', 'Chi-Square', 'Flask', 'Jupyter'],
     github: 'https://github.com/Saadia-Asghar/Giki-Connect',
     link: 'https://saadia-asghar.github.io/Giki-Connect/',
     featured: true,
+    showcase: 'flagship',
+    caseStudy: {
+      problem:
+        'Campus communities form invisible “silos” — students needed a way to see where they sit socially and what drives isolation.',
+      myRole: 'Theory of Data Science · end-to-end analysis + deployable web app',
+      approach: [
+        'Surveyed ~3,000 students and ran Chi-square + Pearson tests on society vs. silo bands.',
+        'Trained K-Means (tribes 0–7) with the same feature vector used in production.',
+        'Shipped Flask app loading scaler.pkl + kmeans.pkl so results match the notebook.',
+      ],
+      outcome:
+        'Live campus tool with reproducible notebook, model artifacts, and admin events API — recruiters can audit the full pipeline on GitHub.',
+      metrics: [
+        { value: '3,000', label: 'Students surveyed' },
+        { value: 'K-Means', label: 'Tribe clustering' },
+        { value: 'Live', label: 'GitHub Pages deploy' },
+      ],
+    },
   },
   {
     id: 'water-potability',
@@ -537,7 +705,33 @@ export const ALL_PROJECTS = [
     repoNote: 'Full notebook, figures/, and results.json committed for reproducibility.',
     tech: ['Python', 'Naive Bayes', 'PGM', 'Jupyter', 'kagglehub', 'EDA'],
     github: 'https://github.com/Saadia-Asghar/water-probability-project',
-    featured: true,
+    showcase: 'standard',
+  },
+  {
+    id: 'data-modeling',
+    title: 'GIKI-Connect — Analysis & Modeling',
+    category: 'datascience',
+    role: 'Theory of Data Science · Notebook pipeline',
+    achievement: 'May 2025 – Present',
+    highlight: 'Chi-square · Pearson · K-Means · cluster_profiles.json',
+    desc: 'Notebook-first repo for the GIKI-Connect study: data cleaning, Silo Index feature engineering, statistical tests, K-Means training (K=4 tribes), and exported model artifacts (scaler.pkl, kmeans.pkl, cluster_profiles.json).',
+    repoNote: 'Companion to the Giki-Connect web app — same training pipeline documented in README.',
+    tech: ['Python', 'Jupyter', 'scikit-learn', 'Pandas', 'Chi-Square', 'K-Means'],
+    github: 'https://github.com/Saadia-Asghar/Data-Modeling',
+    showcase: 'standard',
+  },
+  {
+    id: 'movie-taste-agent',
+    title: 'AI Movie Taste Agent',
+    category: 'datascience',
+    role: 'Gemini · Recommendation prototype',
+    achievement: 'Jupyter / Colab',
+    highlight: '3 favorites in → taste paragraph + 3 picks out',
+    desc: 'Notebook widget that takes three favorite films, calls Google Gemini to summarize viewing taste, and returns three justified recommendations. Built with ipywidgets for interactive demos.',
+    repoNote: 'Requires Google AI Studio API key — README documents setup.',
+    tech: ['Python', 'Gemini', 'ipywidgets', 'Jupyter'],
+    github: 'https://github.com/Saadia-Asghar/Movie-Recommendation-Agent',
+    showcase: 'standard',
   },
   {
     id: 'skill-issue',
@@ -552,6 +746,24 @@ export const ALL_PROJECTS = [
     github: 'https://github.com/Saadia-Asghar/Skill_issue',
     link: 'https://skill-issue-s1oh.vercel.app/',
     featured: true,
+    showcase: 'flagship',
+    caseStudy: {
+      problem:
+        'Students binge passive content but rarely retain concepts — the brief was an arcade-style arena that makes learning competitive and social.',
+      myRole: 'Full-stack · product · AI routing',
+      approach: [
+        'Designed persona synthesis + Comprehension Gauntlet flows before wiring LLM calls.',
+        'Built realtime 1v1 Blitz and Study Rooms on Supabase with Clerk auth.',
+        'Tracked a global Elo leaderboard and spaced-repetition flashcards for return visits.',
+      ],
+      outcome:
+        '2nd place at Hack@GIKI — live demo with Groq Llama 3.3, ElevenLabs Professor Radio, and README recruiters can run locally.',
+      metrics: [
+        { value: '2nd', label: 'Hack@GIKI' },
+        { value: 'Realtime', label: 'Supabase battles' },
+        { value: 'Live', label: 'Vercel deploy' },
+      ],
+    },
   },
   {
     id: 'callpilot',
@@ -565,6 +777,24 @@ export const ALL_PROJECTS = [
     tech: ['FastAPI', 'React', 'OpenAI', 'Gemini', 'ElevenLabs', 'SQLite'],
     github: 'https://github.com/Saadia-Asghar/callpilot-control',
     featured: true,
+    showcase: 'flagship',
+    caseStudy: {
+      problem:
+        'Appointment scheduling breaks when voice agents cannot explain decisions — MIT Hack Nation needed trustworthy autonomous scheduling.',
+      myRole: 'Agentic voice AI · full-stack architecture',
+      approach: [
+        'Mapped tool-calling flows for calendar sync, triage, and persistence in SQLite.',
+        'Paired FastAPI backend with React dashboard showing explainable AI reasoning.',
+        'Integrated ElevenLabs TTS + WebSocket voice for demo-ready interviews.',
+      ],
+      outcome:
+        'Top 10 globally at MIT Hack Nation — monorepo README documents every API route and demo-mode setup.',
+      metrics: [
+        { value: 'Top 10', label: 'MIT Hack Nation' },
+        { value: 'Voice', label: 'WebSocket agent' },
+        { value: 'Open', label: 'README + routes' },
+      ],
+    },
   },
   {
     id: 'healthcare-maps',
@@ -577,7 +807,7 @@ export const ALL_PROJECTS = [
     repoNote: 'README includes full stack diagram, warmup scripts, and example crisis queries.',
     tech: ['FastAPI', 'ChromaDB', 'Gemini', 'Next.js', 'Folium', 'Pandas'],
     github: 'https://github.com/Saadia-Asghar/Building-Agentic-Healthcare-Maps-',
-    featured: true,
+    showcase: 'archive',
   },
   {
     id: 'donorbridge',
@@ -586,10 +816,12 @@ export const ALL_PROJECTS = [
     role: 'Healthcare DB · Streamlit + Assistant',
     achievement: '3NF Prototype',
     highlight: 'PostgreSQL · reporting views · rule-based chatbot',
-    desc: 'Healthcare resource coordination prototype: normalized PostgreSQL schema, seeded demo data, Streamlit CRUD + reports, optional Flask chat UI, and read-only FastAPI integration layer.',
-    repoNote: 'PROJECT_DOCUMENTATION.md and ERD HTML artifacts in repo root.',
+    desc: 'Rule-based SQL chatbot for healthcare resource queries — regex intent matching, parameterized SELECTs on a 3NF SQLite schema, Flask API, and Streamlit UI. No LLM; full audit logging.',
+    repoNote: 'Main chatbot repo: Chatbot. Schema prototype: DonorBridge.',
     tech: ['PostgreSQL', 'Streamlit', 'FastAPI', 'Python', '3NF Schema'],
-    github: 'https://github.com/Saadia-Asghar/DonorBridge',
+    github: 'https://github.com/Saadia-Asghar/Chatbot',
+    link: 'https://github.com/Saadia-Asghar/DonorBridge',
+    showcase: 'archive',
   },
   {
     id: 'chainticket',
@@ -603,6 +835,7 @@ export const ALL_PROJECTS = [
     tech: ['Next.js', 'Solidity', 'Base', 'Wagmi', 'Firebase', 'Framer Motion'],
     github: 'https://github.com/Saadia-Asghar/Chain_ticket',
     featured: true,
+    showcase: 'standard',
   },
   {
     id: 'privy-health',
@@ -616,6 +849,7 @@ export const ALL_PROJECTS = [
     tech: ['JavaScript', 'Web3', 'Healthtech', 'Replit'],
     github: 'https://github.com/Saadia-Asghar/Privy-Health-Chain',
     link: 'https://github.com/Saadia-Asghar/PrivyHealth-Pitch',
+    showcase: 'archive',
   },
   {
     id: 'ecobite',
@@ -628,7 +862,7 @@ export const ALL_PROJECTS = [
     repoNote: 'README covers SDG alignment, multi-role dashboards, and Azure service map.',
     tech: ['React', 'Azure SQL', 'Azure Maps', 'Azure Vision', 'Express'],
     github: 'https://github.com/Saadia-Asghar/Ecobite_',
-    featured: true,
+    showcase: 'standard',
   },
   {
     id: 'moodmaze',
@@ -641,6 +875,7 @@ export const ALL_PROJECTS = [
     repoNote: 'README details dsa.js heap implementation and scoring formula.',
     tech: ['React', 'Vite', 'Firebase', 'TMDB API', 'Framer Motion', 'Zustand'],
     github: 'https://github.com/Saadia-Asghar/Mood_Maze',
+    showcase: 'archive',
   },
   {
     id: 'code-blaster',
@@ -653,6 +888,7 @@ export const ALL_PROJECTS = [
     repoNote: 'Compact game repo — good for systems/programming breadth.',
     tech: ['C++', 'SFML', 'OOP'],
     github: 'https://github.com/Saadia-Asghar/Code-Blaster',
+    showcase: 'archive',
   },
   {
     id: 'vyrothon',
@@ -661,11 +897,12 @@ export const ALL_PROJECTS = [
     role: 'Lead Product Designer',
     achievement: '1st · Top 5 Finalist',
     highlight: '500+ applicants · immersive 3D storytelling UI',
-    desc: 'High-fidelity interactive prototype at NSTP — gamified storytelling, user presence, and competition-winning product design (Round 1 first, Round 2 top 5 nationally).',
+    desc: 'High-fidelity Figma prototype for Vyrothon — 1st in Round 1, Top 5 nationally (500+ applicants).',
     repoNote: 'Full case study + Figma links in the design book.',
     tech: ['Figma', 'Prototyping', 'Immersive UI', 'Storytelling UX'],
-    link: 'https://design-portfolio-rouge-five.vercel.app/',
+    link: '#design',
     featured: true,
+    showcase: 'flagship',
   },
   {
     id: 'effort-scope',
@@ -679,6 +916,7 @@ export const ALL_PROJECTS = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     link: 'https://saadia-asghar.github.io/Effort_Scope/',
     github: 'https://github.com/Saadia-Asghar/Effort_Scope',
+    showcase: 'archive',
   },
   {
     id: 'linkedin-brand',
@@ -687,10 +925,11 @@ export const ALL_PROJECTS = [
     role: 'Content · Strategy',
     achievement: '3,635+ Followers',
     highlight: '1,000+ daily search impressions · 6k avg/post',
-    desc: 'Building in public — data science insights, hackathon wins, and career narrative that recruiters discover through search.',
+    desc: 'LinkedIn: data science posts and hackathon updates. 3,635+ followers, 1,000+ daily search impressions.',
     tech: ['Content Strategy', 'Scriptwriting', 'Community'],
     link: 'https://www.linkedin.com/in/saadia-asghar',
     featured: true,
+    showcase: 'flagship',
   },
   {
     id: 'instagram-bytes',
@@ -702,6 +941,7 @@ export const ALL_PROJECTS = [
     desc: 'Short-form tech storytelling — reels and carousels that make complex topics approachable.',
     tech: ['Reels', 'Video', 'Instagram'],
     link: 'https://www.instagram.com/s._bytes',
+    showcase: 'archive',
   },
   {
     id: 'atomcamp-reels',
@@ -713,6 +953,7 @@ export const ALL_PROJECTS = [
     desc: 'Educational reels on data science, AI ethics, and technical roadmaps produced as atomcamp Campus Ambassador.',
     tech: ['Video Ideation', 'Scriptwriting', 'DS Education'],
     link: 'https://marketing-portfolio-liart.vercel.app/',
+    showcase: 'archive',
   },
 ];
 
@@ -767,7 +1008,7 @@ export const EXPERIENCE = [
     summary: 'Hackfest 3.0 outreach · 300+ applicants · campus liaison.',
   },
   {
-    org: 'Replit Pakistan',
+    org: 'Replit',
     role: 'Campus Ambassador',
     period: '2025',
     location: 'GIKI',
@@ -814,12 +1055,12 @@ export const CERTIFICATIONS = [
 ];
 
 export const OPEN_TO = [
-  'Data Science & AI project collaborations',
-  'Marketing & content strategy roles',
-  'Product design & graphic design opportunities',
-  'UI/UX and visual identity internships',
-  'Full-stack development opportunities',
-  'On-site, hybrid, or remote (Pakistan)',
+  'Product Designer · UI/UX internships (Figma, design systems)',
+  'Junior Full-Stack Developer · React, Next.js, Python, AI agents',
+  'Data Science Intern · ML pipelines, analytics, research projects',
+  'Marketing Associate · content strategy, social, campus campaigns',
+  'Freelance · brand identity, slides, and product UI',
+  'Remote, hybrid, or on-site in Pakistan',
 ];
 
 export const COMMUNITY_NODES = [

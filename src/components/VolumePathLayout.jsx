@@ -1,39 +1,35 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { PORTFOLIO_PATHS } from '../data/paths';
+import HighlightHeading from './HighlightHeading';
 
-const VolumePathLayout = ({ path, onBack, children, embedded = true }) => {
+const VolumePathLayout = ({ path, onBack, children }) => {
   const meta = PORTFOLIO_PATHS[path];
   if (!meta) return null;
-  const Icon = meta.icon;
 
   return (
-    <section className={`volume-zone volume-zone-${meta.accent} scroll-mt-24 ${embedded ? 'volume-zone-embedded' : ''}`}>
-      <div className="volume-zone-header">
-        <div className="volume-zone-header-inner volume-zone-inner relative z-10">
+    <section className={`mag-dept volume-zone volume-zone-${meta.accent} scroll-mt-24`}>
+      <header className="mag-dept-header">
+        <div className="mag-dept-header-inner">
           {onBack && (
-            <button type="button" onClick={onBack} className="volume-back-btn">
-              <ArrowLeft size={15} /> Back to paths
+            <button type="button" onClick={onBack} className="mag-dept-back">
+              <ArrowLeft size={15} /> Back to index
             </button>
           )}
-
-          <div className="flex items-start gap-3 md:gap-4 volume-zone-header-row">
-            <span className={`volume-header-icon volume-header-icon-${meta.accent}`}>
-              <Icon size={18} />
-            </span>
-            <div>
-              <p className="volume-eyebrow">{meta.label} track</p>
-              <h1 className="volume-title font-display">{meta.title}</h1>
-              <p className="volume-tagline">{meta.tagline}</p>
-            </div>
-          </div>
+          <p className="mag-dept-kicker">{meta.label} department</p>
+          <HighlightHeading as="h1" tone={meta.accent} className="mag-dept-title">
+            {meta.title}
+          </HighlightHeading>
+          <p className="mag-dept-dek">{meta.tagline}</p>
+          <ul className="mag-dept-credits">
+            {meta.proof.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
         </div>
-      </div>
+      </header>
 
-      <div className="volume-zone-body volume-zone-inner relative z-10">{children}</div>
-
-      <div className="book-cloud book-cloud-1" aria-hidden />
-      <div className="book-cloud book-cloud-2" aria-hidden />
+      <div className="mag-dept-body volume-zone-inner">{children}</div>
     </section>
   );
 };

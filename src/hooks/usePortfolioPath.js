@@ -1,18 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
-import { PATH_IDS, HASH_ROUTES } from '../data/paths';
+import { PATH_IDS, PORTFOLIO_PATHS, resolveHash, hashForPath } from '../data/paths';
 
-function parseHash() {
-  const raw = window.location.hash.replace(/^#/, '').toLowerCase();
-  if (!raw) return { path: 'home', scroll: null };
-  if (PATH_IDS.includes(raw)) return { path: raw, scroll: raw === 'design' ? 'cover' : null };
-  const route = HASH_ROUTES[raw];
-  if (route) return route;
-  return { path: 'home', scroll: raw || null };
+function defaultScrollForPath(nextPath) {
+  if (nextPath === 'design') return 'cover';
+  if (nextPath === 'build' || nextPath === 'grow') {
+    return PORTFOLIO_PATHS[nextPath]?.volume?.tabs?.[0]?.id ?? null;
+  }
+  return null;
 }
 
 export function usePortfolioPath() {
-  const [path, setPathState] = useState(() => parseHash().path);
-  const [scrollTarget, setScrollTarget] = useState(() => parseHash().scroll);
+  const [path, setPathState] = useState(() => resolveHash(window.location.hash).path);
+  const [scrollTarget, setScrollTarget] = useState(() => resolveHash(window.location.hash).scroll);
 
   const scrollToId = useCallback((id) => {
     if (!id) return;
@@ -21,58 +20,57 @@ export function usePortfolioPath() {
     });
   }, []);
 
-  const setPath = useCallback(
-    (nextPath, section = null) => {
+  const applyRoute = useCallback(
+    (nextPath, section = null, { scrollTop = true } = {}) => {
       const valid = nextPath === 'home' || PATH_IDS.includes(nextPath);
       if (!valid) return;
 
-      const tab =
-        section ??
-        (nextPath === 'design' ? 'cover' : null);
+      const tab = section ?? defaultScrollForPath(nextPath);
+      const hash = hashForPath(nextPath, tab);
+      const base = window.location.pathname + window.location.search;
+      const nextUrl = hash ? `${base}#${hash}` : base;
 
-      if (nextPath === 'home') {
-        window.history.pushState(null, '', window.location.pathname);
-      } else {
-        const hash = nextPath === 'design' && tab === 'cover' ? 'design' : tab || nextPath;
-        const nextHash = `#${hash}`;
-        if (window.location.hash !== nextHash) {
-          window.location.hash = hash;
-        }
+      if (window.location.pathname + window.location.search + window.location.hash !== nextUrl) {
+        window.history.pushState(null, '', nextUrl);
       }
 
       setPathState(nextPath);
       setScrollTarget(tab);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      if (section && nextPath === 'home') {
-        setTimeout(() => scrollToId(section), 320);
+      if (scrollTop) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      if (nextPath === 'home' && tab) {
+        setTimeout(() => scrollToId(tab), scrollTop ? 320 : 80);
       }
     },
-    [scrollToId]
+    [scrollToId],
+  );
+
+  const setPath = useCallback(
+    (nextPath, section = null) => {
+      applyRoute(nextPath, section, { scrollTop: true });
+    },
+    [applyRoute],
   );
 
   const goToSection = useCallback(
     (sectionId) => {
-      const route = HASH_ROUTES[sectionId];
-      if (route) {
-        setPathState(route.path);
-        setScrollTarget(route.scroll);
-        window.location.hash = sectionId;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
-      }
-      window.location.hash = sectionId;
-      scrollToId(sectionId);
+      const route = resolveHash(sectionId);
+      applyRoute(route.path, route.scroll, { scrollTop: route.path !== 'home' });
     },
-    [scrollToId]
+    [applyRoute],
   );
 
   useEffect(() => {
     const syncFromHash = () => {
-      const { path: p, scroll } = parseHash();
+      const { path: p, scroll } = resolveHash(window.location.hash);
       setPathState(p);
       setScrollTarget(scroll);
-      if (scroll && p === 'home') setTimeout(() => scrollToId(scroll), 100);
+      if (scroll && p === 'home') {
+        setTimeout(() => scrollToId(scroll), 120);
+      }
     };
 
     syncFromHash();

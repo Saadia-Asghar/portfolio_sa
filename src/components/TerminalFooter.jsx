@@ -3,10 +3,13 @@ import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 import { CONTACT } from '../data/portfolio';
 
 const FOOTER_LINKS = [
-  { label: 'Home', href: '#' },
-  { label: 'Build · Engineering', href: '#build' },
-  { label: 'Design · Product', href: '#design' },
-  { label: 'Grow · Marketing', href: '#grow' },
+  { label: 'Ambassadors', href: '#ambassadors' },
+  { label: 'Wins', href: '#wins' },
+  { label: 'Index', href: '#paths' },
+  { label: 'About', href: '#about' },
+  { label: 'Build', href: '#build' },
+  { label: 'Design', href: '#design' },
+  { label: 'Grow', href: '#grow' },
   { label: 'Contact', href: '#connect' },
 ];
 
@@ -18,46 +21,30 @@ const FOOTER_SOCIAL = [
 ];
 
 const TerminalFooter = () => (
-  <footer className="border-t border-white/10 py-12 px-4 md:px-8 bg-black/40">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+  <footer className="folio-footer">
+    <div className="folio-footer-inner">
       <div>
-        <p className="font-semibold text-lg text-white">Saadia Asghar</p>
-        <p className="text-sm text-gray-500 mt-2 font-tech">{CONTACT.email}</p>
-        <p className="text-sm text-gray-600">{CONTACT.location}</p>
-        <p className="text-[10px] font-mono text-gray-700 uppercase tracking-widest mt-6">
-          © {new Date().getFullYear()} · GIKI Data Science
+        <p className="folio-footer-name">Saadia Asghar</p>
+        <p className="folio-footer-meta">Data Science · Design · Growth</p>
+        <p className="folio-footer-meta" style={{ marginTop: '0.75rem' }}>
+          © Saadia Asghar · GIKI Institute
         </p>
       </div>
-
-      <div>
-        <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-4">Important Links</p>
-        <ul className="space-y-2">
+      <nav aria-label="Footer">
+        <ul className="folio-footer-links">
           {FOOTER_LINKS.map((link) => (
             <li key={link.label}>
-              <a href={link.href} className="text-sm text-gray-400 hover:text-spider-cyan font-tech transition-colors">
-                {link.label}
-              </a>
+              <a href={link.href}>{link.label}</a>
             </li>
           ))}
         </ul>
-      </div>
-
-      <div>
-        <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-4">Social</p>
-        <ul className="space-y-2">
-          {FOOTER_SOCIAL.map(({ label, href, icon: Icon }) => (
-            <li key={label}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-spider-magenta font-tech transition-colors"
-              >
-                <Icon size={14} /> {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      </nav>
+      <div className="folio-footer-social">
+        {FOOTER_SOCIAL.map(({ label, href, icon: Icon }) => (
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+            <Icon size={18} />
+          </a>
+        ))}
       </div>
     </div>
   </footer>

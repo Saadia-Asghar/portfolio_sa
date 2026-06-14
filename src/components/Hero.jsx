@@ -1,82 +1,99 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { MapPin, Code2, Palette, Megaphone, ArrowUpRight } from 'lucide-react';
-import { CONTACT, PROFILE } from '../data/portfolio';
-import { PATH_IDS, PORTFOLIO_PATHS } from '../data/paths';
-import DoodleCharacter from './DoodleCharacter';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Download, MapPin } from 'lucide-react';
+import { CONTACT, PROFILE, HERO_ROLES, JOB_SEEKER } from '../data/portfolio';
+import PrismScene3D from './PrismScene3D';
 
-const PATH_ICONS = { build: Code2, design: Palette, grow: Megaphone };
+const Hero = ({ onGoContact, onViewWork }) => {
+  const [roleIndex, setRoleIndex] = useState(0);
 
-const Hero = ({ onSelectPath, onGoContact }) => (
-  <section className="relative pt-28 pb-14 md:pt-32 md:pb-16">
-    <div className="max-w-6xl mx-auto px-4 md:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-12 lg:gap-14 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="order-2 lg:order-1 text-center lg:text-left"
-        >
-          <p className="pro-eyebrow">{PROFILE.heroGreeting}</p>
+  useEffect(() => {
+    const id = setInterval(() => setRoleIndex((i) => (i + 1) % HERO_ROLES.length), 3000);
+    return () => clearInterval(id);
+  }, []);
 
-          <h1 className="font-display text-4xl sm:text-5xl md:text-[3.25rem] font-semibold tracking-tight text-white leading-[1.08] mt-3">
-            Saadia Asghar
-          </h1>
+  return (
+    <section className="hero-redesign relative min-h-[88vh] flex items-center pt-24 pb-16" aria-label="Introduction">
+      <div className="hero-redesign-glow" aria-hidden />
+      <div className="max-w-6xl mx-auto px-4 md:px-8 w-full">
+        <div className="hero-redesign-grid">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+          >
+            <p className="hero-redesign-eyebrow">
+              <span className="hero-status-pill">
+                <span className="hero-status-dot" aria-hidden />
+                {JOB_SEEKER.status}
+              </span>
+            </p>
 
-          <p className="mt-4 text-base md:text-lg text-zinc-300 font-medium leading-snug max-w-xl mx-auto lg:mx-0">
-            {PROFILE.title}
-          </p>
+            <h1 className="hero-redesign-name font-display">
+              Saadia
+              <br />
+              <span className="hero-redesign-name-accent">Asghar</span>
+            </h1>
 
-          <p className="mt-4 text-sm md:text-base text-zinc-500 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            {PROFILE.heroTagline}
-          </p>
+            <p className="hero-redesign-role">
+              I&apos;m a{' '}
+              <span className="hero-role-rotate" aria-live="polite">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={HERO_ROLES[roleIndex]}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-accent-build"
+                  >
+                    {HERO_ROLES[roleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+              <br className="hidden sm:block" />
+              <span className="text-zinc-400"> building products that win hackathons & land with people.</span>
+            </p>
 
-          <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-2">
-            <span className="track-pill track-muted inline-flex items-center gap-1.5">
-              <MapPin size={12} /> {CONTACT.location}
-            </span>
-          </div>
+            <p className="hero-redesign-sub">{PROFILE.heroTagline}</p>
 
-          <p className="pro-label-hand mt-10 mb-3">Choose a path</p>
+            <div className="hero-redesign-meta">
+              <span>
+                <MapPin size={13} aria-hidden /> {CONTACT.location}
+              </span>
+              <span>GIKI Data Science &apos;28</span>
+              <span>{JOB_SEEKER.headline}</span>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {PATH_IDS.map((id) => {
-              const p = PORTFOLIO_PATHS[id];
-              const Icon = PATH_ICONS[id];
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => onSelectPath(id)}
-                  className={`hero-path-card hero-path-card-${p.accent}`}
-                >
-                  <span className="hero-path-card-icon">
-                    <Icon size={17} />
-                  </span>
-                  <span className="hero-path-card-label">{p.label}</span>
-                  <span className="hero-path-card-hint">{p.title}</span>
-                  <ArrowUpRight size={14} className="hero-path-card-arrow" />
-                </button>
-              );
-            })}
-          </div>
+            <div className="hero-redesign-cta">
+              <button type="button" onClick={onViewWork} className="btn-primary gap-2">
+                View my work <ArrowRight size={16} />
+              </button>
+              <button type="button" onClick={onGoContact} className="btn-secondary">
+                Hire me
+              </button>
+              <a
+                href={CONTACT.resumePath}
+                download="Saadia_Asghar_Resume.png"
+                className="btn-ghost gap-2"
+              >
+                <Download size={15} /> Résumé
+              </a>
+            </div>
+          </motion.div>
 
-          <button type="button" onClick={onGoContact} className="btn-ghost mt-6 text-sm">
-            Contact directly
-          </button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.12 }}
-          className="order-1 lg:order-2 flex justify-center lg:justify-end"
-        >
-          <DoodleCharacter />
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="hero-redesign-visual"
+          >
+            <PrismScene3D className="hero-redesign-canvas" />
+          </motion.div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Hero;
