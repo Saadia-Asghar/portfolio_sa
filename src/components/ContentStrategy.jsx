@@ -21,7 +21,11 @@ const ExperienceSection = ({ embedded = false }) => {
     exp.org.toLowerCase().includes('gdg') || 
     exp.org.toLowerCase().includes('techno') || 
     exp.org.toLowerCase().includes('les') || 
-    exp.org.toLowerCase().includes('ggdoc')
+    exp.org.toLowerCase().includes('ggdoc') ||
+    exp.org.toLowerCase().includes('urog') ||
+    exp.org.toLowerCase().includes('microsoft') ||
+    exp.org.toLowerCase().includes('society') ||
+    exp.org.toLowerCase().includes('club')
   );
 
   const professionalRoles = EXPERIENCE.filter(exp => 

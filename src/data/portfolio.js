@@ -16,7 +16,7 @@ export const PROFILE = {
   subtitle: 'B.Sc. Data Science @ GIKI · Islamabad, PK',
   heroGreeting: "Hey, I'm Saadia Asghar",
   heroTagline:
-    'Data Science student at GIKI. I ship hackathon products, design UI in Figma, and run campus marketing.',
+    'Data Science student at GIKI & AI Intern at Najoomi. I ship hackathon products, design UI in Figma, and run campus marketing.',
   intro:
     'Three tracks: engineering (React, Python, ML), product design (Figma, case studies), and marketing (LinkedIn, Instagram, campus campaigns).',
   heroLine: 'Build · Design · Grow',
@@ -24,7 +24,7 @@ export const PROFILE = {
     'Design book on this site — Vyrothon, CallPilot, PreMed.PK, ACM & MLSA work with Figma links.',
   quote: 'GIKI Data Science · Hackathon placements · Open to internships',
   storyIntro:
-    'B.Sc. Data Science at GIKI (2024–2028). I build ML notebooks and deployable apps, compete in hackathons, and lead marketing for student societies.',
+    'B.Sc. Data Science at GIKI (2024–2028) & AI Intern at Najoomi. I build ML notebooks and deployable apps, compete in hackathons, and lead marketing for student societies.',
   storyBody:
     'Coursework and projects cover survey analysis, clustering, probabilistic models, and full-stack deployment. Outside class: 2nd at Hack@GIKI, Top 10 MIT Hack Nation, Top 5 Vyrothon, Director of Marketing at UROG.',
   badges: 'Hack@GIKI 2nd · MIT Hack Nation Top 10 · Vyrothon Top 5 · GIKI \'28',
@@ -145,6 +145,16 @@ export const HACKATHON_SHOWCASE_IDS = ['vyrothon', 'skill-issue', 'callpilot', '
 
 /** Campus ambassador roles — featured on home */
 export const FEATURED_AMBASSADORS = [
+  {
+    id: 'canva',
+    org: 'Canva',
+    role: 'Campus Ambassador & Lead',
+    period: 'June 2026 — Present',
+    present: true,
+    summary: 'Leading the Canva student creator network on campus, hosting design thinking labs, training sessions, and template hackathons.',
+    highlight: 'Design labs & template hackathons',
+    link: 'https://www.canva.com/',
+  },
   {
     id: 'devsinc',
     org: 'Devsinc',
