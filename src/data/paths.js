@@ -109,9 +109,9 @@ export const PORTFOLIO_PATHS = {
         {
           id: 'experience',
           roman: 'II',
-          label: 'Experience',
-          title: 'Roles & Leadership',
-          subtitle: 'Marketing, design ambassadorships, and community-facing roles.',
+          label: 'Timeline & Roles',
+          title: 'Timeline of Wins, Roles & Societies',
+          subtitle: 'Chronological journey of achievements and categorized leadership roles.',
           hash: 'grow-experience',
         },
         {

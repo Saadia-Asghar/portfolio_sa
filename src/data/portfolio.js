@@ -966,61 +966,286 @@ export const EDUCATION = {
 
 export const EXPERIENCE = [
   {
-    org: 'UROG GIKI',
-    role: 'Director of Marketing · Exec Council',
-    period: 'May 2026 — Present',
+    org: 'Najoomi',
+    role: 'Artificial Intelligence Intern',
+    period: 'July 2026 — Present',
+    location: 'Remote / Hybrid',
+    summary: 'Building and optimizing AI pipelines with a focus on Natural Language Processing (NLP) and Retrieval-Augmented Generation (RAG) models.',
+  },
+  {
+    org: 'Canva & Canva Community GIKI',
+    role: 'GIKI Campus Ambassador & Community Lead',
+    period: 'June 2026 — Present',
     location: 'GIKI',
-    summary: 'Instagram & LinkedIn strategy, content planning, academic support campaigns.',
+    summary: 'Leading the Canva student creator network on campus, hosting design thinking labs, training sessions, and template hackathons.',
+  },
+  {
+    org: 'UROG GIKI',
+    role: 'Marketing Director & Exec Council (formerly Officer Education & Member Bootcamp)',
+    period: 'Jul. 2025 — Present',
+    location: 'GIKI',
+    summary: 'Led council operations and marketing team, coordinated public outreach, managed lead generation, and completed Bootcamp training.',
   },
   {
     org: 'Microsoft Club GIKI',
-    role: 'Head of Marketing · MLSA',
-    period: 'Oct. 2025 — Present',
+    role: 'Head of Marketing · MLSA (formerly Outreach, Logikal, Web Dev, Member)',
+    period: 'Dec. 2024 — Present',
     location: 'GIKI',
-    summary: 'Social presence, content planning, community outreach for MLSA chapter.',
+    summary: 'Managing external relations, corporate linkages, and partnership outreach. Handled campaign logic, visual branding systems, and frontend layouts.',
   },
   {
     org: 'PreMed.PK',
-    role: 'Graphic Design Associate',
-    period: 'May 2025 — Present',
+    role: 'Graphic Design Associate (formerly Design Intern)',
+    period: 'May 2025 — Dec. 2025',
     location: 'Remote',
-    summary: '30+ assets · 40% engagement increase · 25% faster design delivery.',
+    summary: 'Led visual identity creation, producing 30+ assets using Figma and Canva, increasing engagement by 40% and design delivery by 25%.',
   },
   {
     org: 'Atomcamp',
     role: 'Campus Ambassador · Content Creator',
-    period: '2025 — Present',
+    period: 'Feb. 2026 — Present',
     location: 'GIKI',
-    summary: 'Educational reels on data science, AI ethics, and technical roadmaps.',
+    summary: 'Ideated and produced educational reels on data science, AI ethics, and technical roadmaps on campus.',
   },
   {
     org: 'Devsinc',
     role: 'Campus Ambassador',
-    period: 'Feb. 2025 — Apr. 2026',
+    period: 'Feb. 2025 — May 2026',
     location: 'GIKI',
-    summary: '10+ workshops · 300+ students · 200+ qualified signups.',
+    summary: 'Organized 10+ workshops and educational tours for 300+ students, generating 200+ signups.',
   },
   {
     org: 'Remotebase',
     role: 'Campus Ambassador',
     period: 'Feb. — Jul. 2025',
     location: 'GIKI',
-    summary: 'Hackfest 3.0 outreach · 300+ applicants · campus liaison.',
+    summary: 'Outreach for Hackfest 3.0, managing event logistics and applications for 300+ candidates.',
   },
   {
     org: 'Replit',
     role: 'Campus Ambassador',
-    period: '2025',
+    period: 'May 2026 — Present',
     location: 'GIKI',
-    summary: 'Developer community engagement and campus outreach.',
+    summary: 'Developer community engagement, building sprints, and campus outreach.',
   },
   {
-    org: 'GIKI Student Societies',
-    role: 'Core Member · Education Officer',
+    org: 'ACM Student GIKI Chapter',
+    role: 'Member, Design Team & Volunteer',
     period: 'Oct. 2024 — Present',
     location: 'GIKI',
-    summary: 'ACM Softcom\'25 · GDGoC workshops (100+) · UROG bootcamps · MS Club.',
+    summary: 'Designed event assets, supported Softcom\'25 and ACM/ICPC C++ basic workshops.',
   },
+  {
+    org: 'Google Developer Group GIKI',
+    role: 'Core Team & Community Member',
+    period: 'Nov. 2024 — Present',
+    location: 'GIKI',
+    summary: 'Core team member organizing study jams and community member supporting event execution.',
+  },
+  {
+    org: 'Team Techno GIKI',
+    role: 'Society Member',
+    period: 'Oct. 2025 — Feb. 2026',
+    location: 'GIKI',
+    summary: 'Engaged in technology promotions and community sessions.',
+  },
+  {
+    org: 'Leadership & Entrepreneurial Society (LES) GIKI',
+    role: 'Organizing Volunteer',
+    period: 'Sep. 2024 — Oct. 2024',
+    location: 'GIKI',
+    summary: 'Volunteered at GIKI\'s national All Pakistan Event, managing participant registration and logistics.',
+  },
+  {
+    org: 'Ggdoc',
+    role: 'Community Member',
+    period: '2025 — Present',
+    location: 'GIKI',
+    summary: 'Collaborating with community developer networks and student tech groups.',
+  },
+];
+
+export const TIMELINE_WINS_AND_ROLES = [
+  {
+    date: 'July 2026 — Present',
+    title: 'Artificial Intelligence Intern',
+    org: 'Najoomi',
+    type: 'role',
+    category: 'experience',
+    description: 'Building and optimizing AI pipelines with a focus on Natural Language Processing (NLP) and Retrieval-Augmented Generation (RAG) models.',
+    location: 'Remote / Hybrid'
+  },
+  {
+    date: 'June 2026 — Present',
+    title: 'GIKI Campus Ambassador & Community Lead',
+    org: 'Canva & Canva Community GIKI',
+    type: 'role',
+    category: 'ambassadorship',
+    description: 'Leading the Canva student creator network on campus, hosting design thinking labs, training sessions, and template hackathons.',
+    location: 'GIKI'
+  },
+  {
+    date: 'May 2026 — Present',
+    title: 'Director of Marketing · Exec Council',
+    org: 'UROG GIKI',
+    type: 'role',
+    category: 'leadership',
+    description: 'Instagram & LinkedIn strategy, content planning, academic support campaigns.',
+    location: 'GIKI'
+  },
+  {
+    date: 'May 2026',
+    title: '1st in Product Design & Top 5 Finalist',
+    org: 'Vyrothon (NSTP)',
+    type: 'win',
+    category: 'hackathon',
+    description: 'Lead Product Designer — 1st place in product design round out of 500+ national entries; among 5 finalists in Round 2. Built an immersive 3D gamified storytelling prototype.',
+    location: 'National Science & Technology Park'
+  },
+  {
+    date: 'May 2026 — Present',
+    title: 'Campus Ambassador',
+    org: 'Replit',
+    type: 'role',
+    category: 'ambassadorship',
+    description: 'Fostering developer community engagement, building sprints, and campus outreach.',
+    location: 'GIKI'
+  },
+  {
+    date: 'April 2026',
+    title: 'Top 10 Team Finalist',
+    org: 'MIT HackNation',
+    type: 'win',
+    category: 'hackathon',
+    description: 'Product & Full-Stack Developer for CallPilot, an autonomous voice AI scheduler. Ranked Top 10 globally.',
+    location: 'Global Hub'
+  },
+  {
+    date: 'February 2026 — Present',
+    title: 'Campus Ambassador · Content Creator',
+    org: 'Atomcamp',
+    type: 'role',
+    category: 'ambassadorship',
+    description: 'Creating educational video reels on data science, AI ethics, and technical roadmaps.',
+    location: 'GIKI'
+  },
+  {
+    date: '2026',
+    title: '2nd Place Winner',
+    org: 'Hack@GIKI AI Challenge',
+    type: 'win',
+    category: 'hackathon',
+    description: 'Full-stack & product lead for Skill Issue, an arcade-style AI learning platform.',
+    location: 'GIKI'
+  },
+  {
+    date: 'December 2025',
+    title: '3rd Place Winner',
+    org: 'BASED Pakistan · Web3 Hackathon',
+    type: 'win',
+    category: 'hackathon',
+    description: 'Backend & Dashboard Developer for ChainTicket+, building a blockchain QR ticketing platform.',
+    location: 'Pakistan'
+  },
+  {
+    date: 'November 2025 — Present',
+    title: 'Core Team Member',
+    org: 'Google Developer Group GIKI',
+    type: 'role',
+    category: 'society',
+    description: 'Core team member organizing study jams and community member supporting event execution.',
+    location: 'GIKI'
+  },
+  {
+    date: 'October 2025 — Present',
+    title: 'Head of Marketing · MLSA',
+    org: 'Microsoft Club GIKI',
+    type: 'role',
+    category: 'leadership',
+    description: 'Leading visual design, content planning, and community outreach for the MLSA chapter.',
+    location: 'GIKI'
+  },
+  {
+    date: 'October 2025 — February 2026',
+    title: 'Society Member',
+    org: 'Team Techno GIKI',
+    type: 'role',
+    category: 'society',
+    description: 'Supporting community technology sessions and outreach programs.',
+    location: 'GIKI'
+  },
+  {
+    date: 'August 2025 — Present',
+    title: 'Microsoft Imagine Cup Participant',
+    org: 'EcoBite',
+    type: 'win',
+    category: 'project',
+    description: 'Full-stack developer and designer for a food waste reduction platform connecting NGOs and donors.',
+    location: 'GIKI'
+  },
+  {
+    date: 'May 2025 — Dec 2025',
+    title: 'Graphic Design Associate (formerly Design Intern)',
+    org: 'PreMed.PK',
+    type: 'role',
+    category: 'experience',
+    description: 'Leading brand asset creation in Figma and Canva, resulting in a 40% engagement increase and 25% faster delivery.',
+    location: 'Remote'
+  },
+  {
+    date: 'February 2025 — May 2026',
+    title: 'Campus Ambassador',
+    org: 'Devsinc',
+    type: 'role',
+    category: 'ambassadorship',
+    description: 'Organized 10+ workshops for 300+ GIKI students, generating 200+ qualified signups.',
+    location: 'GIKI'
+  },
+  {
+    date: 'February 2025 — July 2025',
+    title: 'Campus Ambassador',
+    org: 'Remotebase',
+    type: 'role',
+    category: 'ambassadorship',
+    description: 'Liaison for Hackfest 3.0, driving outreach and coordinating 300+ campus applications.',
+    location: 'GIKI'
+  },
+  {
+    date: '2025 — Present',
+    title: 'Community Member',
+    org: 'Ggdoc',
+    type: 'role',
+    category: 'society',
+    description: 'Collaborating with community developer networks and student tech groups.',
+    location: 'GIKI'
+  },
+  {
+    date: 'November 2024 — November 2025',
+    title: 'Community Member',
+    org: 'Google Developer Group GIKI',
+    type: 'role',
+    category: 'society',
+    description: 'Participated in study jams, tech sessions, and supported developer event execution.',
+    location: 'GIKI'
+  },
+  {
+    date: 'October 2024 — Present',
+    title: 'Member, Design Team & Volunteer',
+    org: 'ACM GIKI Student Chapter',
+    type: 'role',
+    category: 'society',
+    description: 'Designed event assets, supported Softcom\'25 and ACM/ICPC C++ basic workshops.',
+    location: 'GIKI'
+  },
+  {
+    date: 'September 2024 — October 2024',
+    title: 'Event Organizing Volunteer',
+    org: 'Leadership & Entrepreneurial Society (LES)',
+    type: 'role',
+    category: 'society',
+    description: 'Supported event logistics and participant registration at GIKI\'s All Pakistan Event.',
+    location: 'GIKI'
+  }
 ];
 
 export const SKILL_GROUPS = [
